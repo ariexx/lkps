@@ -6,10 +6,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use function Laravel\Prompts\error;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+
+    const superadmin = 'superadmin', adminprodi = 'admin_prodi', dosen = 'dosen', prodi = 'prodi';
 
     /**
      * The attributes that are mass assignable.
@@ -43,5 +46,17 @@ class User extends Authenticatable
         return [
             'password' => 'hashed',
         ];
+    }
+
+    public function checkLogin($username, $password): array|User|null
+    {
+        $user = User::where('username', $username)->first();
+        if ($user) {
+            if (password_verify($password, $user->password)) {
+                return $user;
+            }
+        }
+
+        return null;
     }
 }

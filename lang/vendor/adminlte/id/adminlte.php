@@ -4,11 +4,12 @@ return [
 
     'full_name' => 'Nama lengkap',
     'email' => 'Email',
+    'username' => 'Username',
     'password' => 'Kata sandi',
     'retype_password' => 'Ketik ulang kata sandi',
     'remember_me' => 'Ingat Saya',
     'register' => 'Daftar',
-    'register_a_new_membership' => 'Daftar sebagai anggota baru',
+    'register_a_new_membership' => 'Daftar',
     'i_forgot_my_password' => 'Saya lupa kata sandi',
     'i_already_have_a_membership' => 'Saya telah menjadi anggota',
     'sign_in' => 'Masuk',
