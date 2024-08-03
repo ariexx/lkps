@@ -29,7 +29,7 @@ class AuthController extends Controller
             //put user data into session, so we can check if user is logged in or not with middleware
             $request->session()->put('user', $user);
             //redirect to dashboard
-            return redirect('/dashboard');
+            return $user->redirectDashboard();
         }
 
         //if not, redirect back to login page with error message

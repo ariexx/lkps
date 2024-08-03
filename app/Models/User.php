@@ -59,4 +59,16 @@ class User extends Authenticatable
 
         return null;
     }
+
+    public function redirectDashboard()
+    {
+        $role = session('user')->role;
+        return match ($role) {
+            self::superadmin => redirect()->route('superadmin.dashboard'),
+            self::adminprodi => redirect()->route('adminprodi.dashboard'),
+            self::dosen => redirect()->route('dosen.dashboard'),
+            self::prodi => redirect()->route('prodi.dashboard'),
+            default => redirect('/login'),
+        };
+    }
 }

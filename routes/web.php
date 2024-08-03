@@ -16,10 +16,10 @@ Route::get('/', function () {
 //login and register route
 Route::get('/login', function () {
     return view('auth.login');
-});
+})->name('login');
 
 //login using gate for redirecting user to specific dashboard based on their role
-Route::middleware('dashboard-redirect')->post('/login', [AuthController::class, 'postLogin']);
+Route::post('/login', [AuthController::class, 'postLogin']);
 
 Route::get('/register', function () {
     return view('auth.register');
