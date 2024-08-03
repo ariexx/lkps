@@ -9,15 +9,15 @@ class StoreDosenTidakTetapRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama' => ['string'],
-            'nidn' => ['string'],
-            'pendidikan_terakhir' => ['string'],
-            'bidang_keahlian' => ['string'],
-            'jabatan' => ['string'],
-            'sertifikat_pendidik' => ['string'],
-            'sertifikat_kompetensi' => ['string'],
-            'mata_kuliah' => ['string'],
-            'kesesuaian_bidang' => ['string'],
+            'nama' => ['nullable'],
+            'nidn' => ['nullable'],
+            'pendidikan_terakhir' => ['nullable'],
+            'bidang_keahlian' => ['nullable'],
+            'jabatan' => ['nullable'],
+            'sertifikat_pendidik' => ['nullable'],
+            'sertifikat_kompetensi' => ['nullable'],
+            'mata_kuliah' => ['nullable'],
+            'kesesuaian_bidang' => ['nullable'],
         ];
     }
 

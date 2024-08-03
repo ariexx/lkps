@@ -324,7 +324,7 @@ return [
                 ],
                 [
                     'text' => 'Dosen Industri/Praktisi',
-                    'url' => '#',
+                    'url' => 'dosen/profile/dosen-industri-praktisi',
                     'icon' => 'fas fa-fw fa-user-graduate',
                 ],
                 [

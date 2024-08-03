@@ -42,6 +42,11 @@ Route::prefix('dosen')->as('dosen.')->group(function () {
             //EWMP dosen tetap perguruan tinggi
 
             //Dosen Industri/Praktisi
+            Route::post('/dosen-industri-praktisi/store', [ProfileDosenController::class, 'storeDosenIndustriPraktisi'])->name('dosen-industri-praktisi.store');
+            Route::get('/dosen-industri-praktisi', [ProfileDosenController::class, 'showDosenIndustriPraktisi'])->name('dosen-industri-praktisi');
+            Route::get('/dosen-industri-praktisi/create', function () {
+                return view('dosen.profile.create-dosen-industri-praktisi');
+            })->name('dosen-industri-praktisi.create');
 
             //Dosen Pembimbing Utama Tugas Akhir
 
