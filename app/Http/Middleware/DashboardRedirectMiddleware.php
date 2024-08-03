@@ -19,10 +19,10 @@ class DashboardRedirectMiddleware
                 User::adminprodi => redirect()->route('adminprodi.dashboard'),
                 User::dosen => redirect()->route('dosen.dashboard'),
                 User::prodi => redirect()->route('prodi.dashboard'),
-                default => $next($request),
+                default => redirect()->route('login'),
             };
         }
 
-        return $next($request);
+        return redirect()->route('login');
     }
 }

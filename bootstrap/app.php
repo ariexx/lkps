@@ -13,6 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'dashboard-redirect' => App\Http\Middleware\DashboardRedirectMiddleware::class,
+            'is-authenticated' => App\Http\Middleware\IsAuthenticatedMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

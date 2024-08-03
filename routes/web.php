@@ -3,6 +3,17 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
+//fallback route
+Route::fallback(function () {
+    abort(404);
+});
+
+//index route
+Route::get('/', function () {
+    return view('auth.login');
+});
+
+//login and register route
 Route::get('/login', function () {
     return view('auth.login');
 });
@@ -16,6 +27,11 @@ Route::get('/register', function () {
 
 Route::post('/register', [AuthController::class, 'postRegister']);
 
-Route::get('/debug', function () {
-    phpinfo();
+//route for dosen
+Route::prefix('dosen')->as('dosen.')->group(function () {
+    Route::middleware('is-authenticated')->group(function () {
+        Route::get('/dashboard', function () {
+            return view('dosen.dashboard');
+        })->name('dashboard');
+    });
 });
