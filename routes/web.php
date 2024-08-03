@@ -8,10 +8,14 @@ Route::get('/login', function () {
 });
 
 //login using gate for redirecting user to specific dashboard based on their role
-Route::post('/login', [AuthController::class, 'postLogin']);
+Route::middleware('dashboard-redirect')->post('/login', [AuthController::class, 'postLogin']);
 
 Route::get('/register', function () {
     return view('auth.register');
 });
 
 Route::post('/register', [AuthController::class, 'postRegister']);
+
+Route::get('/debug', function () {
+    phpinfo();
+});
