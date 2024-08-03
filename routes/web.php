@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileDosenController;
 use Illuminate\Support\Facades\Route;
 
 //fallback route
@@ -33,5 +34,23 @@ Route::prefix('dosen')->as('dosen.')->group(function () {
         Route::get('/dashboard', function () {
             return view('dosen.dashboard');
         })->name('dashboard');
+
+        #profile dosen routes
+        Route::prefix('profile')->group(function () {
+            //Dosen tetap perguruan tinggi
+
+            //EWMP dosen tetap perguruan tinggi
+
+            //Dosen Industri/Praktisi
+
+            //Dosen Pembimbing Utama Tugas Akhir
+
+            //Dosen Tidak Tetap
+            Route::post('/dosen-tidak-tetap/store', [ProfileDosenController::class, 'storeDosenTidakTetap'])->name('dosen-tidak-tetap.store');
+            Route::get('/dosen-tidak-tetap', [ProfileDosenController::class, 'showDosenTidakTetap'])->name('dosen-tidak-tetap');
+            Route::get('/dosen-tidak-tetap/create', function () {
+                return view('dosen.profile.create-dosen-tidak-tetap');
+            })->name('dosen-tidak-tetap.create');
+        });
     });
 });

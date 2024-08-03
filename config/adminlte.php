@@ -295,11 +295,7 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
-            'type' => 'navbar-search',
-            'text' => 'search',
-            'topnav_right' => true,
-        ],
+
         [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
@@ -307,85 +303,56 @@ return [
 
         // Sidebar items:
         [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'Dashboard',
+            'url' => '#',
+            'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
+        //with sub menu
         [
-            'text' => 'blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
-        ],
-        [
-            'text' => 'pages',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'multilevel',
-            'icon' => 'fas fa-fw fa-share',
+            'text' => 'Profile Dosen',
+            'icon' => 'fas fa-fw fa-database',
             'submenu' => [
                 [
-                    'text' => 'level_one',
+                    'text' => 'Dosen Tetap Perguruan Tinggi',
                     'url' => '#',
+                    'icon' => 'fas fa-fw fa-university',
                 ],
                 [
-                    'text' => 'level_one',
+                    'text' => 'EWMP Dosen',
                     'url' => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'icon' => 'fas fa-fw fa-chalkboard-teacher',
                 ],
                 [
-                    'text' => 'level_one',
+                    'text' => 'Dosen Industri/Praktisi',
                     'url' => '#',
+                    'icon' => 'fas fa-fw fa-user-graduate',
                 ],
+                [
+                    'text' => 'Dosen Pembimbing Utama Tugas Akhir',
+                    'url' => '#',
+                    'icon' => 'fas fa-fw fa-user-graduate',
+                ],
+                [
+                    'text' => 'Dosen Tidak Tetap',
+                    'url' => 'dosen/profile/dosen-tidak-tetap',
+                    'icon' => 'fas fa-fw fa-user-graduate',
+                ]
             ],
         ],
-        ['header' => 'labels'],
         [
-            'text' => 'important',
-            'icon_color' => 'red',
+            'text' => 'Laporan',
             'url' => '#',
+            'icon' => 'fas fa-fw fa-file-alt',
         ],
         [
-            'text' => 'warning',
-            'icon_color' => 'yellow',
+            'text' => 'Pengaturan',
             'url' => '#',
+            'icon' => 'fas fa-fw fa-cogs',
         ],
         [
-            'text' => 'information',
-            'icon_color' => 'cyan',
+            'text' => 'Logout',
             'url' => '#',
+            'icon' => 'fas fa-fw fa-sign-out-alt',
         ],
     ],
 

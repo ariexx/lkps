@@ -16,4 +16,5 @@ return [
     'important' => 'Penting',
     'warning' => 'Peringatan',
     'information' => 'Informasi',
+    'profile_dosen' => 'PROFILE DOSEN',
 ];
