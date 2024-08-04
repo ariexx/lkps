@@ -18,6 +18,7 @@ class StoreDosenTidakTetapRequest extends FormRequest
             'sertifikat_kompetensi' => ['nullable'],
             'mata_kuliah' => ['nullable'],
             'kesesuaian_bidang' => ['nullable'],
+            'user_id' => ['nullable'],
         ];
     }
 

@@ -16,11 +16,17 @@ class DosenTidakTetap extends Model
         'sertifikat_pendidik',
         'sertifikat_kompetensi',
         'mata_kuliah',
-        'kesesuaian_bidang'
+        'kesesuaian_bidang',
+        'user_id'
     ];
 
     public function getAll(): object
     {
         return $this->get();
+    }
+
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -314,7 +314,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Dosen Tetap Perguruan Tinggi',
-                    'url' => '#',
+                    'url' => 'dosen/profile/dosen-tetap-perguruan-tinggi',
                     'icon' => 'fas fa-fw fa-university',
                 ],
                 [
@@ -329,7 +329,7 @@ return [
                 ],
                 [
                     'text' => 'Dosen Pembimbing Utama Tugas Akhir',
-                    'url' => '#',
+                    'url' => 'dosen/profile/dosen-pembimbing-utama-tugas-akhir',
                     'icon' => 'fas fa-fw fa-user-graduate',
                 ],
                 [

@@ -38,6 +38,12 @@ Route::prefix('dosen')->as('dosen.')->group(function () {
         #profile dosen routes
         Route::prefix('profile')->group(function () {
             //Dosen tetap perguruan tinggi
+            Route::post('/dosen-tetap-perguruan-tinggi/store', [ProfileDosenController::class, 'storeDosenTetapPerguruanTinggi'])->name('dosen-tetap-perguruan-tinggi.store');
+            Route::get('/dosen-tetap-perguruan-tinggi', [ProfileDosenController::class, 'showDosenTetapPerguruanTinggi'])->name('dosen-tetap-perguruan-tinggi');
+            Route::get('/dosen-tetap-perguruan-tinggi/create', function () {
+                return view('dosen.profile.create-dosen-tetap-perguruan-tinggi');
+            })->name('dosen-tetap-perguruan-tinggi.create');
+
 
             //EWMP dosen tetap perguruan tinggi
 
@@ -49,6 +55,11 @@ Route::prefix('dosen')->as('dosen.')->group(function () {
             })->name('dosen-industri-praktisi.create');
 
             //Dosen Pembimbing Utama Tugas Akhir
+            Route::post('/dosen-pembimbing-utama-tugas-akhir/store', [ProfileDosenController::class, 'storeDosenPembimbingUtamaTugasAkhir'])->name('dosen-pembimbing-utama-tugas-akhir.store');
+            Route::get('/dosen-pembimbing-utama-tugas-akhir', [ProfileDosenController::class, 'showDosenPembimbingUtamaTugasAkhir'])->name('dosen-pembimbing-utama-tugas-akhir');
+            Route::get('/dosen-pembimbing-utama-tugas-akhir/create', function () {
+                return view('dosen.profile.create-dosen-pembimbing-utama-tugas-akhir');
+            })->name('dosen-pembimbing-utama-tugas-akhir.create');
 
             //Dosen Tidak Tetap
             Route::post('/dosen-tidak-tetap/store', [ProfileDosenController::class, 'storeDosenTidakTetap'])->name('dosen-tidak-tetap.store');

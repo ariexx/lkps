@@ -5,19 +5,29 @@ namespace App\Http\Controllers;
 use App\Http\Requests\DosenIndustriPraktisiRequest;
 use App\Http\Requests\StoreDosenTidakTetapRequest;
 use App\Models\DosenIndustriPraktisi;
+use App\Models\DosenPembimbing;
+use App\Models\DosenTetapPerguruanTinggi;
 use App\Models\DosenTidakTetap;
 use Illuminate\Http\Request;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 
 class ProfileDosenController extends Controller
 {
-
     public function __construct(
         public DosenTidakTetap $dosenTidakTetap,
-        public DosenIndustriPraktisi $dosenIndustriPraktisi
-
+        public DosenIndustriPraktisi $dosenIndustriPraktisi,
+        public DosenTetapPerguruanTinggi $dosenTetapPerguruanTinggi,
+        public DosenPembimbing $dosenPembimbingTugasAkhir,
+        public $alreadyInserted = false
     )
     {
+        //check if user already inserted data in dosen_tidak_tetap, dosen_industri_praktisi, and dosen_tetap_perguruan_tinggi
+        $this->alreadyInserted = $this->dosenTidakTetap->where('user_id', user()->id)->exists()
+            || $this->dosenIndustriPraktisi->where('user_id', user()->id)->exists()
+            || $this->dosenTetapPerguruanTinggi->where('user_id', user()->id)->exists()
+            || $this->dosenPembimbingTugasAkhir->where('user_id', user()->id)->exists();
     }
 
     public function showDosenTidakTetap()
@@ -28,7 +38,12 @@ class ProfileDosenController extends Controller
 
     public function storeDosenTidakTetap(StoreDosenTidakTetapRequest $request)
     {
+        if ($this->alreadyInserted) {
+            return redirect()->route('dosen.dosen-tidak-tetap')->with('error', 'Anda sudah mengisi data dosen');
+        }
+
         try {
+            $request['user_id'] = user()->id;
             $this->dosenTidakTetap->create($request->validated());
             return redirect()->route('dosen.dosen-tidak-tetap')->with('success', 'Data dosen tidak tetap berhasil ditambahkan');
         } catch (\Exception $e) {
@@ -38,17 +53,68 @@ class ProfileDosenController extends Controller
 
     public function showDosenIndustriPraktisi()
     {
-        $dosenIndustriPraktisi = $this->dosenIndustriPraktisi->getAll();
+        $dosenIndustriPraktisi = $this->dosenIndustriPraktisi->whereUserId(user()->id)->get();
         return view('dosen.profile.dosen_industri_praktisi', compact('dosenIndustriPraktisi'));
     }
 
     public function storeDosenIndustriPraktisi(Request $request)
     {
+        if ($this->alreadyInserted) {
+            return redirect()->route('dosen.dosen-industri-praktisi')->with('error', 'Anda sudah mengisi data dosen');
+        }
+
         try {
+            $request['user_id'] = user()->id;
             $this->dosenIndustriPraktisi->create($request->all());
             return redirect()->route('dosen.dosen-industri-praktisi')->with('success', 'Data dosen industri praktisi berhasil ditambahkan');
         } catch (\Exception $e) {
              return redirect()->route('dosen.dosen-industri-praktisi.create')->with('error', 'Data dosen industri praktisi gagal ditambahkan');
+        }
+    }
+
+    public function showDosenTetapPerguruanTinggi()
+    {
+        $dosenTetapPerguruanTinggi = $this->dosenTetapPerguruanTinggi->whereUserId(user()->id)->get();
+        return view('dosen.profile.dosen_tetap_perguruan_tinggi', compact('dosenTetapPerguruanTinggi'));
+    }
+
+    public function storeDosenTetapPerguruanTinggi(Request $request)
+    {
+        if ($this->alreadyInserted) {
+            return redirect()->route('dosen.dosen-tetap-perguruan-tinggi')->with('error', 'Anda sudah mengisi data dosen');
+        }
+
+        try {
+            $request['user_id'] = user()->id;
+            $this->dosenTetapPerguruanTinggi->create($request->all());
+            return redirect()->route('dosen.dosen-tetap-perguruan-tinggi')->with('success', 'Data dosen tetap perguruan tinggi berhasil ditambahkan');
+        } catch (\Exception $e) {
+             return redirect()->route('dosen.dosen-tetap-perguruan-tinggi.create')->with('error', 'Data dosen tetap perguruan tinggi gagal ditambahkan #1');
+        } catch (NotFoundExceptionInterface $e) {
+            return redirect()->route('dosen.dosen-tetap-perguruan-tinggi.create')->with('error', 'Data dosen tetap perguruan tinggi gagal ditambahkan #2');
+        } catch (ContainerExceptionInterface $e) {
+            return redirect()->route('dosen.dosen-tetap-perguruan-tinggi.create')->with('error', 'Data dosen tetap perguruan tinggi gagal ditambahkan #3');
+        }
+    }
+
+    public function showDosenPembimbingUtamaTugasAkhir()
+    {
+        $dosenPembimbingUtamaTugasAkhir = $this->dosenPembimbingTugasAkhir->whereUserId(user()->id)->get();
+        return view('dosen.profile.dosen_pembimbing_utama_tugas_akhir', compact('dosenPembimbingUtamaTugasAkhir'));
+    }
+
+    public function storeDosenPembimbingUtamaTugasAkhir(Request $request)
+    {
+        if ($this->alreadyInserted) {
+            return redirect()->route('dosen.dosen-pembimbing-utama-tugas-akhir')->with('error', 'Anda sudah mengisi data dosen');
+        }
+
+        try {
+            $request['user_id'] = user()->id;
+            $this->dosenPembimbingTugasAkhir->create($request->all());
+            return redirect()->route('dosen.dosen-pembimbing-utama-tugas-akhir')->with('success', 'Data dosen pembimbing utama tugas akhir berhasil ditambahkan');
+        } catch (\Exception $e) {
+             return redirect()->route('dosen.dosen-pembimbing-utama-tugas-akhir.create')->with('error', 'Data dosen pembimbing utama tugas akhir gagal ditambahkan');
         }
     }
 }

@@ -16,10 +16,16 @@ class DosenIndustriPraktisi extends Model
         'sertifikat_kompetensi',
         'mata_kuliah',
         'bobot_kredit',
+        'user_id'
     ];
 
     public function getAll(): object
     {
         return $this->get();
+    }
+
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }
