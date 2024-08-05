@@ -32,9 +32,6 @@
                 <label>Jumlah Mahasiswa yang Dibimbing (TS):</label><br>
                 <input type="number" name="jumlah_mahasiswa_dibimbing_ts" required class="form-control"><br>
 
-                <label>Rata-rata Jumlah Bimbingan di semua Program/Semester (Akreditasi):</label><br>
-                <input type="number" step="0.01" name="rata_rata_mahasiswa" required class="form-control"><br>
-
                 <label>Jumlah Mahasiswa yang Dibimbing (TS-2) - PS Lain pada Program yang sama di PT:</label><br>
                 <input type="number" name="jumlah_mahasiswa_dibimbing_ts2_lain" required class="form-control"><br>
 
@@ -43,9 +40,6 @@
 
                 <label>Jumlah Mahasiswa yang Dibimbing (TS) - PS Lain pada Program yang sama di PT:</label><br>
                 <input type="number" name="jumlah_mahasiswa_dibimbing_ts_lain" required class="form-control"><br>
-
-                <label>Rata-rata Jumlah Bimbingan di semua Program/Semester (Lainnya):</label><br>
-                <input type="number" step="0.01" name="rata_rata_mahasiswa_lain" required class="form-control"><br>
 
                 <input type="submit" class="btn btn-primary" value="Simpan">
             </form>
