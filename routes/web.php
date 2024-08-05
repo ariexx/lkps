@@ -60,6 +60,8 @@ Route::prefix('dosen')->as('dosen.')->group(function () {
             Route::get('/dosen-pembimbing-utama-tugas-akhir/create', function () {
                 return view('dosen.profile.create-dosen-pembimbing-utama-tugas-akhir');
             })->name('dosen-pembimbing-utama-tugas-akhir.create');
+            Route::get('/dosen-pembimbing-utama-tugas-akhir/edit/{id}', [ProfileDosenController::class, 'editDosenPembimbingUtamaTugasAkhir'])->name('dosen-pembimbing-utama-tugas-akhir.edit');
+            Route::put('/dosen-pembimbing-utama-tugas-akhir/update/{id}', [ProfileDosenController::class, 'updateDosenPembimbingUtamaTugasAkhir'])->name('dosen-pembimbing-utama-tugas-akhir.update');
 
             //Dosen Tidak Tetap
             Route::post('/dosen-tidak-tetap/store', [ProfileDosenController::class, 'storeDosenTidakTetap'])->name('dosen-tidak-tetap.store');

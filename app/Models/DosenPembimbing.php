@@ -30,28 +30,68 @@ class DosenPembimbing extends Model
         return $this->get();
     }
 
-    public function getRataRataAttribute(): float
+    public function rataRataTS(): array
     {
-        return ($this->jumlah_mahasiswa_dibimbing_ts + $this->jumlah_mahasiswa_dibimbing_ts1 + $this->jumlah_mahasiswa_dibimbing_ts2) / 3;
-    }
+        $data = $this->where('user_id', user()->id)->get();
 
-    public function getRataRataLainAttribute(): float
-    {
-        return ($this->jumlah_mahasiswa_dibimbing_ts_lain + $this->jumlah_mahasiswa_dibimbing_ts1_lain + $this->jumlah_mahasiswa_dibimbing_ts2_lain) / 3;
-    }
+        $rataRataTS = 0;
+        $rataRataTS1 = 0;
+        $rataRataTS2 = 0;
+        $rataRata = 0;
 
-    public function getSumRataRataAttribute(): float
-    {
-        return ($this->rata_rata + $this->rata_rata_lain) / 2;
-    }
+        $totalData = count($data);
 
-    public function getTSRataRataAkreditasiAttribute(): array
-    {
+        foreach ($data as $d) {
+            $rataRataTS += $d->jumlah_mahasiswa_dibimbing_ts;
+            $rataRataTS1 += $d->jumlah_mahasiswa_dibimbing_ts1;
+            $rataRataTS2 += $d->jumlah_mahasiswa_dibimbing_ts2;
+            $rataRata += $d->rata_rata_mahasiswa;
+        }
+
         return [
-            'jumlah_mahasiswa_dibimbing_ts' => $this->jumlah_mahasiswa_dibimbing_ts,
-            'jumlah_mahasiswa_dibimbing_ts1' => $this->jumlah_mahasiswa_dibimbing_ts1,
-            'jumlah_mahasiswa_dibimbing_ts2' => $this->jumlah_mahasiswa_dibimbing_ts2,
-            'rata_rata_mahasiswa' => $this->rata_rata_mahasiswa,
+            'rata_rata_ts' => number_format($rataRataTS / $totalData, 2),
+            'rata_rata_ts1' => number_format($rataRataTS1 / $totalData, 2),
+            'rata_rata_ts2' => number_format($rataRataTS2 / $totalData, 2),
+            'rata_rata' => number_format($rataRata / $totalData, 2),
         ];
+    }
+
+    public function rataRataTSLain(): array
+    {
+        $data = $this->where('user_id', user()->id)->get();
+
+        $rataRataTS = 0;
+        $rataRataTS1 = 0;
+        $rataRataTS2 = 0;
+        $rataRata = 0;
+
+        $totalData = count($data);
+
+        foreach ($data as $d) {
+            $rataRataTS += $d->jumlah_mahasiswa_dibimbing_ts_lain;
+            $rataRataTS1 += $d->jumlah_mahasiswa_dibimbing_ts1_lain;
+            $rataRataTS2 += $d->jumlah_mahasiswa_dibimbing_ts2_lain;
+            $rataRata += $d->rata_rata_mahasiswa_lain;
+        }
+
+        return [
+            'rata_rata_ts' => number_format($rataRataTS / $totalData, 2),
+            'rata_rata_ts1' => number_format($rataRataTS1 / $totalData, 2),
+            'rata_rata_ts2' => number_format($rataRataTS2 / $totalData, 2),
+            'rata_rata' => number_format($rataRata / $totalData, 2),
+        ];
+    }
+
+    public function rataRataSemua()
+    {
+        $data = $this->where('user_id', user()->id)->get();
+
+        $rata = 0;
+        $totalData = count($data);
+        $data->each(function ($dosen) use (&$rata) {
+            $rata += ($dosen->rata_rata_mahasiswa + $dosen->rata_rata_mahasiswa_lain) / 2;
+        });
+
+        return number_format($rata / $totalData, 2);
     }
 }

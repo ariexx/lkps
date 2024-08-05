@@ -100,21 +100,36 @@ class ProfileDosenController extends Controller
     public function showDosenPembimbingUtamaTugasAkhir()
     {
         $dosenPembimbingUtamaTugasAkhir = $this->dosenPembimbingTugasAkhir->whereUserId(user()->id)->get();
-        return view('dosen.profile.dosen_pembimbing_utama_tugas_akhir', compact('dosenPembimbingUtamaTugasAkhir'));
+        $rataRataTS = $this->dosenPembimbingTugasAkhir->rataRataTS();
+        $rataRataTSLain = $this->dosenPembimbingTugasAkhir->rataRataTSLain();
+        $rata = $this->dosenPembimbingTugasAkhir->rataRataSemua();
+        return view('dosen.profile.dosen_pembimbing_utama_tugas_akhir', compact('dosenPembimbingUtamaTugasAkhir', 'rataRataTS', 'rataRataTSLain', 'rata'));
     }
 
     public function storeDosenPembimbingUtamaTugasAkhir(Request $request)
     {
-        if ($this->alreadyInserted) {
-            return redirect()->route('dosen.dosen-pembimbing-utama-tugas-akhir')->with('error', 'Anda sudah mengisi data dosen');
-        }
-
         try {
             $request['user_id'] = user()->id;
             $this->dosenPembimbingTugasAkhir->create($request->all());
             return redirect()->route('dosen.dosen-pembimbing-utama-tugas-akhir')->with('success', 'Data dosen pembimbing utama tugas akhir berhasil ditambahkan');
         } catch (\Exception $e) {
-             return redirect()->route('dosen.dosen-pembimbing-utama-tugas-akhir.create')->with('error', 'Data dosen pembimbing utama tugas akhir gagal ditambahkan');
+             return redirect()->route('dosen.dosen-pembimbing-utama-tugas-akhir.create')->with('error', $e);
+        }
+    }
+
+    public function editDosenPembimbingUtamaTugasAkhir($id)
+    {
+        $dosenPembimbing = $this->dosenPembimbingTugasAkhir->find($id);
+        return view('dosen.profile.edit_dosen_pembimbing_utama_tugas_akhir', compact('dosenPembimbing'));
+    }
+
+    public function updateDosenPembimbingUtamaTugasAkhir(Request $request, $id)
+    {
+        try {
+            $this->dosenPembimbingTugasAkhir->find($id)->update($request->all());
+            return redirect()->route('dosen.dosen-pembimbing-utama-tugas-akhir')->with('success', 'Data dosen pembimbing utama tugas akhir berhasil diubah');
+        } catch (\Exception $e) {
+             return redirect()->route('dosen.dosen-pembimbing-utama-tugas-akhir.edit', $id)->with('error', 'Data dosen pembimbing utama tugas akhir gagal diubah');
         }
     }
 }
