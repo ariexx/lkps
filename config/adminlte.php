@@ -319,7 +319,7 @@ return [
                 ],
                 [
                     'text' => 'EWMP Dosen',
-                    'url' => '#',
+                    'url' => 'dosen/profile/ewmp-dosen-tetap-perguruan-tinggi',
                     'icon' => 'fas fa-fw fa-chalkboard-teacher',
                 ],
                 [

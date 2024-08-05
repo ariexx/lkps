@@ -8,6 +8,7 @@ use App\Models\DosenIndustriPraktisi;
 use App\Models\DosenPembimbing;
 use App\Models\DosenTetapPerguruanTinggi;
 use App\Models\DosenTidakTetap;
+use App\Models\EWMP;
 use Illuminate\Http\Request;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
@@ -20,6 +21,7 @@ class ProfileDosenController extends Controller
         public DosenIndustriPraktisi $dosenIndustriPraktisi,
         public DosenTetapPerguruanTinggi $dosenTetapPerguruanTinggi,
         public DosenPembimbing $dosenPembimbingTugasAkhir,
+        public EWMP $ewmp,
         public $alreadyInserted = false
     )
     {
@@ -147,5 +149,13 @@ class ProfileDosenController extends Controller
         } catch (\Exception $e) {
              return redirect()->route('dosen.dosen-pembimbing-utama-tugas-akhir.edit', $id)->with('error', 'Data dosen pembimbing utama tugas akhir gagal diubah');
         }
+    }
+
+    public function showEWMPDosenTetapPerguruanTinggi()
+    {
+        $ewmp = $this->ewmp->getAll();
+        $rataRataJumlah = $this->ewmp->rataRataJumlah();
+        $rataRataSKS = $this->ewmp->rataRataSKS();
+        return view('dosen.profile.ewmp_dosen_tetap_perguruan_tinggi', compact('ewmp', 'rataRataJumlah', 'rataRataSKS'));
     }
 }

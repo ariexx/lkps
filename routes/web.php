@@ -48,6 +48,13 @@ Route::prefix('dosen')->as('dosen.')->group(function () {
 
 
             //EWMP dosen tetap perguruan tinggi
+            Route::post('/ewmp-dosen-tetap-perguruan-tinggi/store', [ProfileDosenController::class, 'storeEWMPDosenTetapPerguruanTinggi'])->name('ewmp-dosen-tetap-perguruan-tinggi.store');
+            Route::get('/ewmp-dosen-tetap-perguruan-tinggi', [ProfileDosenController::class, 'showEWMPDosenTetapPerguruanTinggi'])->name('ewmp-dosen-tetap-perguruan-tinggi');
+            Route::get('/ewmp-dosen-tetap-perguruan-tinggi/create', function () {
+                return view('dosen.profile.create-ewmp-dosen-tetap-perguruan-tinggi');
+            })->name('ewmp-dosen-tetap-perguruan-tinggi.create');
+            Route::get('/ewmp-dosen-tetap-perguruan-tinggi/edit/{id}', [ProfileDosenController::class, 'editEWMPDosenTetapPerguruanTinggi'])->name('ewmp-dosen-tetap-perguruan-tinggi.edit');
+            Route::put('/ewmp-dosen-tetap-perguruan-tinggi/update/{id}', [ProfileDosenController::class, 'updateEWMPDosenTetapPerguruanTinggi'])->name('ewmp-dosen-tetap-perguruan-tinggi.update');
 
             //Dosen Industri/Praktisi
             Route::post('/dosen-industri-praktisi/store', [ProfileDosenController::class, 'storeDosenIndustriPraktisi'])->name('dosen-industri-praktisi.store');

@@ -54,7 +54,7 @@
                         <td>{{ $dosen->jumlah_mahasiswa_dibimbing_ts_lain }}</td>
                         <td>{{ number_format(($dosen->jumlah_mahasiswa_dibimbing_ts2_lain+$dosen->jumlah_mahasiswa_dibimbing_ts1_lain+$dosen->jumlah_mahasiswa_dibimbing_ts_lain) / 3, 2) }}</td>
                         <td>
-                            {{ number_format(($dosen->rata_rata_mahasiswa + $dosen->rata_rata_mahasiswa_lain) / 2, 2) }}
+                            {{ $dosen->rataRataPS($dosen->id)}}
 
                         </td>
                         <td>
