@@ -13,375 +13,52 @@
         </div>
 
         <div class="card-body">
-            <table class="table table-responsive">
-                <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Nama Dosen (DT)</th>
-                    <th>DTPS</th>
-                    <th>Ekuivalen Waktu Mengajar Penuh (EWMP) pada saat TS dalam satuan kredit semester (sks)</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th>Jumlah (sks)</th>
-                    <th>Rata-rata per Semester (sks)</th>
+            <table class="table table-bordered">
+                <tr class="align-content-center">
+                    <th rowspan="2">No.</th>
+                    <th rowspan="2">Nama Dosen</th>
+                    <th rowspan="2">DTPS</th>
+                    <th colspan="3">Pendidikan: Pembelajaran dan Pembimbingan</th>
+                    <th colspan="3" rowspan="2">Penelitian</th>
+                    <th colspan="3" rowspan="2">PkM</th>
+                    <th colspan="3" rowspan="2">Tugas Tambahan dan/atau Penunjang</th>
+                    <th rowspan="2">Jumlah</th>
+                    <th rowspan="2">Rata-rata</th>
+                    <th rowspan="2">Aksi</th>
                 </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Pendidikan: Pembelajaran dan Pembimbingan</td>
-                    <td></td>
-                    <td></td>
-                    <td>Penelitian</td>
-                    <td>PkM</td>
-                    <td>Tugas Tambahan dan/atau Penunjang</td>
-                    <td></td>
-                    <td></td>
+                <tr class="align-content-center">
+                    <th>PS yang Diakreditasi</th>
+                    <th>PS Lain di dalam PT</th>
+                    <th>PS Lain di luar PT</th>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>PS yang Diakreditasi</td>
-                    <td>PS Lain di dalam PT</td>
-                    <td>PS Lain di luar PT</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                    <td>7</td>
-                    <td>8</td>
-                    <td>9</td>
-                    <td>10</td>
-                    <td>11</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Ahmad Zakir,ST,M.Kom</td>
-                    <td>V</td>
-                    <td>24</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>3</td>
-                    <td>30</td>
-                    <td>15</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Arie Rafika Dewi,M.Kom</td>
-                    <td>V</td>
-                    <td>27</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>30</td>
-                    <td>15</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Boni Oktaviana Sembiring,M.Kom</td>
-                    <td>V</td>
-                    <td>24</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>27</td>
-                    <td>13.5</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Dedy Irwan,ST,M.Kom</td>
-                    <td>V</td>
-                    <td>22</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>25</td>
-                    <td>12.5</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Edy Rahman Syahputra,ST,M.Kom</td>
-                    <td>V</td>
-                    <td>24</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>3</td>
-                    <td>30</td>
-                    <td>15</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Edrian Hadinata,M.Kom</td>
-                    <td>V</td>
-                    <td>24</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>27</td>
-                    <td>13.5</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Eka Rahayu,M.Kom</td>
-                    <td>V</td>
-                    <td>26</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>29</td>
-                    <td>14.5</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>Fachrul Rozi Lubis,M.Kom</td>
-                    <td>V</td>
-                    <td>28</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>31</td>
-                    <td>15.5</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>Hasdiana,M.Kom</td>
-                    <td>V</td>
-                    <td>24</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>27</td>
-                    <td>13.5</td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>Husni Lubis,ST,M.Kom</td>
-                    <td>V</td>
-                    <td>24</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>27</td>
-                    <td>13.5</td>
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <td>Ihsan Lubis,ST,M.Kom</td>
-                    <td>V</td>
-                    <td>28</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>31</td>
-                    <td>15.5</td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td>Marina Elsera,ST,M.Kom</td>
-                    <td>V</td>
-                    <td>23</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>26</td>
-                    <td>13</td>
-                </tr>
-                <tr>
-                    <td>13</td>
-                    <td>Nurjamiyah,S.Kom,M.Cs </td>
-                    <td>V</td>
-                    <td>22</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>25</td>
-                    <td>12.5</td>
-                </tr>
-                <tr>
-                    <td>14</td>
-                    <td>Septiana Dewi Andriana,M.Kom</td>
-                    <td>V</td>
-                    <td>28</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>31</td>
-                    <td>15.5</td>
-                </tr>
-                <tr>
-                    <td>15</td>
-                    <td>Yanti Faradillah Siahaan,ST,M.Si</td>
-                    <td>V</td>
-                    <td>24</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>27</td>
-                    <td>13.5</td>
-                </tr>
-                <tr>
-                    <td>16</td>
-                    <td>Yulia Agustina Dalimunthe,ST,M.Kom</td>
-                    <td>V</td>
-                    <td>24</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>27</td>
-                    <td>13.5</td>
-                </tr>
-                <tr>
-                    <td>17</td>
-                    <td>Tantri Hidayati Sinaga,M.Kom</td>
-                    <td>V</td>
-                    <td>24</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>27</td>
-                    <td>13.5</td>
-                </tr>
-                <tr>
-                    <td>18</td>
-                    <td>Dharmawati, S.Pd, M.Hum</td>
-                    <td></td>
-                    <td>8</td>
-                    <td>12</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>23</td>
-                    <td>11.5</td>
-                </tr>
-                <tr>
-                    <td>19</td>
-                    <td>Sarudin, M.Pd.i</td>
-                    <td></td>
-                    <td>8</td>
-                    <td>12</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>23</td>
-                    <td>11.5</td>
-                </tr>
-                <tr>
-                    <td>20</td>
-                    <td>Nenna Irsa Syahputri, S.Si, M.Si</td>
-                    <td></td>
-                    <td>12</td>
-                    <td>14</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>29</td>
-                    <td>14.5</td>
-                </tr>
-                <tr>
-                    <td>21</td>
-                    <td>Sugih Ayu Pratitis, SH, M.Hum</td>
-                    <td></td>
-                    <td>16</td>
-                    <td>18</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>37</td>
-                    <td>18.5</td>
-                </tr>
-                <tr>
-                    <td>22</td>
-                    <td>Ika Sari, S.Pd., M.Pd</td>
-                    <td></td>
-                    <td>8</td>
-                    <td>12</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>23</td>
-                    <td>11.5</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>Rata-rata DTPS</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>27.82</td>
-                    <td>13.91</td>
-                </tr>
-                </tbody>
+
+                @foreach($ewmp as $ewmp)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $ewmp->name }}</td>
+                        <td>{{ ($ewmp->dtps) ? "Ya" : "Tidak" }}</td>
+                        <td>{{ $ewmp->ps_diakreditasi }}</td>
+                        <td>{{ $ewmp->ps_lain_didalam_pt }}</td>
+                        <td>{{ $ewmp->pt_lain_diluar_pt }}</td>
+                        <td colspan="3">{{ $ewmp->penelitian }}</td>
+                        <td colspan="3">{{ $ewmp->pkm }}</td>
+                        <td colspan="3">{{ $ewmp->tugas_tambahan }}</td>
+                        <td>{{ $ewmp->jumlah() }}</td>
+                        <td>{{ $ewmp->rataRata() }}</td>
+                        <td>
+                            <a href="{{route('dosen.ewmp-dosen-tetap-perguruan-tinggi.edit', $ewmp->id)}}" class="btn btn-warning">Edit</a>
+{{--                            <form action="{{route('dosen.ewmp-dosen-tetap-perguruan-tinggi.destroy', $ewmp->id)}}" method="POST" class="d-inline">--}}
+{{--                                @csrf--}}
+{{--                                @method('DELETE')--}}
+{{--                                <button class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</button>--}}
+{{--                            </form>--}}
+                        </td>
+                    </tr>
+                @endforeach
+                <th colspan="12"></th>
+                <th colspan="3">Rata Rata</th>
+                <th>{{ $ewmp->rataRataJumlah() }}</th>
+                <th>{{$ewmp->rataRataSKS()}}</th>
             </table>
         </div>
     </div>

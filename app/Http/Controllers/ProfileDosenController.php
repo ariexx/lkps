@@ -158,4 +158,33 @@ class ProfileDosenController extends Controller
         $rataRataSKS = $this->ewmp->rataRataSKS();
         return view('dosen.profile.ewmp_dosen_tetap_perguruan_tinggi', compact('ewmp', 'rataRataJumlah', 'rataRataSKS'));
     }
+
+    public function storeEWMPDosenTetapPerguruanTinggi(Request $request)
+    {
+        try {
+            if(is_null($request->dtps)) {
+                $request['dtps'] = 0;
+            }
+            $this->ewmp->create($request->all());
+            return redirect()->route('dosen.ewmp-dosen-tetap-perguruan-tinggi')->with('success', 'Data ewmp dosen tetap perguruan tinggi berhasil ditambahkan');
+        } catch (\Exception $e) {
+             return redirect()->route('dosen.ewmp-dosen-tetap-perguruan-tinggi.create')->with('error', $e);
+        }
+    }
+
+    public function editEWMPDosenTetapPerguruanTinggi($id)
+    {
+        $ewmp = $this->ewmp->find($id);
+        return view('dosen.profile.edit_ewmp_dosen_tetap_perguruan_tinggi', compact('ewmp'));
+    }
+
+    public function updateEWMPDosenTetapPerguruanTinggi(Request $request, $id)
+    {
+        try {
+            $this->ewmp->find($id)->update($request->all());
+            return redirect()->route('dosen.ewmp-dosen-tetap-perguruan-tinggi')->with('success', 'Data ewmp dosen tetap perguruan tinggi berhasil diubah');
+        } catch (\Exception $e) {
+             return redirect()->route('dosen.ewmp-dosen-tetap-perguruan-tinggi.edit', $id)->with('error', 'Data ewmp dosen tetap perguruan tinggi gagal diubah');
+        }
+    }
 }

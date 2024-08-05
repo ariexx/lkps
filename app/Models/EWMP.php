@@ -26,7 +26,7 @@ class EWMP extends Model
 
     public function jumlah()
     {
-        return $this->ps_diakreditasi + $this->ps_lain_didalam_pt + $this->pt_lain_diluar_pt + $this->penelitian + $this->tugas_tambahan;
+        return $this->ps_diakreditasi + $this->ps_lain_didalam_pt + $this->pt_lain_diluar_pt + $this->penelitian + $this->tugas_tambahan + $this->pkm;
     }
 
     public function rataRata()
@@ -38,22 +38,24 @@ class EWMP extends Model
     {
         $data = $this->get();
         $total = 0;
+        $totalData = count($data);
         foreach ($data as $item) {
             $total += $item->jumlah();
         }
 
-        return $total;
+        return $total / $totalData;
     }
 
     public function rataRataSKS()
     {
         $data = $this->get();
         $total = 0;
+        $totalData = count($data);
         foreach ($data as $item) {
             $total += $item->rataRata();
         }
 
-        return $total;
+        return $total / $totalData;
     }
-    
+
 }
