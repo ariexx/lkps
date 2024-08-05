@@ -72,7 +72,9 @@
                     <td>{{ $dosen->mata_kuliah_ps_diakreditasi }}</td>
                     <td>{{ $dosen->kesesuaian_bidang_keahlian }}</td>
                     <td>{{ $dosen->mata_kuliah_ps_lain }}</td>
-
+                    <td>
+                        <a href="{{route('dosen.dosen-tetap-perguruan-tinggi.edit', $dosen->id)}}" class="btn btn-warning">Edit</a>
+                    </td>
                 </tr>
 
             @endforeach

@@ -97,6 +97,22 @@ class ProfileDosenController extends Controller
         }
     }
 
+    public function editDosenTetapPerguruanTinggi($id)
+    {
+        $dosenTetapPerguruanTinggi = $this->dosenTetapPerguruanTinggi->find($id);
+        return view('dosen.profile.edit_dosen_tetap_perguruan_tinggi', compact('dosenTetapPerguruanTinggi'));
+    }
+
+    public function updateDosenTetapPerguruanTinggi(Request $request, $id)
+    {
+        try {
+            $this->dosenTetapPerguruanTinggi->find($id)->update($request->all());
+            return redirect()->route('dosen.dosen-tetap-perguruan-tinggi')->with('success', 'Data dosen tetap perguruan tinggi berhasil diubah');
+        } catch (\Exception $e) {
+             return redirect()->route('dosen.dosen-tetap-perguruan-tinggi.edit', $id)->with('error', 'Data dosen tetap perguruan tinggi gagal diubah');
+        }
+    }
+
     public function showDosenPembimbingUtamaTugasAkhir()
     {
         $dosenPembimbingUtamaTugasAkhir = $this->dosenPembimbingTugasAkhir->whereUserId(user()->id)->get();

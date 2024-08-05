@@ -43,6 +43,8 @@ Route::prefix('dosen')->as('dosen.')->group(function () {
             Route::get('/dosen-tetap-perguruan-tinggi/create', function () {
                 return view('dosen.profile.create-dosen-tetap-perguruan-tinggi');
             })->name('dosen-tetap-perguruan-tinggi.create');
+            Route::get('/dosen-tetap-perguruan-tinggi/edit/{id}', [ProfileDosenController::class, 'editDosenTetapPerguruanTinggi'])->name('dosen-tetap-perguruan-tinggi.edit');
+            Route::put('/dosen-tetap-perguruan-tinggi/update/{id}', [ProfileDosenController::class, 'updateDosenTetapPerguruanTinggi'])->name('dosen-tetap-perguruan-tinggi.update');
 
 
             //EWMP dosen tetap perguruan tinggi
