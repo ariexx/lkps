@@ -53,6 +53,10 @@ class DosenPembimbing extends Model
             'rata_rata_ts1' => number_format($rataRataTS1 / $totalData, 2),
             'rata_rata_ts2' => number_format($rataRataTS2 / $totalData, 2),
             'rata_rata' => number_format($rataRata / $totalData, 2),
+            'total_ts2' => $rataRataTS2,
+            'total_ts1' => $rataRataTS1,
+            'total_ts' => $rataRataTS,
+            'total_rata_rata' => $rataRata,
         ];
     }
 
@@ -79,19 +83,28 @@ class DosenPembimbing extends Model
             'rata_rata_ts1' => number_format($rataRataTS1 / $totalData, 2),
             'rata_rata_ts2' => number_format($rataRataTS2 / $totalData, 2),
             'rata_rata' => number_format($rataRata / $totalData, 2),
+            'total_ts2' => $rataRataTS2,
+            'total_ts1' => $rataRataTS1,
+            'total_ts' => $rataRataTS,
+            'total_rata_rata' => $rataRata,
         ];
     }
 
-    public function rataRataSemua()
+    public function rataRataSemua(): array
     {
         $data = $this->where('user_id', user()->id)->get();
 
         $rata = 0;
         $totalData = count($data);
-        $data->each(function ($dosen) use (&$rata) {
+        $sum = 0;
+        $data->each(function ($dosen) use (&$sum, &$rata) {
             $rata += ($dosen->rata_rata_mahasiswa + $dosen->rata_rata_mahasiswa_lain) / 2;
+            $sum += $dosen->rata_rata_mahasiswa + $dosen->rata_rata_mahasiswa_lain;
         });
 
-        return number_format($rata / $totalData, 2);
+        return [
+            'rata_rata' => number_format($rata / $totalData, 2),
+            'total_sum' => $sum,
+        ];
     }
 }

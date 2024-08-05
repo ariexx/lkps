@@ -53,12 +53,27 @@
                         <td>{{ $dosen->jumlah_mahasiswa_dibimbing_ts1_lain }}</td>
                         <td>{{ $dosen->jumlah_mahasiswa_dibimbing_ts_lain }}</td>
                         <td>{{ $dosen->rata_rata_mahasiswa_lain }}</td>
-                        <td>{{ number_format(($dosen->rata_rata_mahasiswa + $dosen->rata_rata_mahasiswa_lain) / 2, 2) }}</td>
+                        <td>
+                            {{ number_format(($dosen->rata_rata_mahasiswa + $dosen->rata_rata_mahasiswa_lain) / 2, 2) }}
+
+                        </td>
                         <td>
                             <a href="{{route('dosen.dosen-pembimbing-utama-tugas-akhir.edit', $dosen->id)}}" class="btn btn-warning">Edit</a>
                         </td>
                     </tr>
                 @endforeach
+                <tr>
+                    <td colspan='2'><b>Jumlah</b></td>
+                    <td><b>{{$rataRataTS['total_ts2']}}</b></td>
+                    <td><b>{{$rataRataTS['total_ts1']}}</b></td>
+                    <td><b>{{$rataRataTS['total_ts']}}</b></td>
+                    <td><b>{{$rataRataTS['total_rata_rata']}}</b></td>
+                    <td><b>{{$rataRataTSLain['total_ts2']}}</b></td>
+                    <td><b>{{$rataRataTSLain['total_ts1']}}</b></td>
+                    <td><b>{{$rataRataTSLain['total_ts']}}</b></td>
+                    <td><b>{{$rataRataTSLain['total_rata_rata']}}</b></td>
+                    <td colspan="2"><b>{{$rata['total_sum']}}</b></td>
+                </tr>
                 <tr>
                     <td colspan='2'><b>Rata-rata</b></td>
                     <td><b>{{$rataRataTS['rata_rata_ts2']}}</b></td>
@@ -69,7 +84,7 @@
                     <td><b>{{$rataRataTSLain['rata_rata_ts1']}}</b></td>
                     <td><b>{{$rataRataTSLain['rata_rata_ts']}}</b></td>
                     <td><b>{{$rataRataTSLain['rata_rata']}}</b></td>
-                    <td colspan="2"><b>{{$rata}}</b></td>
+                    <td colspan="2"><b>{{$rata['rata_rata']}}</b></td>
                 </tr>
             </table>
         </div>
