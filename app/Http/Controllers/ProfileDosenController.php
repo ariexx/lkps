@@ -181,6 +181,7 @@ class ProfileDosenController extends Controller
     public function updateEWMPDosenTetapPerguruanTinggi(Request $request, $id)
     {
         try {
+            $request['dtps'] = $request->dtps ?? 0;
             $this->ewmp->find($id)->update($request->all());
             return redirect()->route('dosen.ewmp-dosen-tetap-perguruan-tinggi')->with('success', 'Data ewmp dosen tetap perguruan tinggi berhasil diubah');
         } catch (\Exception $e) {
