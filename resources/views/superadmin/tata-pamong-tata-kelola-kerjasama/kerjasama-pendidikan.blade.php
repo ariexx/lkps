@@ -47,22 +47,23 @@
                         </td>
                         <td>{{ $item->tahun_berakhir_kerjasama }}</td>
                         <td>
-                            <a class="btn btn-warning btn-sm" href="{{route('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan.edit', $item->id)}}">
-                                <i class="fas fa-edit"></i> Edit
-                            </a>
-                            <form action="{{route('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan.delete', $item->id)}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger btn-sm" type="submit">
-                                    <i class="fas fa-trash"></i> Hapus
-                                </button>
-                            </form>
-                            @if(!$item->is_approved && in_array(user()->role, canApprove()))
-                                <a href="{{route('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan.approve', $item->id)}}" class="btn btn-success btn-sm">
-                                    <i class="fas fa-check"></i> Approve
-                                </a>
-                            @endif
-                            <input type="button" value="Print" onclick="window.print()" class="btn btn-dark">
+{{--                            <a class="btn btn-warning btn-sm" href="{{route('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan.edit', $item->id)}}">--}}
+{{--                                <i class="fas fa-edit"></i> Edit--}}
+{{--                            </a>--}}
+{{--                            <form action="{{route('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan.delete', $item->id)}}" method="POST">--}}
+{{--                                @csrf--}}
+{{--                                @method('DELETE')--}}
+{{--                                <button class="btn btn-danger btn-sm" type="submit">--}}
+{{--                                    <i class="fas fa-trash"></i> Hapus--}}
+{{--                                </button>--}}
+{{--                            </form>--}}
+{{--                            @if(!$item->is_approved && in_array(user()->role, canApprove()))--}}
+{{--                                <a href="{{route('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan.approve', $item->id)}}" class="btn btn-success btn-sm">--}}
+{{--                                    <i class="fas fa-check"></i> Approve--}}
+{{--                                </a>--}}
+{{--                            @endif--}}
+{{--                            <input type="button" value="Print" onclick="window.print()" class="btn btn-dark">--}}
+                            {!! action_buttons("superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan", $item->id) !!}
                         </td>
                     </tr>
                 @endforeach
