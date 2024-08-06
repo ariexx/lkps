@@ -13,6 +13,6 @@ class IsAuthenticatedMiddleware
             return $next($request);
         }
 
-        return redirect()->with('error', 'Anda harus login terlebih dahulu')->route('login');
+        return redirect()->route('login');
     }
 }

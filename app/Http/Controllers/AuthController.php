@@ -54,4 +54,10 @@ class AuthController extends Controller
 
         return redirect('/login')->with('success', 'Registrasi berhasil, silahkan login');
     }
+
+    public function logout(Request $request)
+    {
+        $request->session()->forget('user');
+        return redirect('/login');
+    }
 }

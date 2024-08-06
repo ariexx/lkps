@@ -30,6 +30,9 @@ Route::get('/register', function () {
 
 Route::post('/register', [AuthController::class, 'postRegister']);
 
+//logout route
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
 //route for dosen
 Route::prefix('dosen')->as('dosen.')->group(function () {
     Route::middleware(['is-authenticated', 'role-check'])->group(function () {
@@ -100,7 +103,7 @@ Route::prefix('superadmin')->as('superadmin.')->group(function () {
                 Route::get('/pendidikan/approve/{id}', [\App\Http\Controllers\TridharmaController::class, 'approveFileKerjasamaPendidikan'])->name('kerjasama-pendidikan.approve');
                 Route::get('/pendidikan/edit/{id}', [\App\Http\Controllers\TridharmaController::class, 'editKerjasamaPendidikan'])->name('kerjasama-pendidikan.edit');
                 Route::put('/pendidikan/update/{id}', [\App\Http\Controllers\TridharmaController::class, 'updateKerjasamaPendidikan'])->name('kerjasama-pendidikan.update');
-                Route::delete('/pendidikan/delete/{id}', [\App\Http\Controllers\TridharmaController::class, 'delete'])->name('kerjasama-pendidikan.delete');
+                Route::get('/pendidikan/delete/{id}', [\App\Http\Controllers\TridharmaController::class, 'delete'])->name('kerjasama-pendidikan.delete');
             });
         });
     });
