@@ -307,10 +307,10 @@ return [
             'url' => '#',
             'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
-        //with sub menu
         [
             'text' => 'Profile Dosen',
             'icon' => 'fas fa-fw fa-database',
+            'role' => \App\Models\User::dosen,
             'submenu' => [
                 [
                     'text' => 'Dosen Tetap Perguruan Tinggi',
@@ -340,14 +340,16 @@ return [
             ],
         ],
         [
-            'text' => 'Laporan',
-            'url' => '#',
-            'icon' => 'fas fa-fw fa-file-alt',
-        ],
-        [
-            'text' => 'Pengaturan',
-            'url' => '#',
-            'icon' => 'fas fa-fw fa-cogs',
+            'text' => 'Tata Pamong, Tata Kelola, dan Kerjasama',
+            'icon' => 'fas fa-fw fa-database',
+            'role' => \App\Models\User::superadmin,
+            'submenu' => [
+                [
+                    'text' => 'Pendidikan',
+                    'url' => 'superadmin/tata-pamong-tata-kelola-kerjasama/pendidikan',
+                    'icon' => 'fas fa-fw fa-university',
+                ],
+            ],
         ],
         [
             'text' => 'Logout',

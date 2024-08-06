@@ -71,4 +71,24 @@ class User extends Authenticatable
             default => redirect('/login'),
         };
     }
+
+    public function isAdmin()
+    {
+        return session('user')->role === self::superadmin || session('user')->role === self::adminprodi;
+    }
+
+    public function isDosen()
+    {
+        return session('user')->role === self::dosen;
+    }
+
+    public function isProdi()
+    {
+        return session('user')->role === self::prodi;
+    }
+
+    public function isSuperadmin()
+    {
+        return session('user')->role === self::superadmin;
+    }
 }

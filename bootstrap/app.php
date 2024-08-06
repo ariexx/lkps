@@ -14,6 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'dashboard-redirect' => App\Http\Middleware\DashboardRedirectMiddleware::class,
             'is-authenticated' => App\Http\Middleware\IsAuthenticatedMiddleware::class,
+            'role-check' => App\Http\Middleware\RoleCheckMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
