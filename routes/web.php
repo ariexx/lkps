@@ -104,6 +104,15 @@ Route::prefix('superadmin')->as('superadmin.')->group(function () {
                 Route::get('/pendidikan/edit/{id}', [\App\Http\Controllers\TridharmaController::class, 'editKerjasamaPendidikan'])->name('kerjasama-pendidikan.edit');
                 Route::put('/pendidikan/update/{id}', [\App\Http\Controllers\TridharmaController::class, 'updateKerjasamaPendidikan'])->name('kerjasama-pendidikan.update');
                 Route::get('/pendidikan/delete/{id}', [\App\Http\Controllers\TridharmaController::class, 'delete'])->name('kerjasama-pendidikan.delete');
+
+                //Fitur: Kerjasama Penelitian
+                Route::get('/penelitian', [\App\Http\Controllers\TridharmaController::class, 'showPenelitian'])->name('kerjasama-penelitian');
+                Route::get('/penelitian/create', [\App\Http\Services\Tridharma\PenelitianService::class, 'createKerjasamaPenelitian'])->name('kerjasama-penelitian.create');
+                Route::post('/penelitian/store', [\App\Http\Controllers\TridharmaController::class, 'storePenelitian'])->name('kerjasama-penelitian.store');
+                Route::get('/penelitian/approve/{id}', [\App\Http\Controllers\TridharmaController::class, 'approveFileKerjasamaPenelitian'])->name('kerjasama-penelitian.approve');
+                Route::get('/penelitian/edit/{id}', [\App\Http\Controllers\TridharmaController::class, 'editKerjasamaPenelitian'])->name('kerjasama-penelitian.edit');
+                Route::put('/penelitian/update/{id}', [\App\Http\Controllers\TridharmaController::class, 'updateKerjasamaPenelitian'])->name('kerjasama-penelitian.update');
+                Route::get('/penelitian/delete/{id}', [\App\Http\Controllers\TridharmaController::class, 'delete'])->name('kerjasama-penelitian.delete');
             });
         });
     });
