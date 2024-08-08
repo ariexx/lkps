@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class KerjasamaPenelitian extends Model
@@ -24,5 +25,10 @@ class KerjasamaPenelitian extends Model
         return [
             'durasi' => 'datetime',
         ];
+    }
+
+    public function getDurasiAttribute()
+    {
+        return Carbon::parse($this->attributes['durasi'])->format('Y-m-d');
     }
 }

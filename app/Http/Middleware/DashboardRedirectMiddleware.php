@@ -18,7 +18,7 @@ class DashboardRedirectMiddleware
                 User::superadmin => redirect()->route('superadmin.dashboard'),
                 User::adminprodi => redirect()->route('adminprodi.dashboard'),
                 User::dosen => redirect()->route('dosen.dashboard'),
-                User::prodi => redirect()->route('prodi.dashboard'),
+                User::prodi => redirect()->route('kepala-prodi.dashboard'),
                 default => redirect()->route('login'),
             };
         }

@@ -340,18 +340,18 @@ return [
             ],
         ],
         [
-            'text' => 'Tata Pamong, Tata Kelola, dan Kerjasama',
+            'text' => 'Kerjasama',
             'icon' => 'fas fa-fw fa-database',
-            'role' => \App\Models\User::superadmin,
+            'role' => \App\Models\User::prodi,
             'submenu' => [
                 [
                     'text' => 'Pendidikan',
-                    'url' => 'superadmin/tata-pamong-tata-kelola-kerjasama/pendidikan',
+                    'url' => 'kepala-prodi/tata-pamong-tata-kelola-kerjasama/pendidikan',
                     'icon' => 'fas fa-fw fa-university',
                 ],
                 [
                     "text" => "Penelitian",
-                    "url" => "superadmin/tata-pamong-tata-kelola-kerjasama/penelitian",
+                    "url" => "kepala-prodi/tata-pamong-tata-kelola-kerjasama/penelitian",
                     "icon" => "fas fa-fw fa-university",
                 ]
             ],

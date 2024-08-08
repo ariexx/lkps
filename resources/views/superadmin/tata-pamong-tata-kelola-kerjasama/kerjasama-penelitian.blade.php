@@ -11,7 +11,9 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
     <x-adminlte-card title="Kerjasama Penelitian">
-        <a href="{{ route('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-penelitian.create') }}" class="btn btn-success mb-3">Tambah Kerjasama Penelitian</a>
+        <x-create-button route="{{ route('kepala-prodi.tata-pamong-tata-kelola-kerjasama.kerjasama-penelitian.create') }}">
+            Tambah Kerjasama Penelitian
+        </x-create-button>
         <x-adminlte-datatable id="table1" :config="$config" striped hoverable with-buttons :heads="$heads" />
     </x-adminlte-card>
 @endsection

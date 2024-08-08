@@ -42,12 +42,12 @@ class PendidikanService
         }
 
         $this->kerjasamaPendidikan->create($validated);
-        return redirect()->route('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan')->with('success', 'Data kerjasama pendidikan berhasil ditambahkan');
+        return redirect()->route('kepala-prodi.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan')->with('success', 'Data kerjasama pendidikan berhasil ditambahkan');
     }
 
     public function showKerjasamaPendidikan()
     {
-        $data = $this->kerjasamaPendidikan->get();
+        $data = $this->kerjasamaPendidikan->paginate(10);
 
         return view('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan', compact('data'));
     }
@@ -80,15 +80,15 @@ class PendidikanService
         }
 
         $data->update($validated);
-        return redirect()->route('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan')->with('success', 'Data kerjasama pendidikan berhasil diperbarui');
+        return redirect()->route('kepala-prodi.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan')->with('success', 'Data kerjasama pendidikan berhasil diperbarui');
     }
 
     public function approveFileKerjasamaPendidikan($id)
     {
         $data = $this->kerjasamaPendidikan->findOrFail($id);
-        $data->update(['is_approved' => true]);
+        $data->update(['is_approved' => STATUS_APPROVED]);
 
-        return redirect()->route('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan')->with('success', 'Data kerjasama pendidikan berhasil disetujui');
+        return redirect()->route('kepala-prodi.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan')->with('success', 'Data kerjasama pendidikan berhasil disetujui');
     }
 
     public function deleteKerjasamaPendidikan($id)
@@ -97,6 +97,14 @@ class PendidikanService
         $this->fileUploadService->deleteFile($data->bukti_kerjasama);
         $data->delete();
 
-        return redirect()->route('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan')->with('success', 'Data kerjasama pendidikan berhasil dihapus');
+        return redirect()->route('kepala-prodi.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan')->with('success', 'Data kerjasama pendidikan berhasil dihapus');
+    }
+
+    public function rejectFileKerjasamaPendidikan($id)
+    {
+        $data = $this->kerjasamaPendidikan->findOrFail($id);
+        $data->update(['is_approved' => STATUS_REJECTED]);
+
+        return redirect()->route('kepala-prodi.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan')->with('success', 'Data kerjasama pendidikan berhasil ditolak');
     }
 }

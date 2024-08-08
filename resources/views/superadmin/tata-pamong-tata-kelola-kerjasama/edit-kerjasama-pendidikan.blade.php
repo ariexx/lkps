@@ -14,7 +14,7 @@
     @endif
     <div class="card">
         <div class="card-body">
-            <form method="POST" action="{{route('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan.update', $data->id)}}" enctype="multipart/form-data">
+            <form method="POST" action="{{route('kepala-prodi.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan.update', $data->id)}}" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="id" value="{{ $data->id }}">
                 @method('PUT')

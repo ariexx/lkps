@@ -1,5 +1,7 @@
 <?php
 
+const STATUS_PENDING = 0, STATUS_APPROVED = 1, STATUS_REJECTED = 2;
+
 if (!function_exists('user')) {
     /**
      * @throws \Psr\Container\ContainerExceptionInterface
@@ -29,7 +31,7 @@ if (!function_exists('canEdit')) {
      */
     function canEdit(): array
     {
-        return [\App\Models\User::adminprodi, \App\Models\User::superadmin];
+        return [\App\Models\User::prodi, \App\Models\User::adminprodi];
     }
 }
 
@@ -40,7 +42,7 @@ if (!function_exists('canDelete')) {
      */
     function canDelete(): array
     {
-        return [\App\Models\User::adminprodi, \App\Models\User::superadmin];
+        return [\App\Models\User::prodi];
     }
 }
 
@@ -87,6 +89,18 @@ if (!function_exists('action_buttons')) {
 
 if (!function_exists('is_approved')) {
     function is_approved($is_approved): string
+    {
+        return match ($is_approved) {
+            STATUS_PENDING => "<label class='badge badge-warning'>Menunggu Persetujuan</label>",
+            STATUS_APPROVED => "<label class='badge badge-success'>Disetujui</label>",
+            STATUS_REJECTED => "<label class='badge badge-danger'>Ditolak</label>",
+            default => 'Unknown'
+        };
+    }
+}
+
+if (!function_exists('is_approved_bool')) {
+    function is_approved_bool($is_approved): string
     {
         return $is_approved ? "✅" : "❌";
     }

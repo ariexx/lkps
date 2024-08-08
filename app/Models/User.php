@@ -67,7 +67,7 @@ class User extends Authenticatable
             self::superadmin => redirect()->route('superadmin.dashboard'),
             self::adminprodi => redirect()->route('adminprodi.dashboard'),
             self::dosen => redirect()->route('dosen.dashboard'),
-            self::prodi => redirect()->route('prodi.dashboard'),
+            self::prodi => redirect()->route('kepala-prodi.dashboard'),
             default => redirect('/login'),
         };
     }

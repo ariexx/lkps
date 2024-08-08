@@ -14,7 +14,7 @@
     @endif
     <div class="card">
         <div class="card-body">
-            <form method="POST" action="{{route('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan.store')}}" enctype="multipart/form-data">
+            <form method="POST" action="{{route('kepala-prodi.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="lembaga_mitra">Lembaga Mitra:</label>
@@ -54,7 +54,7 @@
                     </div>
                     <div class="form-group">
                         <label for="bukti_kerjasama">Bukti Kerjasama:</label>
-                        <input type="file" id="bukti_kerjasama" name="bukti_kerjasama" class="form-control">
+                        <input type="file" id="bukti_kerjasama" name="bukti_kerjasama" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="tahun_berakhir_kerjasama">Tahun Berakhirnya Kerjasama (YYYY):</label>
