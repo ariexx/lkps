@@ -353,7 +353,12 @@ return [
                     "text" => "Penelitian",
                     "url" => "kepala-prodi/tata-pamong-tata-kelola-kerjasama/penelitian",
                     "icon" => "fas fa-fw fa-university",
-                ]
+                ],
+                [
+                    "text" => "Pengabdian Masyarakat",
+                    "url" => "kepala-prodi/tata-pamong-tata-kelola-kerjasama/pengabdian-masyarakat",
+                    "icon" => "fas fa-fw fa-university",
+                ],
             ],
         ],
         [

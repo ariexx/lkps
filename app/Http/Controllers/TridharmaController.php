@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Services\Tridharma\PendidikanService;
 use App\Http\Services\Tridharma\PenelitianService;
+use App\Http\Services\Tridharma\PengabdianMasyarakatService;
 use App\Models\KerjasamaPendidikan;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,8 @@ class TridharmaController extends Controller
 {
     public function __construct(
         public PendidikanService $pendidikanService,
-        public PenelitianService $penelitianService
+        public PenelitianService $penelitianService,
+        public PengabdianMasyarakatService $pengabdianMasyarakat
     )
     {
     }
@@ -88,4 +90,45 @@ class TridharmaController extends Controller
     {
         return $this->penelitianService->rejectFileKerjasamaPenelitian($id);
     }
+
+    public function createPengabdianMasyarakat()
+    {
+        return $this->pengabdianMasyarakat->createPengabdianMasyarakat();
+    }
+
+    public function storePengabdianMasyarakat(Request $request)
+    {
+        return $this->pengabdianMasyarakat->storePengabdianMasyarakat($request);
+    }
+
+    public function showPengabdianMasyarakat()
+    {
+        return $this->pengabdianMasyarakat->showPengabdianMasyarakat();
+    }
+
+    public function editPengabdianMasyarakat($id)
+    {
+        return $this->pengabdianMasyarakat->editPengabdianMasyarakat($id);
+    }
+
+    public function updatePengabdianMasyarakat(Request $request, $id)
+    {
+        return $this->pengabdianMasyarakat->updatePengabdianMasyarakat($request, $id);
+    }
+
+    public function deletePengabdianMasyarakat($id)
+    {
+        return $this->pengabdianMasyarakat->deletePengabdianMasyarakat($id);
+    }
+
+    public function approveFilePengabdianMasyarakat($id)
+    {
+        return $this->pengabdianMasyarakat->approveFilePengabdianMasyarakat($id);
+    }
+
+    public function rejectFilePengabdianMasyarakat($id)
+    {
+        return $this->pengabdianMasyarakat->rejectFilePengabdianMasyarakat($id);
+    }
+
 }

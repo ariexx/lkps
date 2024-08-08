@@ -126,6 +126,17 @@ Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
                 Route::get('/penelitian/edit/{id}', [\App\Http\Controllers\TridharmaController::class, 'editPenelitian'])->name('kerjasama-penelitian.edit');
                 Route::put('/penelitian/update/{id}', [\App\Http\Controllers\TridharmaController::class, 'updateKerjasamaPenelitian'])->name('kerjasama-penelitian.update');
                 Route::delete('/penelitian/delete/{id}', [\App\Http\Controllers\TridharmaController::class, 'deleteKerjasamaPenelitian'])->name('kerjasama-penelitian.delete');
+
+                //Fitur: Kerjasama Pengabdian Masyarakat
+                Route::get('/pengabdian-masyarakat', [\App\Http\Controllers\TridharmaController::class, 'showPengabdianMasyarakat'])->name('pengabdian-masyarakat');
+                Route::get('/pengabdian-masyarakat/create', [\App\Http\Controllers\TridharmaController::class, 'createPengabdianMasyarakat'])->name('pengabdian-masyarakat.create');
+                Route::post('/pengabdian-masyarakat/store', [\App\Http\Controllers\TridharmaController::class, 'storePengabdianMasyarakat'])->name('pengabdian-masyarakat.store');
+                Route::put('/pengabdian-masyarakat/approve/{id}', [\App\Http\Controllers\TridharmaController::class, 'approveFilePengabdianMasyarakat'])->name('pengabdian-masyarakat.approve');
+                Route::put('/pengabdian-masyarakat/reject/{id}', [\App\Http\Controllers\TridharmaController::class, 'rejectFilePengabdianMasyarakat'])->name('pengabdian-masyarakat.reject');
+                Route::get('/pengabdian-masyarakat/edit/{id}', [\App\Http\Controllers\TridharmaController::class, 'editPengabdianMasyarakat'])->name('pengabdian-masyarakat.edit');
+                Route::put('/pengabdian-masyarakat/update/{id}', [\App\Http\Controllers\TridharmaController::class, 'updatePengabdianMasyarakat'])->name('pengabdian-masyarakat.update');
+                Route::delete('/pengabdian-masyarakat/delete/{id}', [\App\Http\Controllers\TridharmaController::class, 'deletePengabdianMasyarakat'])->name('pengabdian-masyarakat.delete');
+
             });
         });
     });
