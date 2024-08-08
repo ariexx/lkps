@@ -31,9 +31,29 @@ class PenelitianService
         return redirect()->route('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-penelitian')->with('success', 'Data berhasil disimpan');
     }
 
+    // app/Http/Services/Tridharma/PenelitianService.php
     public function showKerjasamaPenelitian()
     {
-        $data = $this->kerjasamaPenelitian->get();
+        $data = $this->kerjasamaPenelitian->get()->map(function ($item, $key) {
+            return [
+                $key + 1,
+                $item->lembaga,
+                is_approved($item->internasional),
+                is_approved($item->nasional),
+                is_approved($item->lokal),
+                $item->judul,
+                $item->manfaat,
+                $item->durasi,
+                "<a href='" . asset('storage/' . $item->bukti) . "' target='_blank'>Lihat Bukti</a>",
+                $item->tahun_kerjasama,
+                is_approved($item->is_approved),
+                view('components.buttons', [
+                    'routeEdit' => route('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-penelitian.edit', $item->id),
+                    'routeDelete' => route('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-penelitian.delete', $item->id)
+                ])->render()
+            ];
+        })->toArray();
+
         $heads = [
             'No',
             'Lembaga',
@@ -45,10 +65,18 @@ class PenelitianService
             'Durasi',
             'Bukti',
             'Tahun Kerjasama',
-            'Persetujuan',
+            'Disetujui',
             'Action'
         ];
-        return view('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-penelitian', compact('data', 'heads'));
+
+        $config = [
+            'data' => $data,
+            'title' => 'Kerjasama Penelitian',
+            'route' => 'superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-penelitian',
+            'routeCreate' => 'superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-penelitian.create'
+        ];
+
+        return view('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-penelitian', compact('config', 'heads'));
     }
 
     public function createKerjasamaPenelitian()

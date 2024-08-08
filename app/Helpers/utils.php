@@ -84,3 +84,10 @@ if (!function_exists('action_buttons')) {
         return $html;
     }
 }
+
+if (!function_exists('is_approved')) {
+    function is_approved($is_approved): string
+    {
+        return $is_approved ? "✅" : "❌";
+    }
+}
