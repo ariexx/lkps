@@ -362,6 +362,21 @@ return [
             ],
         ],
         [
+            'text' => 'Mahasiswa',
+            'icon' => 'fas fa-fw fa-user-graduate',
+            'role' => \App\Models\User::prodi,
+            'submenu' => [
+                [
+                    'text' => 'Seleksi Mahasiswa',
+                    'url' => 'kepala-prodi/mahasiswa/seleksi-mahasiswa',
+                ],
+                [
+                    "text" => "Mahasiswa Asing",
+                    "url" => "kepala-prodi/mahasiswa/mahasiswa-asing",
+                ],
+            ],
+        ],
+        [
             'text' => 'Logout',
             'url' => 'logout',
             'icon' => 'fas fa-fw fa-sign-out-alt',

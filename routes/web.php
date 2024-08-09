@@ -138,6 +138,17 @@ Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
                 Route::delete('/pengabdian-masyarakat/delete/{id}', [\App\Http\Controllers\TridharmaController::class, 'deletePengabdianMasyarakat'])->name('pengabdian-masyarakat.delete');
 
             });
+
+            //Fitur: Mahasiswa
+            Route::prefix('mahasiswa')->as('mahasiswa.')->group(function () {
+                // Seleksi Mahasiswa
+                Route::get('/seleksi-mahasiswa', [\App\Http\Controllers\MahasiswaController::class, 'showSeleksiMahasiswa'])->name('seleksi-mahasiswa');
+                Route::post('/seleksi-mahasiswa/store', [\App\Http\Controllers\MahasiswaController::class, 'storeSeleksiMahasiswa'])->name('seleksi-mahasiswa.store');
+                Route::get('/seleksi-mahasiswa/edit/{id}', [\App\Http\Controllers\MahasiswaController::class, 'editSeleksiMahasiswa'])->name('seleksi-mahasiswa.edit');
+                Route::put('/seleksi-mahasiswa/update/{id}', [\App\Http\Controllers\MahasiswaController::class, 'updateSeleksiMahasiswa'])->name('seleksi-mahasiswa.update');
+                Route::delete('/seleksi-mahasiswa/delete/{id}', [\App\Http\Controllers\MahasiswaController::class, 'deleteSeleksiMahasiswa'])->name('seleksi-mahasiswa.delete');
+                Route::get('/seleksi-mahasiswa/create', [\App\Http\Controllers\MahasiswaController::class, 'createSeleksiMahasiswa'])->name('seleksi-mahasiswa.create');
+            });
         });
     });
 });
