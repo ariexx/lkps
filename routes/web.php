@@ -35,7 +35,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //route for dosen
 Route::prefix('dosen')->as('dosen.')->group(function () {
-    Route::middleware(['is-authenticated', 'role-check'])->group(function () {
+    Route::middleware(['is-authenticated', 'can:dosen'])->group(function () {
         Route::get('/dashboard', function () {
             return view('dosen.dashboard');
         })->name('dashboard');
@@ -90,7 +90,7 @@ Route::prefix('dosen')->as('dosen.')->group(function () {
 //route for superadmin
 Route::prefix('superadmin')->as('superadmin.')->group(function () {
     Route::middleware(['is-authenticated'])->group(function () {
-        Route::middleware(['role-check'])->group(function () {
+        Route::middleware(['can:superadmin'])->group(function () {
             Route::get('/dashboard', function () {
                 return view('superadmin.dashboard');
             })->name('dashboard');
@@ -101,7 +101,7 @@ Route::prefix('superadmin')->as('superadmin.')->group(function () {
 //route for Kepala Prodi
 Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
     Route::middleware(['is-authenticated'])->group(function () {
-        Route::middleware(['role-check'])->group(function () {
+        Route::middleware(['can:prodi'])->group(function () {
             Route::get('/dashboard', function () {
                 return view('kepala-prodi.dashboard');
             })->name('dashboard');
