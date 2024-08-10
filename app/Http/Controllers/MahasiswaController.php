@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\Mahasiswa\MahasiswaAsingService;
 use App\Http\Services\Mahasiswa\SeleksiMahasiswaService;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
 {
     public function __construct(
-        public SeleksiMahasiswaService $seleksiMahasiswaService
+        public SeleksiMahasiswaService $seleksiMahasiswaService,
+        public MahasiswaAsingService $mahasiswaAsingService
     )
     {
     }
@@ -41,5 +43,35 @@ class MahasiswaController extends Controller
     public function deleteSeleksiMahasiswa($id)
     {
         return $this->seleksiMahasiswaService->delete($id);
+    }
+
+    public function showMahasiswaAsing()
+    {
+        return $this->mahasiswaAsingService->showMahasiswaAsing();
+    }
+
+    public function storeMahasiswaAsing(Request $request)
+    {
+        return $this->mahasiswaAsingService->storeMahasiswaAsing($request->all());
+    }
+
+    public function editMahasiswaAsing($id)
+    {
+        return $this->mahasiswaAsingService->editMahasiswaAsing($id);
+    }
+
+    public function updateMahasiswaAsing(Request $request, $id)
+    {
+        return $this->mahasiswaAsingService->updateMahasiswaAsing($request->all(), $id);
+    }
+
+    public function deleteMahasiswaAsing($id)
+    {
+        return $this->mahasiswaAsingService->deleteMahasiswaAsing($id);
+    }
+
+    public function createMahasiswaAsing()
+    {
+        return $this->mahasiswaAsingService->createMahasiswaAsing();
     }
 }

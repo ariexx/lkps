@@ -148,6 +148,14 @@ Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
                 Route::put('/seleksi-mahasiswa/update/{id}', [\App\Http\Controllers\MahasiswaController::class, 'updateSeleksiMahasiswa'])->name('seleksi-mahasiswa.update');
                 Route::delete('/seleksi-mahasiswa/delete/{id}', [\App\Http\Controllers\MahasiswaController::class, 'deleteSeleksiMahasiswa'])->name('seleksi-mahasiswa.delete');
                 Route::get('/seleksi-mahasiswa/create', [\App\Http\Controllers\MahasiswaController::class, 'createSeleksiMahasiswa'])->name('seleksi-mahasiswa.create');
+
+                // Mahasiswa Asing
+                Route::get('/mahasiswa-asing', [\App\Http\Controllers\MahasiswaController::class, 'showMahasiswaAsing'])->name('mahasiswa-asing');
+                Route::post('/mahasiswa-asing/store', [\App\Http\Controllers\MahasiswaController::class, 'storeMahasiswaAsing'])->name('mahasiswa-asing.store');
+                Route::get('/mahasiswa-asing/edit/{id}', [\App\Http\Controllers\MahasiswaController::class, 'editMahasiswaAsing'])->name('mahasiswa-asing.edit');
+                Route::put('/mahasiswa-asing/update/{id}', [\App\Http\Controllers\MahasiswaController::class, 'updateMahasiswaAsing'])->name('mahasiswa-asing.update');
+                Route::delete('/mahasiswa-asing/delete/{id}', [\App\Http\Controllers\MahasiswaController::class, 'deleteMahasiswaAsing'])->name('mahasiswa-asing.delete');
+                Route::get('/mahasiswa-asing/create', [\App\Http\Controllers\MahasiswaController::class, 'createMahasiswaAsing'])->name('mahasiswa-asing.create');
             });
         });
     });
