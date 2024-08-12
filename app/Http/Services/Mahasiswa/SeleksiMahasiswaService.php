@@ -61,6 +61,8 @@ class SeleksiMahasiswaService
             'lulus_seleksi' => $this->seleksiMahasiswa->getTotalLulusSeleksiAttribute(),
             'reguler_baru' => $this->seleksiMahasiswa->getTotalRegulerBaruAttribute(),
             'transfer_baru' => $this->seleksiMahasiswa->getTotalTransferBaruAttribute(),
+            'reguler_aktif' => $this->seleksiMahasiswa->getTotalRegulerAktifAttribute(),
+            'transfer_aktif' => $this->seleksiMahasiswa->getTotalTransferAktifAttribute(),
         ];
 
         return view('kepala-prodi.seleksi-mahasiswa.index', compact('config', 'heads', 'total'));

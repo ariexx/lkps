@@ -23,7 +23,9 @@
                 <th>{{$total['lulus_seleksi']}}</th>
                 <th>{{$total['reguler_baru']}}</th>
                 <th>{{$total['transfer_baru']}}</th>
-                <th colspan="3"></th>
+                <th>{{$total['reguler_aktif']}}</th>
+                <th>{{$total['transfer_aktif']}}</th>
+                <th colspan="1"></th>
             </tr>
             </tfoot>
         </x-adminlte-datatable>
