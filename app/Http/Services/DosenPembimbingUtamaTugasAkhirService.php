@@ -19,11 +19,11 @@ class DosenPembimbingUtamaTugasAkhirService
                 $item->jumlah_mahasiswa_dibimbing_ts,
                 $item->jumlah_mahasiswa_dibimbing_ts1,
                 $item->jumlah_mahasiswa_dibimbing_ts2,
-                $item->rata_rata_mahasiswa,
+                number_format(($item->jumlah_mahasiswa_dibimbing_ts2+$item->jumlah_mahasiswa_dibimbing_ts1+$item->jumlah_mahasiswa_dibimbing_ts) / 3, 2),
                 $item->jumlah_mahasiswa_dibimbing_ts_lain,
                 $item->jumlah_mahasiswa_dibimbing_ts1_lain,
                 $item->jumlah_mahasiswa_dibimbing_ts2_lain,
-                $item->rata_rata_mahasiswa_lain,
+                number_format(($item->jumlah_mahasiswa_dibimbing_ts2_lain+$item->jumlah_mahasiswa_dibimbing_ts1_lain+$item->jumlah_mahasiswa_dibimbing_ts_lain) / 3, 2),
                 is_approved($item->is_approve),
                 view('components.buttons', [
                     'routeEdit' => route('kepala-prodi.sumber-daya-manusia.dosen-pembimbing-utama-tugas-akhir.edit', $item->id),
