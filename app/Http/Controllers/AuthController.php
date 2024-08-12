@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -22,14 +23,12 @@ class AuthController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
 
-        //check in database if username and password is correct
-        //if correct, redirect to dashboard
-        $user = $this->user->checkLogin($username, $password);
-        if ($user) {
-            //put user data into session, so we can check if user is logged in or not with middleware
+        if(Auth::attempt(['username' => $username, 'password' => $password])) {
+            $request->session()->regenerate();
+            $user = $this->user->where('username', $username)->first();
             $request->session()->put('user', $user);
-            //redirect to dashboard
-            return $user->redirectDashboard();
+
+            return $this->user->redirectDashboard();
         }
 
         //if not, redirect back to login page with error message

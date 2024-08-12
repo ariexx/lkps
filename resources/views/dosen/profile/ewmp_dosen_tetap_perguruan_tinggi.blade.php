@@ -57,8 +57,8 @@
                 @endforeach
                 <th colspan="12"></th>
                 <th colspan="3">Rata Rata</th>
-                <th>{{ $ewmp->rataRataJumlah() }}</th>
-                <th>{{$ewmp->rataRataSKS()}}</th>
+                <th>{{ $rataRataJumlah }}</th>
+                <th>{{$rataRataSKS}}</th>
             </table>
         </div>
     </div>

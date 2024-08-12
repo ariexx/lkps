@@ -31,31 +31,39 @@ class EWMP extends Model
 
     public function rataRata()
     {
-        return $this->jumlah() / 2;
+        return $this->jumlah();
     }
 
     public function rataRataJumlah()
     {
-        $data = $this->get();
-        $total = 0;
+        $data = $this->get()->toArray();
+        $total = array_sum(array_map(function($item) { return $item->jumlah(); }, $data));
         $totalData = count($data);
-        foreach ($data as $item) {
-            $total += $item->jumlah();
-        }
 
-        return $total / $totalData;
+        return $totalData ? $total / $totalData : 0;
     }
 
     public function rataRataSKS()
     {
-        $data = $this->get();
-        $total = 0;
+        $data = $this->get()->toArray();
         $totalData = count($data);
-        foreach ($data as $item) {
-            $total += $item->rataRata();
+
+        if ($totalData == 0) {
+            return 0;
         }
+
+        $total = array_sum(array_map(function($item) { return $item->rataRata(); }, $data));
 
         return $total / $totalData;
     }
 
+    public function getRataRataJumlahAttribute()
+    {
+        return $this->rataRataJumlah();
+    }
+
+    public function getRataRataSKSAttribute()
+    {
+        return $this->rataRataSKS();
+    }
 }
