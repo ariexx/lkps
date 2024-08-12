@@ -30,10 +30,13 @@ class SeleksiMahasiswaService
                 $item->transfer_baru,
                 $item->reguler_aktif,
                 $item->transfer_aktif,
+                is_approved($item->is_approve),
                 view('components.buttons', [
                     'routeEdit' => route('kepala-prodi.mahasiswa.seleksi-mahasiswa.edit', $item->id),
                     'routeDelete' => route('kepala-prodi.mahasiswa.seleksi-mahasiswa.delete', $item->id),
-                    'isApproved' => null,
+                    'routeApprove' => route('kepala-prodi.mahasiswa.seleksi-mahasiswa.approve', $item->id),
+                    'routeReject' => route('kepala-prodi.mahasiswa.seleksi-mahasiswa.reject', $item->id),
+                    'isApproved' => $item->is_approve,
                 ])->render()
             ];
         })->toArray();
@@ -48,6 +51,7 @@ class SeleksiMahasiswaService
             'Transfer Baru',
             'Reguler Aktif',
             'Transfer Aktif',
+            'Status',
             'Aksi'
         ];
 
@@ -107,6 +111,24 @@ class SeleksiMahasiswaService
     public function create()
     {
         return view('kepala-prodi.seleksi-mahasiswa.create');
+    }
+
+    public function approveSeleksiMahasiswa($id)
+    {
+        $data = $this->seleksiMahasiswa->find($id);
+        $data->is_approve = STATUS_APPROVED;
+        $data->save();
+
+        return redirect()->route('kepala-prodi.mahasiswa.seleksi-mahasiswa')->with('success', 'Data berhasil diapprove');
+    }
+
+    public function rejectSeleksiMahasiswa($id)
+    {
+        $data = $this->seleksiMahasiswa->find($id);
+        $data->is_approve = STATUS_REJECTED;
+        $data->save();
+
+        return redirect()->route('kepala-prodi.mahasiswa.seleksi-mahasiswa')->with('success', 'Data berhasil direject');
     }
 
 }

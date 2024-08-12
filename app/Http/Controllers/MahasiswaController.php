@@ -74,4 +74,14 @@ class MahasiswaController extends Controller
     {
         return $this->mahasiswaAsingService->createMahasiswaAsing();
     }
+
+    public function approveSeleksiMahasiswa($id)
+    {
+        return $this->seleksiMahasiswaService->approveSeleksiMahasiswa($id);
+    }
+
+    public function rejectSeleksiMahasiswa($id)
+    {
+        return $this->seleksiMahasiswaService->rejectSeleksiMahasiswa($id);
+    }
 }

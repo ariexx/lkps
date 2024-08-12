@@ -15,6 +15,7 @@ class SeleksiMahasiswa extends Model
         'transfer_baru',
         'reguler_aktif',
         'transfer_aktif',
+        'is_approve',
     ];
 
     public function getTotalPendaftarAttribute()

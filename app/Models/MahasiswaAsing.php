@@ -17,5 +17,6 @@ class MahasiswaAsing extends Model
         'mahasiswa_asing_part_time_ts2',
         'mahasiswa_asing_part_time_ts1',
         'mahasiswa_asing_part_time_ts',
+        'is_approve',
     ];
 }
