@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Services\DosenPembimbingUtamaTugasAkhirService;
 use App\Http\Services\DosenTetapPerguruanTinggiService;
+use App\Http\Services\DosenTidakTetapService;
 use App\Http\Services\EWMPService;
 use App\Models\DosenTetapPerguruanTinggi;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class SumberDayaManusiaController extends Controller
     (
         public DosenTetapPerguruanTinggiService $dosenTetapPerguruanTinggiService,
         public DosenPembimbingUtamaTugasAkhirService $dosenPembimbingUtamaTugasAkhirService,
-        public EWMPService $ewmpService
+        public EWMPService $ewmpService,
+        public DosenTidakTetapService $dosenTidakTetapService
     )
     {
     }
@@ -137,6 +139,46 @@ class SumberDayaManusiaController extends Controller
     public function rejectEWMP($id)
     {
         return $this->ewmpService->rejectEWMP($id);
+    }
+
+    public function showDosenTidakTetap()
+    {
+        return $this->dosenTidakTetapService->showDosenTidakTetap();
+    }
+
+    public function createDosenTidakTetap()
+    {
+        return $this->dosenTidakTetapService->createDosenTidakTetap();
+    }
+
+    public function storeDosenTidakTetap(Request $request)
+    {
+        return $this->dosenTidakTetapService->storeDosenTidakTetap($request->all());
+    }
+
+    public function editDosenTidakTetap($id)
+    {
+        return $this->dosenTidakTetapService->editDosenTidakTetap($id);
+    }
+
+    public function updateDosenTidakTetap(Request $request, $id)
+    {
+        return $this->dosenTidakTetapService->updateDosenTidakTetap($request->all(), $id);
+    }
+
+    public function deleteDosenTidakTetap($id)
+    {
+        return $this->dosenTidakTetapService->deleteDosenTidakTetap($id);
+    }
+
+    public function approveDosenTidakTetap($id)
+    {
+        return $this->dosenTidakTetapService->approveDosenTidakTetap($id);
+    }
+
+    public function rejectDosenTidakTetap($id)
+    {
+        return $this->dosenTidakTetapService->rejectDosenTidakTetap($id);
     }
 
 }

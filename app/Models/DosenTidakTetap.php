@@ -17,7 +17,8 @@ class DosenTidakTetap extends Model
         'sertifikat_kompetensi',
         'mata_kuliah',
         'kesesuaian_bidang',
-        'user_id'
+        'user_id',
+        'is_approve'
     ];
 
     public function getAll(): object
