@@ -377,6 +377,77 @@ return [
             ],
         ],
         [
+            'text' => 'Sumber Daya Manusia',
+            'icon' => 'fas fa-fw fa-user-plus',
+            'role' => \App\Models\User::prodi,
+            'submenu' => [
+                [
+                    'text' => 'Dosen Tetap Perguruan Tinggi',
+                    'url' => 'kepala-prodi/sumber-daya-manusia/dosen-tetap-perguruan-tinggi',
+                ],
+                [
+                    "text" => "Dosen Pembimbing Utama Tugas Akhir",
+                    "url" => "kepala-prodi/sumber-daya-manusia/dosen-pembimbing-utama-tugas-akhir",
+                ],
+                [
+                    "text" => "EWMP",
+                    "url" => "kepala-prodi/sumber-daya-manusia/ewmp",
+                ],
+                [
+                    "text" => "Dosen Tidak Tetap",
+                    "url" => "kepala-prodi/sumber-daya-manusia/dosen-tidak-tetap",
+                ],
+                [
+                    "text" => "Dosen Industri/Praktisi",
+                    "url" => "kepala-prodi/sumber-daya-manusia/dosen-industri-praktisi",
+                ],
+                [
+                    "text" => "Rekognisi Dosen",
+                    "url" => "kepala-prodi/sumber-daya-manusia/rekognisi-dosen",
+                ],
+                [
+                    "text" => "Penelitian DTPS",
+                    "url" => "kepala-prodi/sumber-daya-manusia/penelitian-dtps",
+                ],
+                [
+                    "text" => "PKM DTPS",
+                    "url" => "kepala-prodi/sumber-daya-manusia/pkm-dtps",
+                ],
+                [
+                    "text" => "Publikasi Ilmiah DTPS",
+                    "url" => "kepala-prodi/sumber-daya-manusia/publikasi-ilmiah-dtps",
+                ],
+                [
+                    "text" => "Publikasi Ilmiah DTPS",
+                    "url" => "kepala-prodi/sumber-daya-manusia/publikasi-ilmiah-dtps",
+                ],
+                [
+                    "text" => "Luaran Penelitian PKM - HKI (Paten)",
+                    "url" => "kepala-prodi/sumber-daya-manusia/luaran-penelitian-pkm-hki-paten",
+                ],
+                [
+                    "text" => "Luaran Penelitian PKM - HKI (Hak Cipta)",
+                    "url" => "kepala-prodi/sumber-daya-manusia/luaran-penelitian-pkm-hki",
+                ],
+                [
+                    "text" => "Luaran Penelitian PKM - HKI (Teknologi)",
+                    "url" => "kepala-prodi/sumber-daya-manusia/luaran-penelitian-pkm-hki-teknologi",
+                ],
+                [
+                    "text" => "Luaran Penelitian PKM - HKI (Buku)",
+                    "url" => "kepala-prodi/sumber-daya-manusia/luaran-penelitian-pkm-hki-buku",
+                ],
+                [
+                    "text" => "Karya Ilmiah DTPS Disitasi",
+                    "url" => "kepala-prodi/sumber-daya-manusia/karya-ilmiah-dtps-disitasi",
+                ],
+                [
+                    "text" => "Produk/Jasa Masyarakat",
+                    "url" => "kepala-prodi/sumber-daya-manusia/produk-jasa-masyarakat",
+                ]
+            ],
+        ],
+        [
             'text' => 'Logout',
             'url' => 'logout',
             'icon' => 'fas fa-fw fa-sign-out-alt',

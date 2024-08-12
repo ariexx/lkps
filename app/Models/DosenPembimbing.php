@@ -18,6 +18,7 @@ class DosenPembimbing extends Model
         'jumlah_mahasiswa_dibimbing_ts1_lain',
         'jumlah_mahasiswa_dibimbing_ts2_lain',
         'rata_rata_mahasiswa_lain',
+        'is_approve'
     ];
 
 

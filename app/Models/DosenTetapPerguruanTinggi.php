@@ -21,6 +21,7 @@ class DosenTetapPerguruanTinggi extends Model
         'kesesuaian_bidang_keahlian',
         'mata_kuliah_ps_lain',
         'user_id',
+        'is_approve'
     ];
 
     public function user(): BelongsTo

@@ -17,6 +17,7 @@ class EWMP extends Model
         'penelitian',
         'pkm',
         'tugas_tambahan',
+        'is_approve'
     ];
 
     public function getAll()

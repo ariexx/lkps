@@ -161,6 +161,101 @@ Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
                 Route::put('/mahasiswa-asing/approve/{id}', [\App\Http\Controllers\MahasiswaController::class, 'approveMahasiswaAsing'])->name('mahasiswa-asing.approve');
                 Route::put('/mahasiswa-asing/reject/{id}', [\App\Http\Controllers\MahasiswaController::class, 'rejectMahasiswaAsing'])->name('mahasiswa-asing.reject');
             });
+
+            //Fitur: Sumber Daya Manusia
+            Route::prefix('sumber-daya-manusia')->as('sumber-daya-manusia.')->group(function () {
+                //Dosen Tetap Perguruan Tinggi
+                Route::get('/dosen-tetap-perguruan-tinggi', [\App\Http\Controllers\SumberDayaManusiaController::class, 'showDosenTetapPerguruanTinggi'])->name('dosen-tetap-perguruan-tinggi');
+                Route::post('/dosen-tetap-perguruan-tinggi/store', [\App\Http\Controllers\SumberDayaManusiaController::class, 'storeDosenTetapPerguruanTinggi'])->name('dosen-tetap-perguruan-tinggi.store');
+                Route::get('/dosen-tetap-perguruan-tinggi/create', [\App\Http\Controllers\SumberDayaManusiaController::class, 'createDosenTetapPerguruanTinggi'])->name('dosen-tetap-perguruan-tinggi.create');
+                Route::get('/dosen-tetap-perguruan-tinggi/edit/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'editDosenTetapPerguruanTinggi'])->name('dosen-tetap-perguruan-tinggi.edit');
+                Route::put('/dosen-tetap-perguruan-tinggi/update/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'updateDosenTetapPerguruanTinggi'])->name('dosen-tetap-perguruan-tinggi.update');
+                Route::delete('/dosen-tetap-perguruan-tinggi/delete/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'deleteDosenTetapPerguruanTinggi'])->name('dosen-tetap-perguruan-tinggi.delete');
+                Route::put('/dosen-tetap-perguruan-tinggi/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approveDosenTetapPerguruanTinggi'])->name('dosen-tetap-perguruan-tinggi.approve');
+                Route::put('/dosen-tetap-perguruan-tinggi/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectDosenTetapPerguruanTinggi'])->name('dosen-tetap-perguruan-tinggi.reject');
+
+               // Dosen Pembimbing Utama Tugas Akhir
+                Route::get('/dosen-pembimbing-utama-tugas-akhir', [\App\Http\Controllers\SumberDayaManusiaController::class, 'showDosenPembimbingUtamaTugasAkhir'])->name('dosen-pembimbing-utama-tugas-akhir');
+                Route::post('/dosen-pembimbing-utama-tugas-akhir/store', [\App\Http\Controllers\SumberDayaManusiaController::class, 'storeDosenPembimbingUtamaTugasAkhir'])->name('dosen-pembimbing-utama-tugas-akhir.store');
+                Route::get('/dosen-pembimbing-utama-tugas-akhir/create', [\App\Http\Controllers\SumberDayaManusiaController::class, 'createDosenPembimbingUtamaTugasAkhir'])->name('dosen-pembimbing-utama-tugas-akhir.create');
+                Route::get('/dosen-pembimbing-utama-tugas-akhir/edit/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'editDosenPembimbingUtamaTugasAkhir'])->name('dosen-pembimbing-utama-tugas-akhir.edit');
+                Route::put('/dosen-pembimbing-utama-tugas-akhir/update/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'updateDosenPembimbingUtamaTugasAkhir'])->name('dosen-pembimbing-utama-tugas-akhir.update');
+                Route::delete('/dosen-pembimbing-utama-tugas-akhir/delete/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'deleteDosenPembimbingUtamaTugasAkhir'])->name('dosen-pembimbing-utama-tugas-akhir.delete');
+                Route::put('/dosen-pembimbing-utama-tugas-akhir/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approveDosenPembimbingUtamaTugasAkhir'])->name('dosen-pembimbing-utama-tugas-akhir.approve');
+                Route::put('/dosen-pembimbing-utama-tugas-akhir/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectDosenPembimbingUtamaTugasAkhir'])->name('dosen-pembimbing-utama-tugas-akhir.reject');
+
+                // EWMP
+                Route::get('/ewmp', [\App\Http\Controllers\SumberDayaManusiaController::class, 'showEWMP'])->name('ewmp');
+                Route::post('/ewmp/store', [\App\Http\Controllers\SumberDayaManusiaController::class, 'storeEWMP'])->name('ewmp.store');
+                Route::get('/ewmp/create', [\App\Http\Controllers\SumberDayaManusiaController::class, 'createEWMP'])->name('ewmp.create');
+                Route::get('/ewmp/edit/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'editEWMP'])->name('ewmp.edit');
+                Route::put('/ewmp/update/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'updateEWMP'])->name('ewmp.update');
+                Route::delete('/ewmp/delete/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'deleteEWMP'])->name('ewmp.delete');
+                Route::put('/ewmp/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approveEWMP'])->name('ewmp.approve');
+                Route::put('/ewmp/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectEWMP'])->name('ewmp.reject');
+
+                // Dosen Tidak Tetap
+                Route::get('/dosen-tidak-tetap', [\App\Http\Controllers\SumberDayaManusiaController::class, 'showDosenTidakTetap'])->name('dosen-tidak-tetap');
+                Route::post('/dosen-tidak-tetap/store', [\App\Http\Controllers\SumberDayaManusiaController::class, 'storeDosenTidakTetap'])->name('dosen-tidak-tetap.store');
+                Route::get('/dosen-tidak-tetap/create', [\App\Http\Controllers\SumberDayaManusiaController::class, 'createDosenTidakTetap'])->name('dosen-tidak-tetap.create');
+                Route::get('/dosen-tidak-tetap/edit/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'editDosenTidakTetap'])->name('dosen-tidak-tetap.edit');
+                Route::put('/dosen-tidak-tetap/update/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'updateDosenTidakTetap'])->name('dosen-tidak-tetap.update');
+                Route::delete('/dosen-tidak-tetap/delete/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'deleteDosenTidakTetap'])->name('dosen-tidak-tetap.delete');
+                Route::put('/dosen-tidak-tetap/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approveDosenTidakTetap'])->name('dosen-tidak-tetap.approve');
+                Route::put('/dosen-tidak-tetap/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectDosenTidakTetap'])->name('dosen-tidak-tetap.reject');
+
+                // Dosen Industri/Praktisi
+                Route::get('/dosen-industri-praktisi', [\App\Http\Controllers\SumberDayaManusiaController::class, 'showDosenIndustriPraktisi'])->name('dosen-industri-praktisi');
+                Route::post('/dosen-industri-praktisi/store', [\App\Http\Controllers\SumberDayaManusiaController::class, 'storeDosenIndustriPraktisi'])->name('dosen-industri-praktisi.store');
+                Route::get('/dosen-industri-praktisi/create', [\App\Http\Controllers\SumberDayaManusiaController::class, 'createDosenIndustriPraktisi'])->name('dosen-industri-praktisi.create');
+                Route::get('/dosen-industri-praktisi/edit/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'editDosenIndustriPraktisi'])->name('dosen-industri-praktisi.edit');
+                Route::put('/dosen-industri-praktisi/update/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'updateDosenIndustriPraktisi'])->name('dosen-industri-praktisi.update');
+                Route::delete('/dosen-industri-praktisi/delete/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'deleteDosenIndustriPraktisi'])->name('dosen-industri-praktisi.delete');
+                Route::put('/dosen-industri-praktisi/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approveDosenIndustriPraktisi'])->name('dosen-industri-praktisi.approve');
+                Route::put('/dosen-industri-praktisi/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectDosenIndustriPraktisi'])->name('dosen-industri-praktisi.reject');
+
+                // Rekognisi Dosen
+                Route::get('/rekognisi-dosen', [\App\Http\Controllers\SumberDayaManusiaController::class, 'showRekognisiDosen'])->name('rekognisi-dosen');
+                Route::post('/rekognisi-dosen/store', [\App\Http\Controllers\SumberDayaManusiaController::class, 'storeRekognisiDosen'])->name('rekognisi-dosen.store');
+                Route::get('/rekognisi-dosen/create', [\App\Http\Controllers\SumberDayaManusiaController::class, 'createRekognisiDosen'])->name('rekognisi-dosen.create');
+                Route::get('/rekognisi-dosen/edit/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'editRekognisiDosen'])->name('rekognisi-dosen.edit');
+                Route::put('/rekognisi-dosen/update/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'updateRekognisiDosen'])->name('rekognisi-dosen.update');
+                Route::delete('/rekognisi-dosen/delete/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'deleteRekognisiDosen'])->name('rekognisi-dosen.delete');
+                Route::put('/rekognisi-dosen/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approveRekognisiDosen'])->name('rekognisi-dosen.approve');
+                Route::put('/rekognisi-dosen/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectRekognisiDosen'])->name('rekognisi-dosen.reject');
+
+                //Penelitian DTPS
+                Route::get('/penelitian-dtps', [\App\Http\Controllers\SumberDayaManusiaController::class, 'showPenelitianDTPS'])->name('penelitian-dtps');
+                Route::post('/penelitian-dtps/store', [\App\Http\Controllers\SumberDayaManusiaController::class, 'storePenelitianDTPS'])->name('penelitian-dtps.store');
+                Route::get('/penelitian-dtps/create', [\App\Http\Controllers\SumberDayaManusiaController::class, 'createPenelitianDTPS'])->name('penelitian-dtps.create');
+                Route::get('/penelitian-dtps/edit/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'editPenelitianDTPS'])->name('penelitian-dtps.edit');
+                Route::put('/penelitian-dtps/update/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'updatePenelitianDTPS'])->name('penelitian-dtps.update');
+                Route::delete('/penelitian-dtps/delete/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'deletePenelitianDTPS'])->name('penelitian-dtps.delete');
+                Route::put('/penelitian-dtps/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approvePenelitianDTPS'])->name('penelitian-dtps.approve');
+                Route::put('/penelitian-dtps/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectPenelitianDTPS'])->name('penelitian-dtps.reject');
+
+                // PKM DTPS
+                Route::get('/pkm-dtps', [\App\Http\Controllers\SumberDayaManusiaController::class, 'showPKMDTPS'])->name('pkm-dtps');
+                Route::post('/pkm-dtps/store', [\App\Http\Controllers\SumberDayaManusiaController::class, 'storePKMDTPS'])->name('pkm-dtps.store');
+                Route::get('/pkm-dtps/create', [\App\Http\Controllers\SumberDayaManusiaController::class, 'createPKMDTPS'])->name('pkm-dtps.create');
+                Route::get('/pkm-dtps/edit/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'editPKMDTPS'])->name('pkm-dtps.edit');
+                Route::put('/pkm-dtps/update/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'updatePKMDTPS'])->name('pkm-dtps.update');
+                Route::delete('/pkm-dtps/delete/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'deletePKMDTPS'])->name('pkm-dtps.delete');
+                Route::put('/pkm-dtps/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approvePKMDTPS'])->name('pkm-dtps.approve');
+                Route::put('/pkm-dtps/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectPKMDTPS'])->name('pkm-dtps.reject');
+
+                // Publikasi Ilmiah DTPS
+                Route::get('/publikasi-ilmiah-dtps', [\App\Http\Controllers\SumberDayaManusiaController::class, 'showPublikasiIlmiahDTPS'])->name('publikasi-ilmiah-dtps');
+                Route::post('/publikasi-ilmiah-dtps/store', [\App\Http\Controllers\SumberDayaManusiaController::class, 'storePublikasiIlmiahDTPS'])->name('publikasi-ilmiah-dtps.store');
+                Route::get('/publikasi-ilmiah-dtps/create', [\App\Http\Controllers\SumberDayaManusiaController::class, 'createPublikasiIlmiahDTPS'])->name('publikasi-ilmiah-dtps.create');
+                Route::get('/publikasi-ilmiah-dtps/edit/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'editPublikasiIlmiahDTPS'])->name('publikasi-ilmiah-dtps.edit');
+                Route::put('/publikasi-ilmiah-dtps/update/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'updatePublikasiIlmiahDTPS'])->name('publikasi-ilmiah-dtps.update');
+                Route::delete('/publikasi-ilmiah-dtps/delete/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'deletePublikasiIlmiahDTPS'])->name('publikasi-ilmiah-dtps.delete');
+                Route::put('/publikasi-ilmiah-dtps/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approvePublikasiIlmiahDTPS'])->name('publikasi-ilmiah-dtps.approve');
+                Route::put('/publikasi-ilmiah-dtps/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectPublikasiIlmiahDTPS'])->name('publikasi-ilmiah-dtps.reject');
+
+
+            });
         });
     });
 });
