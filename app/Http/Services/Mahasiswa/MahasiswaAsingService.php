@@ -29,10 +29,13 @@ class MahasiswaAsingService
                 $item->mahasiswa_asing_part_time_ts2,
                 $item->mahasiswa_asing_part_time_ts1,
                 $item->mahasiswa_asing_part_time_ts,
+                is_approved($item->is_approve),
                 view('components.buttons', [
                     'routeEdit' => route('kepala-prodi.mahasiswa.mahasiswa-asing.edit', $item->id),
                     'routeDelete' => route('kepala-prodi.mahasiswa.mahasiswa-asing.delete', $item->id),
-                    'isApproved' => null,
+                    'isApproved' => $item->is_approve,
+                    "routeApprove" => route('kepala-prodi.mahasiswa.mahasiswa-asing.approve', $item->id),
+                    "routeReject" => route('kepala-prodi.mahasiswa.mahasiswa-asing.reject', $item->id),
                 ])->render()
             ];
         })->toArray();
@@ -49,6 +52,7 @@ class MahasiswaAsingService
             'Mahasiswa Asing Part Time TS2',
             'Mahasiswa Asing Part Time TS1',
             'Mahasiswa Asing Part Time TS',
+            'Status',
             'Aksi'
         ];
 
@@ -108,5 +112,26 @@ class MahasiswaAsingService
         return view('kepala-prodi.mahasiswa.mahasiswa-asing.create');
     }
 
+    public function approveMahasiswaAsing($id)
+    {
+        try {
+            $this->mahasiswaAsing->find($id)->update(['is_approve' => STATUS_APPROVED]);
+            $this->logActivityService->log(["approve", "Menyetujui data mahasiswa asing dengan id $id"]);
+            return redirect()->route('kepala-prodi.mahasiswa.mahasiswa-asing')->with('success', 'Data mahasiswa asing berhasil disetujui');
+        } catch (\Exception $e) {
+            return redirect()->route('kepala-prodi.mahasiswa.mahasiswa-asing')->with('error', 'Data mahasiswa asing gagal disetujui');
+        }
+    }
+
+    public function rejectMahasiswaAsing($id)
+    {
+        try {
+            $this->mahasiswaAsing->find($id)->update(['is_approve' => STATUS_REJECTED]);
+            $this->logActivityService->log(["reject", "Menolak data mahasiswa asing dengan id $id"]);
+            return redirect()->route('kepala-prodi.mahasiswa.mahasiswa-asing')->with('success', 'Data mahasiswa asing berhasil ditolak');
+        } catch (\Exception $e) {
+            return redirect()->route('kepala-prodi.mahasiswa.mahasiswa-asing')->with('error', 'Data mahasiswa asing gagal ditolak');
+        }
+    }
 
 }

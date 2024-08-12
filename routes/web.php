@@ -158,6 +158,8 @@ Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
                 Route::put('/mahasiswa-asing/update/{id}', [\App\Http\Controllers\MahasiswaController::class, 'updateMahasiswaAsing'])->name('mahasiswa-asing.update');
                 Route::delete('/mahasiswa-asing/delete/{id}', [\App\Http\Controllers\MahasiswaController::class, 'deleteMahasiswaAsing'])->name('mahasiswa-asing.delete');
                 Route::get('/mahasiswa-asing/create', [\App\Http\Controllers\MahasiswaController::class, 'createMahasiswaAsing'])->name('mahasiswa-asing.create');
+                Route::put('/mahasiswa-asing/approve/{id}', [\App\Http\Controllers\MahasiswaController::class, 'approveMahasiswaAsing'])->name('mahasiswa-asing.approve');
+                Route::put('/mahasiswa-asing/reject/{id}', [\App\Http\Controllers\MahasiswaController::class, 'rejectMahasiswaAsing'])->name('mahasiswa-asing.reject');
             });
         });
     });
