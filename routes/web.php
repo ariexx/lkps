@@ -9,6 +9,13 @@ Route::fallback(function () {
     abort(404);
 });
 
+Route::get("/health", function () {
+    return response()->json([
+        "status" => "OK",
+        "message" => "Service is healthy"
+    ]);
+});
+
 //index route
 Route::middleware(['is-authenticated'])->get('/', function (App\Http\Middleware\DashboardRedirectMiddleware $middleware) {
     return $middleware->handle(request(), function ($request) {
@@ -136,7 +143,6 @@ Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
                 Route::get('/pengabdian-masyarakat/edit/{id}', [\App\Http\Controllers\TridharmaController::class, 'editPengabdianMasyarakat'])->name('pengabdian-masyarakat.edit');
                 Route::put('/pengabdian-masyarakat/update/{id}', [\App\Http\Controllers\TridharmaController::class, 'updatePengabdianMasyarakat'])->name('pengabdian-masyarakat.update');
                 Route::delete('/pengabdian-masyarakat/delete/{id}', [\App\Http\Controllers\TridharmaController::class, 'deletePengabdianMasyarakat'])->name('pengabdian-masyarakat.delete');
-
             });
 
             //Fitur: Mahasiswa
@@ -174,7 +180,7 @@ Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
                 Route::put('/dosen-tetap-perguruan-tinggi/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approveDosenTetapPerguruanTinggi'])->name('dosen-tetap-perguruan-tinggi.approve');
                 Route::put('/dosen-tetap-perguruan-tinggi/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectDosenTetapPerguruanTinggi'])->name('dosen-tetap-perguruan-tinggi.reject');
 
-               // Dosen Pembimbing Utama Tugas Akhir
+                // Dosen Pembimbing Utama Tugas Akhir
                 Route::get('/dosen-pembimbing-utama-tugas-akhir', [\App\Http\Controllers\SumberDayaManusiaController::class, 'showDosenPembimbingUtamaTugasAkhir'])->name('dosen-pembimbing-utama-tugas-akhir');
                 Route::post('/dosen-pembimbing-utama-tugas-akhir/store', [\App\Http\Controllers\SumberDayaManusiaController::class, 'storeDosenPembimbingUtamaTugasAkhir'])->name('dosen-pembimbing-utama-tugas-akhir.store');
                 Route::get('/dosen-pembimbing-utama-tugas-akhir/create', [\App\Http\Controllers\SumberDayaManusiaController::class, 'createDosenPembimbingUtamaTugasAkhir'])->name('dosen-pembimbing-utama-tugas-akhir.create');
@@ -253,8 +259,6 @@ Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
                 Route::delete('/publikasi-ilmiah-dtps/delete/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'deletePublikasiIlmiahDTPS'])->name('publikasi-ilmiah-dtps.delete');
                 Route::put('/publikasi-ilmiah-dtps/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approvePublikasiIlmiahDTPS'])->name('publikasi-ilmiah-dtps.approve');
                 Route::put('/publikasi-ilmiah-dtps/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectPublikasiIlmiahDTPS'])->name('publikasi-ilmiah-dtps.reject');
-
-
             });
         });
     });
