@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         LogViewer::auth(function ($request) {
-            return \Gate::allows('superadmin');
+            return true;
         });
     }
 }
