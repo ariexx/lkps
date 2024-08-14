@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\User;
 use Illuminate\Support\ServiceProvider;
+use Opcodes\LogViewer\Facades\LogViewer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,6 +35,10 @@ class AppServiceProvider extends ServiceProvider
 
         \Gate::define('prodi', function (User $user) {
             return $user->isProdi();
+        });
+
+        LogViewer::auth(function ($request) {
+            return \Gate::allows('superadmin');
         });
     }
 }
