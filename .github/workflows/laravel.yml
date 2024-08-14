@@ -23,7 +23,7 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
     - name: Pull Request
       run: |
-      git pull
+        git pull
     - name: Cache composer dependencies
       uses: actions/cache@v2
       with:
