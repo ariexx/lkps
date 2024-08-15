@@ -92,11 +92,17 @@ class DosenPembimbing extends Model
     public function rataRataPS($id): float
     {
         $data = $this->where('user_id', user()->id)->whereId($id)->first();
-        $totalPS = (float)number_format(($data->jumlah_mahasiswa_dibimbing_ts2+$data->jumlah_mahasiswa_dibimbing_ts1+$data->jumlah_mahasiswa_dibimbing_ts) / 3, 2);
-        $totalPSLain = (float)number_format(($data->jumlah_mahasiswa_dibimbing_ts2_lain+$data->jumlah_mahasiswa_dibimbing_ts1_lain+$data->jumlah_mahasiswa_dibimbing_ts_lain) / 3, 2);
+        $jumlahTS = (float) $data->jumlah_mahasiswa_dibimbing_ts;
+        $jumlahTS1 = (float) $data->jumlah_mahasiswa_dibimbing_ts1;
+        $jumlahTS2 = (float) $data->jumlah_mahasiswa_dibimbing_ts2;
+        $jumlahTSLain = (float) $data->jumlah_mahasiswa_dibimbing_ts_lain;
+        $jumlahTS1Lain = (float) $data->jumlah_mahasiswa_dibimbing_ts1_lain;
+        $jumlahTS2Lain = (float) $data->jumlah_mahasiswa_dibimbing_ts2_lain;
+
+        $totalPS = (float) number_format(($jumlahTS2 + $jumlahTS1 + $jumlahTS) / 3, 2);
+        $totalPSLain = (float) number_format(($jumlahTS2Lain + $jumlahTS1Lain + $jumlahTSLain) / 3, 2);
 
         $total = ($totalPS + $totalPSLain) / 2;
-
 
         return number_format($total, 2);
     }
