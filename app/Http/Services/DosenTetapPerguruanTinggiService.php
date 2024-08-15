@@ -23,12 +23,12 @@ class DosenTetapPerguruanTinggiService
                 $item->pendidikan_magister,
                 $item->pendidikan_doktor,
                 $item->bidang_keahlian,
-                $item->kesesuaian,
+                is_approved_bool($item->kesesuaian),
                 $item->jabatan_akademik,
                 $item->sertifikat_pendidik,
                 $item->sertifikat_kompetensi,
                 $item->mata_kuliah_ps_diakreditasi,
-                $item->kesesuaian_bidang_keahlian,
+                is_approved_bool($item->kesesuaian_bidang_keahlian),
                 $item->mata_kuliah_ps_lain,
                 is_approved($item->is_approve),
                 view('components.buttons', [
@@ -73,7 +73,7 @@ class DosenTetapPerguruanTinggiService
             $all['user_id'] = auth()->id();
             $this->model->create($all);
             $this->logActivityService->log(["tambah", "Menambahkan data dosen tetap perguruan tinggi"]);
-            return redirect()->back()->with('success', 'Dosen Tetap Perguruan Tinggi berhasil ditambahkan');
+            return redirect()->route('kepala-prodi.sumber-daya-manusia.dosen-tetap-perguruan-tinggi')->with('success', 'Dosen Tetap Perguruan Tinggi berhasil ditambahkan');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Dosen Tetap Perguruan Tinggi gagal ditambahkan');
         }
@@ -102,7 +102,7 @@ class DosenTetapPerguruanTinggiService
             $dosenTetapPerguruanTinggi->update($all);
             $this->logActivityService->log(["edit", "Mengedit data dosen tetap perguruan tinggi"]);
             \DB::commit();
-            return redirect()->back()->with('success', 'Dosen Tetap Perguruan Tinggi berhasil diubah');
+            return redirect()->route('kepala-prodi.sumber-daya-manusia.dosen-tetap-perguruan-tinggi')->with('success', 'Dosen Tetap Perguruan Tinggi berhasil diubah');
         } catch (\Exception $e) {
             \DB::rollBack();
             return redirect()->back()->with('error', 'Dosen Tetap Perguruan Tinggi gagal diubah');

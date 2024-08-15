@@ -84,7 +84,7 @@ class DosenPembimbing extends Model
         });
 
         return [
-            'rata_rata' => number_format($rata / $totalData, 2),
+            'rata_rata' => $totalData == 0 ? 0 : number_format($rata / $totalData, 2),
             'total_sum' => $sum,
         ];
     }
@@ -110,6 +110,19 @@ class DosenPembimbing extends Model
      */
     public function extractedRataRata(mixed $rataRataTS, mixed $rataRataTS1, mixed $rataRataTS2, int $totalData): array
     {
+        if ($totalData == 0) {
+            return [
+                'rata_rata_ts' => 0,
+                'rata_rata_ts1' => 0,
+                'rata_rata_ts2' => 0,
+                'rata_rata' => 0,
+                'total_ts2' => $rataRataTS2,
+                'total_ts1' => $rataRataTS1,
+                'total_ts' => $rataRataTS,
+                'total_rata_rata' => 0,
+            ];
+        }
+
         $rataRata = number_format(($rataRataTS + $rataRataTS1 + $rataRataTS2) / 3, 2);
 
         return [

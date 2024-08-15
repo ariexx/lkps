@@ -55,6 +55,8 @@ class EWMPService
         $config = [
             "heads" => $heads,
             "data" => $data,
+            "rata_rata_jumlah" => $this->ewmp->rataRataJumlah(),
+            "rata_rata_sks" => $this->ewmp->rataRataSKS(),
         ];
 
         return view("kepala-prodi.ewmp.index", compact("config"));

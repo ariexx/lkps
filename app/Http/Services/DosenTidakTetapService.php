@@ -27,7 +27,7 @@ class DosenTidakTetapService
                 $item->sertifikat_pendidik,
                 $item->sertifikat_kompetensi,
                 $item->mata_kuliah,
-                $item->kesesuaian_bidang,
+                is_approved_bool($item->kesesuaian_bidang),
                 is_approved($item->is_approve),
                 view('components.buttons', [
                     'routeEdit' => route('kepala-prodi.sumber-daya-manusia.dosen-tidak-tetap.edit', $item->id),

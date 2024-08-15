@@ -58,7 +58,7 @@
                     </div>
                     <div>
                         <label for="durasi">Waktu dan Durasi:</label>
-                        <input type="date" id="durasi" name="durasi" class="form-control" value="{{$data->durasi->format("Y-m-d")}}">
+                        <input type="date" id="durasi" name="durasi" class="form-control" value="{{$data->durasi}}">
                     </div>
                     <div>
                         <label for="bukti">Bukti Kerjasama:</label>

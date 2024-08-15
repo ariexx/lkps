@@ -41,7 +41,11 @@
                     <x-adminlte-input name="mata_kuliah" label="Mata Kuliah" fgroup-class="col-md-12" disable-feedback/>
                 </div>
                 <div class="row">
-                    <x-adminlte-input name="kesesuaian_bidang" label="Kesesuaian Bidang" fgroup-class="col-md-12" disable-feedback/>
+                    <label for="kesesuaian_bidang">Kesesuaian Bidang Keahlian</label>
+                    <x-adminlte-select-bs name="kesesuaian_bidang">
+                        <option value="1">Ya</option>
+                        <option value="0">Tidak</option>
+                    </x-adminlte-select-bs>
                 </div>
                 <x-adminlte-button class="btn-flat" type="submit" label="Submit" theme="success" icon="fas fa-lg fa-save"/>
             </form>

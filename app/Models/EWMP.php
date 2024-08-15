@@ -37,23 +37,23 @@ class EWMP extends Model
 
     public function rataRataJumlah()
     {
-        $data = $this->get()->toArray();
-        $total = array_sum(array_map(function($item) { return $item->jumlah(); }, $data));
-        $totalData = count($data);
+        $data = collect($this->get());
+        $total = $data->sum(function($item) { return $item->jumlah(); });
+        $totalData = $data->count();
 
         return $totalData ? $total / $totalData : 0;
     }
 
     public function rataRataSKS()
     {
-        $data = $this->get()->toArray();
-        $totalData = count($data);
+        $data = collect($this->get());
+        $totalData = $data->count();
 
         if ($totalData == 0) {
             return 0;
         }
 
-        $total = array_sum(array_map(function($item) { return $item->rataRata(); }, $data));
+        $total = $data->sum(function($item) { return $item->rataRata(); });
 
         return $total / $totalData;
     }

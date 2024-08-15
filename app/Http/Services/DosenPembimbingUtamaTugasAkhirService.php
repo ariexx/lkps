@@ -53,6 +53,9 @@ class DosenPembimbingUtamaTugasAkhirService
         $config = [
             "heads" => $heads,
             "data" => $data,
+            "rata_rata_ts" => $this->dosenPembimbing->rataRataTS(),
+            "rata_rata_ts_lain" => $this->dosenPembimbing->rataRataTSLain(),
+            "rata" => $this->dosenPembimbing->rataRataSemua()
         ];
 
         return view("kepala-prodi.dosen-pembimbing-utama.index", compact("config"));

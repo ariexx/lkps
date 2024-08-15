@@ -47,9 +47,50 @@ class PendidikanService
 
     public function showKerjasamaPendidikan()
     {
-        $data = $this->kerjasamaPendidikan->paginate(10);
+        $data = $this->kerjasamaPendidikan->get()->map(function ($item, $key) {
+            return [
+                $key + 1,
+                $item->lembaga_mitra,
+                is_approved_bool($item->internasional),
+                is_approved_bool($item->nasional),
+                is_approved_bool($item->lokal),
+                $item->judul_kegiatan,
+                $item->manfaat_ps_diakreditasi,
+                $item->waktu_dan_durasi,
+                $item->tahun_berakhir_kerjasama,
+                "<a href='" . asset('storage/' . $item->bukti_kerjasama) . "' target='_blank'>Lihat Bukti</a>",
+                is_approved($item->is_approved),
+                view('components.buttons', [
+                    'routeEdit' => route('kepala-prodi.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan.edit', $item->id),
+                    'routeDelete' => route('kepala-prodi.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan.delete', $item->id),
+                    'isApproved' => $item->is_approved,
+                    "routeApprove" => route('kepala-prodi.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan.approve', $item->id),
+                    "routeReject" => route('kepala-prodi.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan.reject', $item->id),
+                ])->render()
+            ];
+        });
 
-        return view('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan', compact('data'));
+        $heads = [
+            'No',
+            'Lembaga Mitra',
+            'Internasional',
+            'Nasional',
+            'Lokal',
+            'Judul Kegiatan Kerjasama',
+            'Manfaat Bagi PS Diakreditasi',
+            'Waktu dan Durasi',
+            'Tahun Berakhir Kerjasama',
+            'Bukti Kerjasama',
+            'Status',
+            'Aksi'
+        ];
+
+        $config = [
+            'data' => $data,
+            'heads' => $heads
+        ];
+
+        return view('superadmin.tata-pamong-tata-kelola-kerjasama.kerjasama-pendidikan', compact('config'));
     }
 
     public function editKerjasamaPendidikan($id)
