@@ -116,6 +116,10 @@ class DosenPembimbing extends Model
      */
     public function extractedRataRata(mixed $rataRataTS, mixed $rataRataTS1, mixed $rataRataTS2, int $totalData): array
     {
+        $rataRataTS = (float) $rataRataTS;
+        $rataRataTS1 = (float) $rataRataTS1;
+        $rataRataTS2 = (float) $rataRataTS2;
+
         if ($totalData == 0) {
             return [
                 'rata_rata_ts' => 0,

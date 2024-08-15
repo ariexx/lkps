@@ -38,7 +38,8 @@ jobs:
         script: |
           cd $HOME/lkps
           git pull origin main
-          composer install --no-interaction --prefer-dist --optimize-autoloader
+          composer install --no-interaction
+          composer dump-autoload
           php artisan migrate --force
           php artisan config:cache
           php artisan route:cache
