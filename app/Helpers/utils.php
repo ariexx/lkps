@@ -91,9 +91,9 @@ if (!function_exists('is_approved')) {
     function is_approved($is_approved): string
     {
         return match ($is_approved) {
-            STATUS_PENDING => "<label class='badge badge-warning'>Menunggu Persetujuan</label>",
-            STATUS_APPROVED => "<label class='badge badge-success'>Disetujui</label>",
-            STATUS_REJECTED => "<label class='badge badge-danger'>Ditolak</label>",
+            STATUS_PENDING => "<label class=\"badge badge-warning\">Menunggu Persetujuan</label>",
+            STATUS_APPROVED => "<label class=\"badge badge-success\">Disetujui</label>",
+            STATUS_REJECTED => "<label class=\"badge badge-danger\">Ditolak</label>",
             default => 'Unknown'
         };
     }
