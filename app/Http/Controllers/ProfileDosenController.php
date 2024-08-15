@@ -34,22 +34,38 @@ class ProfileDosenController extends Controller
 
     public function showDosenTidakTetap()
     {
-        $dosenTidakTetap = $this->dosenTidakTetap->getAll();
+        $dosenTidakTetap = $this->dosenTidakTetap->whereUserId(user()->id)->get();
         return view('dosen.profile.dosen_tidak_tetap', compact('dosenTidakTetap'));
     }
 
-    public function storeDosenTidakTetap(StoreDosenTidakTetapRequest $request)
+    public function storeDosenTidakTetap(Request $request)
     {
-        if ($this->alreadyInserted) {
+        if ($this->dosenTidakTetap->where('user_id', user()->id)->exists()) {
             return redirect()->route('dosen.dosen-tidak-tetap')->with('error', 'Anda sudah mengisi data dosen');
         }
 
         try {
             $request['user_id'] = user()->id;
-            $this->dosenTidakTetap->create($request->validated());
+            $this->dosenTidakTetap->create($request->all());
             return redirect()->route('dosen.dosen-tidak-tetap')->with('success', 'Data dosen tidak tetap berhasil ditambahkan');
         } catch (\Exception $e) {
              return redirect()->route('dosen.dosen-tidak-tetap.create')->with('error', 'Data dosen tidak tetap gagal ditambahkan');
+        }
+    }
+
+    public function editDosenTidakTetap($id)
+    {
+        $dosenTidakTetap = $this->dosenTidakTetap->find($id);
+        return view('dosen.profile.edit_dosen_tidak_tetap', compact('dosenTidakTetap'));
+    }
+
+    public function updateDosenTidakTetap(StoreDosenTidakTetapRequest $request, $id)
+    {
+        try {
+            $this->dosenTidakTetap->find($id)->update($request->all());
+            return redirect()->route('dosen.dosen-tidak-tetap')->with('success', 'Data dosen tidak tetap berhasil diubah');
+        } catch (\Exception $e) {
+             return redirect()->route('dosen.dosen-tidak-tetap.edit', $id)->with('error', 'Data dosen tidak tetap gagal diubah');
         }
     }
 
@@ -61,8 +77,8 @@ class ProfileDosenController extends Controller
 
     public function storeDosenIndustriPraktisi(Request $request)
     {
-        if ($this->alreadyInserted) {
-            return redirect()->route('dosen.dosen-industri-praktisi')->with('error', 'Anda sudah mengisi data dosen');
+        if($this->dosenIndustriPraktisi->where('user_id', user()->id)->exists()) {
+            return redirect()->route('dosen.dosen-industri-praktisi')->with('error', 'Anda sudah mengisi data dosen industri praktisi');
         }
 
         try {
@@ -74,6 +90,22 @@ class ProfileDosenController extends Controller
         }
     }
 
+    public function editDosenIndustriPraktisi($id)
+    {
+        $dosenIndustriPraktisi = $this->dosenIndustriPraktisi->find($id);
+        return view('dosen.profile.edit_dosen_industri_praktisi', compact('dosenIndustriPraktisi'));
+    }
+
+    public function updateDosenIndustriPraktisi(Request $request, $id)
+    {
+        try {
+            $this->dosenIndustriPraktisi->find($id)->update($request->all());
+            return redirect()->route('dosen.dosen-industri-praktisi')->with('success', 'Data dosen industri praktisi berhasil diubah');
+        } catch (\Exception $e) {
+             return redirect()->route('dosen.dosen-industri-praktisi.edit', $id)->with('error', 'Data dosen industri praktisi gagal diubah');
+        }
+    }
+
     public function showDosenTetapPerguruanTinggi()
     {
         $dosenTetapPerguruanTinggi = $this->dosenTetapPerguruanTinggi->whereUserId(user()->id)->get();
@@ -82,7 +114,7 @@ class ProfileDosenController extends Controller
 
     public function storeDosenTetapPerguruanTinggi(Request $request)
     {
-        if ($this->alreadyInserted) {
+        if ($this->dosenTetapPerguruanTinggi->where('user_id', user()->id)->exists()) {
             return redirect()->route('dosen.dosen-tetap-perguruan-tinggi')->with('error', 'Anda sudah mengisi data dosen');
         }
 

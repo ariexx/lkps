@@ -35,6 +35,8 @@
                         <th>Sertifikat Profesi/Kompetensi/Industri</th>
                         <th>Mata Kuliah yang Diampu</th>
                         <th>Bobot Kredit (SKS)</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,6 +51,10 @@
                             <td>{{ $dosen->sertifikat_kompetensi }}</td>
                             <td>{{ $dosen->mata_kuliah }}</td>
                             <td>{{ $dosen->bobot_kredit }}</td>
+                            <td>{!! is_approved($dosen->is_approve) !!}</td>
+                            <td>
+                                <a href="{{ route('dosen.dosen-industri-praktisi.edit', $dosen->id) }}" class="btn btn-warning">Edit</a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

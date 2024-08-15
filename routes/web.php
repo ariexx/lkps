@@ -74,6 +74,8 @@ Route::prefix('dosen')->as('dosen.')->group(function () {
             Route::get('/dosen-industri-praktisi/create', function () {
                 return view('dosen.profile.create-dosen-industri-praktisi');
             })->name('dosen-industri-praktisi.create');
+            Route::get('/dosen-industri-praktisi/edit/{id}', [ProfileDosenController::class, 'editDosenIndustriPraktisi'])->name('dosen-industri-praktisi.edit');
+            Route::put('/dosen-industri-praktisi/update/{id}', [ProfileDosenController::class, 'updateDosenIndustriPraktisi'])->name('dosen-industri-praktisi.update');
 
             //Dosen Pembimbing Utama Tugas Akhir
             Route::post('/dosen-pembimbing-utama-tugas-akhir/store', [ProfileDosenController::class, 'storeDosenPembimbingUtamaTugasAkhir'])->name('dosen-pembimbing-utama-tugas-akhir.store');
@@ -90,6 +92,8 @@ Route::prefix('dosen')->as('dosen.')->group(function () {
             Route::get('/dosen-tidak-tetap/create', function () {
                 return view('dosen.profile.create-dosen-tidak-tetap');
             })->name('dosen-tidak-tetap.create');
+            Route::get('/dosen-tidak-tetap/edit/{id}', [ProfileDosenController::class, 'editDosenTidakTetap'])->name('dosen-tidak-tetap.edit');
+            Route::put('/dosen-tidak-tetap/update/{id}', [ProfileDosenController::class, 'updateDosenTidakTetap'])->name('dosen-tidak-tetap.update');
         });
     });
 });

@@ -38,6 +38,8 @@
                 <th>Mata Kuliah pada PS yang Diakreditasi</th>
                 <th>Kesesuaian Bidang Keahlian dengan Mata Kuliah yang Diampu</th>
                 <th>Mata Kuliah pada PS Lain</th>
+                <th>Status</th>
+                <th>Action</th>
             </tr>
             <tr>
                 <th></th>
@@ -72,8 +74,11 @@
                     <td>{{ $dosen->mata_kuliah_ps_diakreditasi }}</td>
                     <td>{{ $dosen->kesesuaian_bidang_keahlian }}</td>
                     <td>{{ $dosen->mata_kuliah_ps_lain }}</td>
+                    <td>{!! is_approved($dosen->is_approve) !!}</td>
                     <td>
-                        <a href="{{route('dosen.dosen-tetap-perguruan-tinggi.edit', $dosen->id)}}" class="btn btn-warning">Edit</a>
+                        @if(in_array($dosen->is_approve, [STATUS_PENDING, STATUS_REJECTED]))
+                            <a href="{{route('dosen.dosen-tetap-perguruan-tinggi.edit', $dosen->id)}}" class="btn btn-warning">Edit</a>
+                        @endif
                     </td>
                 </tr>
 

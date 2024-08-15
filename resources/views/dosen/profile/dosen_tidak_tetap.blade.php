@@ -36,6 +36,8 @@
                         <th>Sertifikat Kompetensi</th>
                         <th>Mata Kuliah</th>
                         <th>Kesesuaian Bidang</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,7 +52,13 @@
                             <td>{{ $dosen->sertifikat_pendidik }}</td>
                             <td>{{ $dosen->sertifikat_kompetensi }}</td>
                             <td>{{ $dosen->mata_kuliah }}</td>
-                            <td>{{ $dosen->kesesuaian_bidang }}</td>
+                            <td>{{is_approved_bool($dosen->kesesuaian_bidang)}}</td>
+                            <td>{!! is_approved($dosen->is_approve) !!}</td>
+                            <td>
+                                @if(in_array($dosen->is_approve, [0, 2]))
+                                    <a href="{{ route('dosen.dosen-tidak-tetap.edit', $dosen->id) }}" class="btn btn-warning">Edit</a>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
