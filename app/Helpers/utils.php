@@ -90,13 +90,19 @@ if (!function_exists('action_buttons')) {
 if (!function_exists('is_approved')) {
     function is_approved($is_approved): string
     {
+//        STATUS_PENDING => "<label class=\"badge badge-warning\">Menunggu Persetujuan</label>",
+//            STATUS_APPROVED => "<label class=\"badge badge-success\">Disetujui</label>",
+//            STATUS_REJECTED => "<label class=\"badge badge-danger\">Ditolak</label>",
+
         switch ($is_approved) {
+            case STATUS_PENDING:
+                return "<label class=\"badge badge-warning\">Menunggu Persetujuan</label>";
             case STATUS_APPROVED:
-                return "Approved";
+                return "<label class=\"badge badge-success\">Disetujui</label>";
             case STATUS_REJECTED:
-                return "Rejected";
+                return "<label class=\"badge badge-danger\">Ditolak</label>";
             default:
-                return "Pending";
+                return "<label class=\"badge badge-info\">Tidak Diketahui</label>";
         }
     }
 }
