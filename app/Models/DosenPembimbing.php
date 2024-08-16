@@ -133,13 +133,13 @@ class DosenPembimbing extends Model
             ];
         }
 
-        $rataRata = number_format(($rataRataTS + $rataRataTS1 + $rataRataTS2) / 3, 2);
+        $rataRata = (float) number_format(($rataRataTS + $rataRataTS1 + $rataRataTS2) / 3, 2);
 
         return [
-            'rata_rata_ts' => number_format($rataRataTS / $totalData, 2),
-            'rata_rata_ts1' => number_format($rataRataTS1 / $totalData, 2),
-            'rata_rata_ts2' => number_format($rataRataTS2 / $totalData, 2),
-            'rata_rata' => number_format(($rataRata / $totalData), 2),
+            'rata_rata_ts' => (float) number_format($rataRataTS / $totalData, 2),
+            'rata_rata_ts1' => (float) number_format($rataRataTS1 / $totalData, 2),
+            'rata_rata_ts2' => (float) number_format($rataRataTS2 / $totalData, 2),
+            'rata_rata' => (float) number_format(($rataRata / $totalData), 2),
             'total_ts2' => $rataRataTS2,
             'total_ts1' => $rataRataTS1,
             'total_ts' => $rataRataTS,
