@@ -40,4 +40,5 @@
             <button type="submit" class="btn btn-danger">Tolak</button>
         </form>
     @endif
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 </div>
