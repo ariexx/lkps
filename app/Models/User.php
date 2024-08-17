@@ -14,10 +14,6 @@ class User extends Authenticatable
 
     const superadmin = 'superadmin', adminprodi = 'admin_prodi', dosen = 'dosen', prodi = 'prodi';
 
-    const canEdit = ['prodi', 'admin_prodi'];
-    const canDelete = ['prodi'];
-    const canApprove = ['prodi'];
-
     /**
      * The attributes that are mass assignable.
      *
