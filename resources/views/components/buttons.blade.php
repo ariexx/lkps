@@ -1,3 +1,7 @@
+<!-- resources/views/components/buttons.blade.php -->
+@php
+$role = Auth::user()->role ?? user()->role;
+@endphp
 <div class="d-flex justify-content-between">
     @if(in_array($role, canEdit()) && in_array($role, canDelete()))
         <a href="{{$routeEdit}}" class="btn btn-primary mr-2">Edit</a>
@@ -40,5 +44,4 @@
             <button type="submit" class="btn btn-danger">Tolak</button>
         </form>
     @endif
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 </div>
