@@ -17,6 +17,17 @@ class EWMPService
     public function showEWMP()
     {
         $data = $this->ewmp->get()->map(function ($item, $key) {
+            $buttonsView = view('components.buttons', [
+                'routeEdit' => route('kepala-prodi.sumber-daya-manusia.ewmp.edit', $item->id),
+                'routeDelete' => route('kepala-prodi.sumber-daya-manusia.ewmp.delete', $item->id),
+                'isApproved' => $item->is_approve,
+                'routeApprove' => route('kepala-prodi.sumber-daya-manusia.ewmp.approve', $item->id),
+                'routeReject' => route('kepala-prodi.sumber-daya-manusia.ewmp.reject', $item->id),
+            ])->render();
+
+            // Log the rendered view for debugging
+            \Log::info($buttonsView);
+
             return [
                 $key + 1,
                 $item->name,
@@ -28,13 +39,7 @@ class EWMPService
                 $item->pkm,
                 $item->tugas_tambahan,
                 is_approved($item->is_approve),
-                view('components.buttons', [
-                    'routeEdit' => route('kepala-prodi.sumber-daya-manusia.ewmp.edit', $item->id),
-                    'routeDelete' => route('kepala-prodi.sumber-daya-manusia.ewmp.delete', $item->id),
-                    'isApproved' => $item->is_approve,
-                    "routeApprove" => route('kepala-prodi.sumber-daya-manusia.ewmp.approve', $item->id),
-                    "routeReject" => route('kepala-prodi.sumber-daya-manusia.ewmp.reject', $item->id),
-                ])->render()
+                $buttonsView
             ];
         })->toArray();
 
