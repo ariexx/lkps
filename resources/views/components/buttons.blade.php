@@ -15,8 +15,6 @@ $role = Auth::user()->role ?? user()->role;
             @method('DELETE')
             <button type="submit" class="btn btn-danger">Hapus</button>
         </form>
-        @endif
-        @if($role === "prodi")
             @if($isApproved === STATUS_PENDING)
                 <form action="{{$routeApprove ?? "#"}}" method="post" class="d-inline mr-2">
                     @csrf
