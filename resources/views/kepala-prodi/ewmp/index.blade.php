@@ -13,9 +13,14 @@
         </x-create-button>
         <x-adminlte-datatable id="table1" :config="$config" striped hoverable with-buttons :heads="$config['heads']">
             <tfoot>
-            <th colspan="9">Rata Rata</th>
-            <th>{{$config["rata_rata_jumlah"]}}</th>
-            <th>{{$config["rata_rata_sks"]}}</th>
+            <tr>
+                <th>Rata Rata SKS:</th>
+                <th>{{$config["rata_rata_sks"]}}</th>
+            </tr>
+            <tr>
+                <th>Rata Rata Jumlah:</th>
+                <th>{{$config["rata_rata_jumlah"]}}</th>
+            </tr>
             </tfoot>
         </x-adminlte-datatable>
     </x-adminlte-card>
