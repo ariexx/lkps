@@ -15,14 +15,8 @@ class Buttons extends Component
         public null|string $routeApprove = null,
         public null|string $routeReject = null,
         public null|int $isApproved = null,
-        public string $role = 'dosen'
     )
     {
-        if (isset(Auth::user()->role)) {
-            $this->role = Auth::user()->role;
-        } else {
-            $this->role = user()->role;
-        }
     }
 
     public function render(): View
@@ -33,7 +27,6 @@ class Buttons extends Component
             'routeApprove' => $this->routeApprove,
             'routeReject' => $this->routeReject,
             'isApproved' => $this->isApproved,
-            'role' => $this->role,
         ]);
     }
 }
