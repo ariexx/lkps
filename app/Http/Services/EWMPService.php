@@ -38,6 +38,8 @@ class EWMPService
                 $item->penelitian,
                 $item->pkm,
                 $item->tugas_tambahan,
+                $item->jumlah(),
+                $item->rataRata(),
                 is_approved($item->is_approve),
                 $buttonsView
             ];
@@ -53,6 +55,8 @@ class EWMPService
             'Penelitian',
             'PKM',
             'Tugas Tambahan',
+            'Jumlah',
+            'Rata-rata SKS',
             'Status',
             'Aksi'
         ];

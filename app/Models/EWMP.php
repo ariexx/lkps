@@ -32,7 +32,7 @@ class EWMP extends Model
 
     public function rataRata()
     {
-        return $this->jumlah();
+        return $this->jumlah() / 2;
     }
 
     public function rataRataJumlah()
