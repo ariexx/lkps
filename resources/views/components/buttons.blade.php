@@ -1,9 +1,9 @@
 <!-- resources/views/components/buttons.blade.php -->
 @php
 $role = Auth::user()->role ?? user()->role;
-const canEdit = [\App\Models\User::prodi, \App\Models\User::adminprodi];
-const canDelete = [\App\Models\User::prodi];
-const canApprove = [\App\Models\User::prodi];
+//const canEdit = [\App\Models\User::prodi, \App\Models\User::adminprodi];
+//const canDelete = [\App\Models\User::prodi];
+//const canApprove = [\App\Models\User::prodi];
 @endphp
 <div class="d-flex justify-content-between">
     @if(in_array($role, ["prodi", "admin_prodi"]))
