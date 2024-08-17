@@ -18,11 +18,6 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.2
-      - name: Clear Cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.composer/cache
-          key: ${{ runner.os }}-composer-clear-${{ github.run_id }}
       - name: Cache Composer packages
         uses: actions/cache@v3
         with:
@@ -50,8 +45,7 @@ jobs:
           script: |
             cd $HOME/lkps
             git pull origin main
-            composer install --no-interaction
-            composer dump-autoload
+            composer install --no-interaction --prefer-dist --optimize-autoloader
             php artisan migrate --force
             php artisan optimize
             php artisan config:cache
