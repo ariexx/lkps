@@ -47,6 +47,7 @@ class PendidikanService
 
     public function showKerjasamaPendidikan()
     {
+        \Log::info("showKerjasamaPendidikan - auth: " . auth()->user());
         $data = $this->kerjasamaPendidikan->get()->map(function ($item, $key) {
             return [
                 $key + 1,

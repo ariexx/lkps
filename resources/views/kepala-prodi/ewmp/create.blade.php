@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Dosen Pembimbing Utama Tugas Akhir')
+@section('title', 'EWMP')
 
 @section('content_header')
-    <h1>Tambah Dosen Pembimbing Utama Tugas Akhir</h1>
+    <h1>Tambah EWMP</h1>
 @stop
 
 @section('content')
