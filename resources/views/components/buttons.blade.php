@@ -6,14 +6,16 @@ const canDelete = [\App\Models\User::prodi];
 const canApprove = [\App\Models\User::prodi];
 @endphp
 <div class="d-flex justify-content-between">
-    @if(in_array($role, canEdit) && in_array($role, canDelete))
+    @if(in_array($role, ["prodi", "admin_prodi"]))
         <a href="{{$routeEdit}}" class="btn btn-primary mr-2">Edit</a>
+        @if($role === "prodi")
         <form action="{{$routeDelete}}" method="post" class="d-inline mr-2">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger">Hapus</button>
         </form>
-        @if(in_array($role, canApprove))
+        @endif
+        @if($role === "prodi")
             @if($isApproved === STATUS_PENDING)
                 <form action="{{$routeApprove ?? "#"}}" method="post" class="d-inline mr-2">
                     @csrf
@@ -27,24 +29,5 @@ const canApprove = [\App\Models\User::prodi];
                 </form>
             @endif
         @endif
-    @elseif(in_array($role, canEdit))
-        <a href="{{$routeEdit}}" class="btn btn-primary">Edit</a>
-    @elseif(in_array($role, canDelete))
-        <form action="{{$routeDelete}}" method="post" class="d-inline">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger">Hapus</button>
-        </form>
-    @elseif(in_array($role, canDelete))
-        <form action="{{$routeApprove ?? "#"}}" method="post" class="d-inline mr-2">
-            @csrf
-            @method('PUT')
-            <button type="submit" class="btn btn-success">Setujui</button>
-        </form>
-        <form action="{{$routeReject ?? "#"}}" method="post" class="d-inline mr-2">
-            @csrf
-            @method('PUT')
-            <button type="submit" class="btn btn-danger">Tolak</button>
-        </form>
     @endif
 </div>
