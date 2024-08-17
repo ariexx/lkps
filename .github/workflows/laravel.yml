@@ -18,6 +18,20 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.2
+      - name: Clear Cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.composer/cache
+          key: ${{ runner.os }}-composer-clear-${{ github.run_id }}
+      - name: Cache Composer packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.composer/cache
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
   deploy:
     name: Deploy to Production
@@ -40,3 +54,6 @@ jobs:
             composer dump-autoload
             php artisan migrate --force
             php artisan optimize
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
