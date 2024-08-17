@@ -1,7 +1,6 @@
 <!-- resources/views/components/buttons.blade.php -->
 @php
 $role = Auth::user()->role ?? user()->role;
-dd($role);
 @endphp
 <div class="d-flex justify-content-between">
     @if(in_array($role, canEdit()) && in_array($role, canDelete()))

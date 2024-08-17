@@ -31,7 +31,7 @@ if (!function_exists('canEdit')) {
      */
     function canEdit(): array
     {
-        return [\App\Models\User::prodi, \App\Models\User::adminprodi];
+        return ["prodi", "admin_prodi"];
     }
 }
 
@@ -42,7 +42,7 @@ if (!function_exists('canDelete')) {
      */
     function canDelete(): array
     {
-        return [\App\Models\User::prodi];
+        return ["prodi"];
     }
 }
 
