@@ -1,6 +1,5 @@
 <?php
 
-const STATUS_PENDING = 0, STATUS_APPROVED = 1, STATUS_REJECTED = 2;
 
 if (!function_exists('user')) {
     /**
@@ -20,7 +19,7 @@ if (!function_exists('canApprove')) {
      */
     function canApprove(): array
     {
-        return [\App\Models\User::prodi];
+        return ["prodi"];
     }
 }
 
@@ -90,10 +89,6 @@ if (!function_exists('action_buttons')) {
 if (!function_exists('is_approved')) {
     function is_approved($is_approved): string
     {
-//        STATUS_PENDING => "<label class=\"badge badge-warning\">Menunggu Persetujuan</label>",
-//            STATUS_APPROVED => "<label class=\"badge badge-success\">Disetujui</label>",
-//            STATUS_REJECTED => "<label class=\"badge badge-danger\">Ditolak</label>",
-
         switch ($is_approved) {
             case STATUS_PENDING:
                 return "<label class=\"badge badge-warning\">Menunggu Persetujuan</label>";
