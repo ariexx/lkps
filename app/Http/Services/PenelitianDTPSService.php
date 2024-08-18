@@ -92,14 +92,14 @@ class PenelitianDTPSService
 
     public function approvePenelitianDTPS($id)
     {
-        $this->penelitianDtps->find($id)->update(['is_approve' => 1]);
+        $this->penelitianDtps->find($id)->update(['is_approve' => STATUS_APPROVED]);
         $this->logActivityService->log(["setujui", "Menyetujui data penelitian DTPS"]);
         return redirect()->route('kepala-prodi.sumber-daya-manusia.penelitian-dtps');
     }
 
     public function rejectPenelitianDTPS($id)
     {
-        $this->penelitianDtps->find($id)->update(['is_approve' => 0]);
+        $this->penelitianDtps->find($id)->update(['is_approve' => STATUS_REJECTED]);
         $this->logActivityService->log(["tolak", "Menolak data penelitian DTPS"]);
         return redirect()->route('kepala-prodi.sumber-daya-manusia.penelitian-dtps');
     }

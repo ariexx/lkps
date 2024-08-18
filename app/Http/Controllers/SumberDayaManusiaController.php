@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\DosenIndustriPraktisi;
 use App\Http\Services\DosenIndustriPraktisiService;
 use App\Http\Services\DosenPembimbingUtamaTugasAkhirService;
 use App\Http\Services\DosenTetapPerguruanTinggiService;
 use App\Http\Services\DosenTidakTetapService;
 use App\Http\Services\EWMPService;
 use App\Http\Services\PenelitianDTPSService;
+use App\Http\Services\PKMDTPSService;
 use App\Http\Services\RekognisiDosenService;
 use App\Models\DosenTetapPerguruanTinggi;
 use Illuminate\Http\Request;
@@ -24,6 +24,7 @@ class SumberDayaManusiaController extends Controller
         public DosenIndustriPraktisiService $dosenIndustriPraktisiService,
         public RekognisiDosenService $rekognisiDosenService,
         public PenelitianDTPSService $penelitianDTPSService,
+        public PKMDTPSService $pkmDtpsService,
     )
     {
     }
@@ -306,5 +307,45 @@ class SumberDayaManusiaController extends Controller
     public function rejectPenelitianDTPS($id)
     {
         return $this->penelitianDTPSService->rejectPenelitianDTPS($id);
+    }
+
+    public function showPKMDTPS()
+    {
+        return $this->pkmDtpsService->showPKMDTPS();
+    }
+
+    public function createPKMDTPS()
+    {
+        return $this->pkmDtpsService->createPKMDTPS();
+    }
+
+    public function storePKMDTPS(Request $request)
+    {
+        return $this->pkmDtpsService->storePKMDTPS($request->all());
+    }
+
+    public function editPKMDTPS($id)
+    {
+        return $this->pkmDtpsService->editPKMDTPS($id);
+    }
+
+    public function updatePKMDTPS(Request $request, $id)
+    {
+        return $this->pkmDtpsService->updatePKMDTPS($request->all(), $id);
+    }
+
+    public function deletePKMDTPS($id)
+    {
+        return $this->pkmDtpsService->deletePKMDTPS($id);
+    }
+
+    public function approvePKMDTPS($id)
+    {
+        return $this->pkmDtpsService->approvePKMDTPS($id);
+    }
+
+    public function rejectPKMDTPS($id)
+    {
+        return $this->pkmDtpsService->rejectPKMDTPS($id);
     }
 }
