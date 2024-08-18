@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\DosenIndustriPraktisi;
+use App\Http\Services\DosenIndustriPraktisiService;
 use App\Http\Services\DosenPembimbingUtamaTugasAkhirService;
 use App\Http\Services\DosenTetapPerguruanTinggiService;
 use App\Http\Services\DosenTidakTetapService;
@@ -16,7 +18,8 @@ class SumberDayaManusiaController extends Controller
         public DosenTetapPerguruanTinggiService $dosenTetapPerguruanTinggiService,
         public DosenPembimbingUtamaTugasAkhirService $dosenPembimbingUtamaTugasAkhirService,
         public EWMPService $ewmpService,
-        public DosenTidakTetapService $dosenTidakTetapService
+        public DosenTidakTetapService $dosenTidakTetapService,
+        public DosenIndustriPraktisiService $dosenIndustriPraktisiService,
     )
     {
     }
@@ -179,6 +182,46 @@ class SumberDayaManusiaController extends Controller
     public function rejectDosenTidakTetap($id)
     {
         return $this->dosenTidakTetapService->rejectDosenTidakTetap($id);
+    }
+
+    public function showDosenIndustriPraktisi()
+    {
+        return $this->dosenIndustriPraktisiService->showDosenIndustriPraktisi();
+    }
+
+    public function createDosenIndustriPraktisi()
+    {
+        return $this->dosenIndustriPraktisiService->createDosenIndustriPraktisi();
+    }
+
+    public function storeDosenIndustriPraktisi(Request $request)
+    {
+        return $this->dosenIndustriPraktisiService->storeDosenIndustriPraktisi($request->all());
+    }
+
+    public function editDosenIndustriPraktisi($id)
+    {
+        return $this->dosenIndustriPraktisiService->editDosenIndustriPraktisi($id);
+    }
+
+    public function updateDosenIndustriPraktisi(Request $request, $id)
+    {
+        return $this->dosenIndustriPraktisiService->updateDosenIndustriPraktisi($request->all(), $id);
+    }
+
+    public function deleteDosenIndustriPraktisi($id)
+    {
+        return $this->dosenIndustriPraktisiService->deleteDosenIndustriPraktisi($id);
+    }
+
+    public function approveDosenIndustriPraktisi($id)
+    {
+        return $this->dosenIndustriPraktisiService->approveDosenIndustriPraktisi($id);
+    }
+
+    public function rejectDosenIndustriPraktisi($id)
+    {
+        return $this->dosenIndustriPraktisiService->rejectDosenIndustriPraktisi($id);
     }
 
 }

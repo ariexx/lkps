@@ -1,6 +1,12 @@
 <li @isset($item['id']) id="{{ $item['id'] }}" @endisset class="nav-item has-treeview {{ $item['submenu_class'] }}">
 
-    @if(user()->role == $item['role'])
+    @php
+        $userRole = user()->role;
+        $itemRole = $item['role'];
+        $hasAccess = is_array($itemRole) ? in_array($userRole, $itemRole) : $userRole == $itemRole;
+    @endphp
+
+    @if($hasAccess)
         {{-- Menu toggler --}}
         <a class="nav-link {{ $item['class'] }} @isset($item['shift']) {{ $item['shift'] }} @endisset"
            href="" {!! $item['data-compiled'] ?? '' !!}>

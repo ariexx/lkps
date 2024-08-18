@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'dashboard-redirect' => App\Http\Middleware\DashboardRedirectMiddleware::class,
             'is-authenticated' => App\Http\Middleware\IsAuthenticatedMiddleware::class,
             'role-check' => App\Http\Middleware\RoleCheckMiddleware::class,
+            'prodi-or-admin-prodi' => App\Http\Middleware\CheckProdiOrAdminProdiMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

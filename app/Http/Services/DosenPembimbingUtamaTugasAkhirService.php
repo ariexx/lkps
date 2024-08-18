@@ -24,6 +24,7 @@ class DosenPembimbingUtamaTugasAkhirService
                 $item->jumlah_mahasiswa_dibimbing_ts1_lain,
                 $item->jumlah_mahasiswa_dibimbing_ts2_lain,
                 number_format(($item->jumlah_mahasiswa_dibimbing_ts2_lain+$item->jumlah_mahasiswa_dibimbing_ts1_lain+$item->jumlah_mahasiswa_dibimbing_ts_lain) / 3, 2),
+                $this->dosenPembimbing->rataRataPS($item->id),
                 is_approved($item->is_approve),
                 view('components.buttons', [
                     'routeEdit' => route('kepala-prodi.sumber-daya-manusia.dosen-pembimbing-utama-tugas-akhir.edit', $item->id),
@@ -46,6 +47,7 @@ class DosenPembimbingUtamaTugasAkhirService
             'Jumlah Mahasiswa Dibimbing TS1 Lain',
             'Jumlah Mahasiswa Dibimbing TS2 Lain',
             'Rata-Rata Mahasiswa Lain',
+            'Rata-rata Jumlah Bimbingan di semua Program/ Semester',
             'Status',
             'Aksi'
         ];

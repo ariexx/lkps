@@ -364,7 +364,7 @@ return [
         [
             'text' => 'Mahasiswa',
             'icon' => 'fas fa-fw fa-user-graduate',
-            'role' => \App\Models\User::prodi,
+            'role' => [\App\Models\User::prodi, \App\Models\User::adminprodi],
             'submenu' => [
                 [
                     'text' => 'Seleksi Mahasiswa',
@@ -379,7 +379,7 @@ return [
         [
             'text' => 'Sumber Daya Manusia',
             'icon' => 'fas fa-fw fa-user-plus',
-            'role' => \App\Models\User::prodi,
+            'role' => [\App\Models\User::prodi, \App\Models\User::adminprodi],
             'submenu' => [
                 [
                     'text' => 'Dosen Tetap Perguruan Tinggi',

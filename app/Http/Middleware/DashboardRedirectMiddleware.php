@@ -20,7 +20,7 @@ class DashboardRedirectMiddleware
             // Redirect based on user role
             return match ($role) {
                 User::superadmin => $this->redirectIfNotCurrentRoute($request, 'superadmin.dashboard', $next),
-                User::adminprodi => $this->redirectIfNotCurrentRoute($request, 'adminprodi.dashboard', $next),
+                User::adminprodi => $this->redirectIfNotCurrentRoute($request, 'admin-prodi.dashboard', $next),
                 User::dosen => $this->redirectIfNotCurrentRoute($request, 'dosen.dashboard', $next),
                 User::prodi => $this->redirectIfNotCurrentRoute($request, 'kepala-prodi.dashboard', $next),
                 default => redirect()->route('login'),

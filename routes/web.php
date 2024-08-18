@@ -112,7 +112,7 @@ Route::prefix('superadmin')->as('superadmin.')->group(function () {
 //route for Kepala Prodi
 Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
     Route::middleware(['is-authenticated'])->group(function () {
-        Route::middleware(['can:prodi'])->group(function () {
+        Route::middleware(['prodi-or-admin-prodi'])->group(function () {
             Route::get('/dashboard', function () {
                 return view('kepala-prodi.dashboard');
             })->name('dashboard');
@@ -264,6 +264,35 @@ Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
                 Route::put('/publikasi-ilmiah-dtps/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approvePublikasiIlmiahDTPS'])->name('publikasi-ilmiah-dtps.approve');
                 Route::put('/publikasi-ilmiah-dtps/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectPublikasiIlmiahDTPS'])->name('publikasi-ilmiah-dtps.reject');
             });
+        });
+    });
+});
+
+//route for prodi and admin prodi, using middleware is-authenticated and can:prodi and can:admin-prodi
+Route::prefix("sumber-daya-manusia")->as("sumber-daya-manusia.")->group(function () {
+    Route::middleware(['is-authenticated'])->group(function () {
+        Route::middleware(['prodi-or-admin-prodi'])->group(function () {
+            //dosen industri/praktisi
+            Route::get('/dosen-industri-praktisi', [\App\Http\Controllers\SumberDayaManusiaController::class, "showDosenIndustriPraktisi"])->name('dosen-industri-praktisi');
+            Route::get('/dosen-industri-praktisi/create', [\App\Http\Controllers\SumberDayaManusiaController::class, "createDosenIndustriPraktisi"])->name('dosen-industri-praktisi.create');
+            Route::post('/dosen-industri-praktisi/store', [\App\Http\Controllers\SumberDayaManusiaController::class, "storeDosenIndustriPraktisi"])->name('dosen-industri-praktisi.store');
+            Route::get('/dosen-industri-praktisi/edit/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, "editDosenIndustriPraktisi"])->name('dosen-industri-praktisi.edit');
+            Route::put('/dosen-industri-praktisi/update/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, "updateDosenIndustriPraktisi"])->name('dosen-industri-praktisi.update');
+            Route::delete('/dosen-industri-praktisi/delete/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, "deleteDosenIndustriPraktisi"])->name('dosen-industri-praktisi.delete');
+            Route::put('/dosen-industri-praktisi/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, "approveDosenIndustriPraktisi"])->name('dosen-industri-praktisi.approve');
+            Route::put('/dosen-industri-praktisi/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, "rejectDosenIndustriPraktisi"])->name('dosen-industri-praktisi.reject');
+        });
+    });
+});
+
+
+//admin prodi dashboard
+Route::prefix('admin-prodi')->as('admin-prodi.')->group(function () {
+    Route::middleware(['is-authenticated'])->group(function () {
+        Route::middleware(['can:admin_prodi'])->group(function () {
+            Route::get('/dashboard', function () {
+                return view('admin-prodi.dashboard');
+            })->name('dashboard');
         });
     });
 });

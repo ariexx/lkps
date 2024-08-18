@@ -65,7 +65,7 @@ class User extends Authenticatable
         $role = session('user')->role;
         return match ($role) {
             self::superadmin => redirect()->route('superadmin.dashboard'),
-            self::adminprodi => redirect()->route('adminprodi.dashboard'),
+            self::adminprodi => redirect()->route('admin-prodi.dashboard'),
             self::dosen => redirect()->route('dosen.dashboard'),
             self::prodi => redirect()->route('kepala-prodi.dashboard'),
             default => redirect('/login'),
@@ -90,5 +90,10 @@ class User extends Authenticatable
     public function isSuperadmin()
     {
         return session('user')->role === self::superadmin;
+    }
+
+    public function isAdminProdi()
+    {
+        return session('user')->role === self::adminprodi;
     }
 }
