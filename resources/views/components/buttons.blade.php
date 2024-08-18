@@ -6,7 +6,7 @@
 @endphp
 
 <div class="d-flex justify-content-between">
-    @if(in_array($role, $canEdit))
+    @if(in_array($role, $canEdit) && $isApproved !== STATUS_APPROVED)
         <a href="{{ $routeEdit }}" class="btn btn-primary mr-2">Edit</a>
     @endif
 
@@ -18,7 +18,7 @@
         </form>
     @endif
 
-    @if(in_array($role, $canApprove) && $isApproved === 0 || $isApproved == STATUS_PENDING)
+    @if(in_array($role, $canApprove) && ($isApproved === 0 || $isApproved == STATUS_PENDING))
         <form action="{{ $routeApprove ?? '#' }}" method="post" class="d-inline mr-2">
             @csrf
             @method('PUT')
