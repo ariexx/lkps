@@ -29,9 +29,9 @@ class RekognisiDosen extends Model
     public static function boot()
     {
         parent::boot();
-        static::creating(function ($model) {
-            $model->wilayah = 0;
-            $model->nasional = 0;
-        });
+//        static::creating(function ($model) {
+//            $model->wilayah = 0;
+//            $model->nasional = 0;
+//        });
     }
 }

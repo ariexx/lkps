@@ -28,6 +28,28 @@
                 <input type="file" class="form-control" id="bukti" name="bukti" accept="image/*">
             </div>
             <div class="form-group">
+                <label for="wilayah">Wilayah</label>
+                <div>
+                    <label>
+                        <input type="radio" name="wilayah" value="1" {{ $data->wilayah ? 'checked' : '' }}> Yes
+                    </label>
+                    <label>
+                        <input type="radio" name="wilayah" value="0" {{ !$data->wilayah ? 'checked' : '' }}> No
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="nasional">Nasional</label>
+                <div>
+                    <label>
+                        <input type="radio" name="nasional" value="1" {{ $data->nasional ? 'checked' : '' }}> Yes
+                    </label>
+                    <label>
+                        <input type="radio" name="nasional" value="0" {{ !$data->nasional ? 'checked' : '' }}> No
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="internasional">Internasional</label>
                 <div>
                     <label>
