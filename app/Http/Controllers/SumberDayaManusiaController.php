@@ -8,6 +8,7 @@ use App\Http\Services\DosenPembimbingUtamaTugasAkhirService;
 use App\Http\Services\DosenTetapPerguruanTinggiService;
 use App\Http\Services\DosenTidakTetapService;
 use App\Http\Services\EWMPService;
+use App\Http\Services\RekognisiDosenService;
 use App\Models\DosenTetapPerguruanTinggi;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,7 @@ class SumberDayaManusiaController extends Controller
         public EWMPService $ewmpService,
         public DosenTidakTetapService $dosenTidakTetapService,
         public DosenIndustriPraktisiService $dosenIndustriPraktisiService,
+        public RekognisiDosenService $rekognisiDosenService,
     )
     {
     }
@@ -224,4 +226,43 @@ class SumberDayaManusiaController extends Controller
         return $this->dosenIndustriPraktisiService->rejectDosenIndustriPraktisi($id);
     }
 
+    public function showRekognisiDosen()
+    {
+        return $this->rekognisiDosenService->showRekognisiDosen();
+    }
+
+    public function createRekognisiDosen()
+    {
+        return $this->rekognisiDosenService->createRekognisiDosen();
+    }
+
+    public function storeRekognisiDosen(Request $request)
+    {
+        return $this->rekognisiDosenService->storeRekognisiDosen($request->all());
+    }
+
+    public function editRekognisiDosen($id)
+    {
+        return $this->rekognisiDosenService->editRekognisiDosen($id);
+    }
+
+    public function updateRekognisiDosen(Request $request, $id)
+    {
+        return $this->rekognisiDosenService->updateRekognisiDosen($request->all(), $id);
+    }
+
+    public function deleteRekognisiDosen($id)
+    {
+        return $this->rekognisiDosenService->deleteRekognisiDosen($id);
+    }
+
+    public function approveRekognisiDosen($id)
+    {
+        return $this->rekognisiDosenService->approveRekognisiDosen($id);
+    }
+
+    public function rejectRekognisiDosen($id)
+    {
+        return $this->rekognisiDosenService->rejectRekognisiDosen($id);
+    }
 }
