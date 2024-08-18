@@ -238,7 +238,7 @@ class SumberDayaManusiaController extends Controller
 
     public function storeRekognisiDosen(Request $request)
     {
-        return $this->rekognisiDosenService->storeRekognisiDosen($request->all());
+        return $this->rekognisiDosenService->storeRekognisiDosen($request);
     }
 
     public function editRekognisiDosen($id)
@@ -248,7 +248,7 @@ class SumberDayaManusiaController extends Controller
 
     public function updateRekognisiDosen(Request $request, $id)
     {
-        return $this->rekognisiDosenService->updateRekognisiDosen($request->all(), $id);
+        return $this->rekognisiDosenService->updateRekognisiDosen($request, $id);
     }
 
     public function deleteRekognisiDosen($id)

@@ -15,6 +15,7 @@ class RekognisiDosen extends Model
         'nasional',
         'internasional',
         'tahun',
+        'is_approve'
     ];
 
     protected function casts(): array
