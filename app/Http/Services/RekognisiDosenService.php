@@ -25,8 +25,6 @@ class RekognisiDosenService
                 $item->bidang,
                 $item->rekognisi,
                 "<a href='" . asset('storage/' . $item->bukti) . "' target='_blank'>Lihat Bukti</a>",
-                is_approved_bool($item->wilayah),
-                is_approved_bool($item->nasional),
                 is_approved_bool($item->internasional),
                 $item->tahun,
                 is_approved($item->is_approve),
@@ -46,8 +44,6 @@ class RekognisiDosenService
             'Bidang',
             'Rekognisi',
             'Bukti',
-            'Wilayah',
-            'Nasional',
             'Internasional',
             'Tahun',
             'Status',
@@ -93,8 +89,6 @@ class RekognisiDosenService
             'bidang' => 'required',
             'rekognisi' => 'required',
             'bukti' => 'sometimes|image',
-            'wilayah' => 'required',
-            'nasional' => 'required',
             'internasional' => 'required',
             'tahun' => 'required'
         ]);

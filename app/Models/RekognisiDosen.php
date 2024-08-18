@@ -24,4 +24,14 @@ class RekognisiDosen extends Model
             'tahun' => 'string',
         ];
     }
+
+    //before submitted set wilayah to always 0
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model) {
+            $model->wilayah = 0;
+            $model->nasional = 0;
+        });
+    }
 }
