@@ -8,6 +8,7 @@ use App\Http\Services\DosenPembimbingUtamaTugasAkhirService;
 use App\Http\Services\DosenTetapPerguruanTinggiService;
 use App\Http\Services\DosenTidakTetapService;
 use App\Http\Services\EWMPService;
+use App\Http\Services\PenelitianDTPSService;
 use App\Http\Services\RekognisiDosenService;
 use App\Models\DosenTetapPerguruanTinggi;
 use Illuminate\Http\Request;
@@ -22,6 +23,7 @@ class SumberDayaManusiaController extends Controller
         public DosenTidakTetapService $dosenTidakTetapService,
         public DosenIndustriPraktisiService $dosenIndustriPraktisiService,
         public RekognisiDosenService $rekognisiDosenService,
+        public PenelitianDTPSService $penelitianDTPSService,
     )
     {
     }
@@ -264,5 +266,45 @@ class SumberDayaManusiaController extends Controller
     public function rejectRekognisiDosen($id)
     {
         return $this->rekognisiDosenService->rejectRekognisiDosen($id);
+    }
+
+    public function showPenelitianDTPS()
+    {
+        return $this->penelitianDTPSService->showPenelitianDTPS();
+    }
+
+    public function createPenelitianDTPS()
+    {
+        return $this->penelitianDTPSService->createPenelitianDTPS();
+    }
+
+    public function storePenelitianDTPS(Request $request)
+    {
+        return $this->penelitianDTPSService->storePenelitianDTPS($request->all());
+    }
+
+    public function editPenelitianDTPS($id)
+    {
+        return $this->penelitianDTPSService->editPenelitianDTPS($id);
+    }
+
+    public function updatePenelitianDTPS(Request $request, $id)
+    {
+        return $this->penelitianDTPSService->updatePenelitianDTPS($request->all(), $id);
+    }
+
+    public function deletePenelitianDTPS($id)
+    {
+        return $this->penelitianDTPSService->deletePenelitianDTPS($id);
+    }
+
+    public function approvePenelitianDTPS($id)
+    {
+        return $this->penelitianDTPSService->approvePenelitianDTPS($id);
+    }
+
+    public function rejectPenelitianDTPS($id)
+    {
+        return $this->penelitianDTPSService->rejectPenelitianDTPS($id);
     }
 }
