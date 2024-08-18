@@ -9,8 +9,10 @@ use App\Http\Services\DosenTidakTetapService;
 use App\Http\Services\EWMPService;
 use App\Http\Services\PenelitianDTPSService;
 use App\Http\Services\PKMDTPSService;
+use App\Http\Services\PublikasiIlmiahDTPSService;
 use App\Http\Services\RekognisiDosenService;
 use App\Models\DosenTetapPerguruanTinggi;
+use App\Models\PublikasiIlmiahDTPS;
 use Illuminate\Http\Request;
 
 class SumberDayaManusiaController extends Controller
@@ -25,6 +27,7 @@ class SumberDayaManusiaController extends Controller
         public RekognisiDosenService $rekognisiDosenService,
         public PenelitianDTPSService $penelitianDTPSService,
         public PKMDTPSService $pkmDtpsService,
+        public PublikasiIlmiahDTPSService $publikasiIlmiahDTPSService
     )
     {
     }
@@ -347,5 +350,45 @@ class SumberDayaManusiaController extends Controller
     public function rejectPKMDTPS($id)
     {
         return $this->pkmDtpsService->rejectPKMDTPS($id);
+    }
+
+    public function showPublikasiIlmiahDTPS()
+    {
+        return $this->publikasiIlmiahDTPSService->showPublikasiIlmiahDTPS();
+    }
+
+    public function createPublikasiIlmiahDTPS()
+    {
+        return $this->publikasiIlmiahDTPSService->createPublikasiIlmiahDTPS();
+    }
+
+    public function storePublikasiIlmiahDTPS(Request $request)
+    {
+        return $this->publikasiIlmiahDTPSService->storePublikasiIlmiahDTPS($request->all());
+    }
+
+    public function editPublikasiIlmiahDTPS($id)
+    {
+        return $this->publikasiIlmiahDTPSService->editPublikasiIlmiahDTPS($id);
+    }
+
+    public function updatePublikasiIlmiahDTPS(Request $request, $id)
+    {
+        return $this->publikasiIlmiahDTPSService->updatePublikasiIlmiahDTPS($request->all(), $id);
+    }
+
+    public function deletePublikasiIlmiahDTPS($id)
+    {
+        return $this->publikasiIlmiahDTPSService->deletePublikasiIlmiahDTPS($id);
+    }
+
+    public function approvePublikasiIlmiahDTPS($id)
+    {
+        return $this->publikasiIlmiahDTPSService->approvePublikasiIlmiahDTPS($id);
+    }
+
+    public function rejectPublikasiIlmiahDTPS($id)
+    {
+        return $this->publikasiIlmiahDTPSService->rejectPublikasiIlmiahDTPS($id);
     }
 }

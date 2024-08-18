@@ -1,18 +1,18 @@
 @extends("adminlte::page")
 
-@section("title", "Create PKM DTPS")
+@section("title", "Create Publikasi Ilmiah DTPS")
 
 @section("content_header")
-    <h1>Create PKM DTPS</h1>
+    <h1>Create Publikasi Ilmiah DTPS</h1>
 @stop
 
 @section("content")
     <x-adminlte-card>
-        <form action="{{ route('kepala-prodi.sumber-daya-manusia.pkm-dtps.store') }}" method="POST">
+        <form action="{{ route('kepala-prodi.sumber-daya-manusia.publikasi-ilmiah-dtps.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="sumber_pembiayaan">Sumber Pembiayaan</label>
-                <input type="text" class="form-control" id="sumber_pembiayaan" name="sumber_pembiayaan" required>
+                <label for="jenis_publikasi">Jenis Publikasi</label>
+                <input type="text" class="form-control" id="jenis_publikasi" name="jenis_publikasi" required>
             </div>
             <div class="form-group">
                 <label for="ts">TS</label>
@@ -30,4 +30,3 @@
         </form>
     </x-adminlte-card>
 @endsection
-w
