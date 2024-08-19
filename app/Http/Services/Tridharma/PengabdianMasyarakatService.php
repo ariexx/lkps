@@ -31,7 +31,7 @@ class PengabdianMasyarakatService
             'manfaat' => 'required',
             'waktu' => 'required',
             'tahun_berakhir_kerjasama' => 'required',
-            'bukti' => 'sometimes|image'
+            'bukti' => 'sometimes'
         ]);
 
         if ($request->hasFile('bukti')) {
@@ -133,7 +133,7 @@ class PengabdianMasyarakatService
             'manfaat' => 'required',
             'waktu' => 'required',
             'tahun_berakhir_kerjasama' => 'required',
-            'bukti' => 'sometimes|image'
+            'bukti' => 'sometimes'
         ]);
 
         if ($request->hasFile('bukti')) {

@@ -92,7 +92,7 @@ class RekognisiDosenService
             'nama' => 'required',
             'bidang' => 'required',
             'rekognisi' => 'required',
-            'bukti' => 'sometimes|image',
+            'bukti' => 'sometimes',
             'internasional' => 'required',
             'tahun' => 'required'
         ]);

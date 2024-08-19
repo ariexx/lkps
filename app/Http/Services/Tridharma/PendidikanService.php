@@ -34,7 +34,7 @@ class PendidikanService
             'manfaat_ps_diakreditasi' => 'required',
             'waktu_dan_durasi' => 'required',
             'tahun_berakhir_kerjasama' => 'required',
-            'bukti_kerjasama' => 'sometimes|image'
+            'bukti_kerjasama' => 'sometimes'
         ]);
 
         if ($request->hasFile('bukti_kerjasama')) {
@@ -113,7 +113,7 @@ class PendidikanService
             'manfaat_ps_diakreditasi' => 'required',
             'waktu_dan_durasi' => 'required',
             'tahun_berakhir_kerjasama' => 'required',
-            'bukti_kerjasama' => 'sometimes|image'
+            'bukti_kerjasama' => 'sometimes'
         ]);
 
         if ($request->hasFile('bukti_kerjasama')) {
