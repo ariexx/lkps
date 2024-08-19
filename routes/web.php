@@ -344,6 +344,19 @@ Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
             Route::delete('/penggunaan-dana/delete/{id}', [\App\Http\Controllers\PenggunaanDanaController::class, 'deletePenggunaanDana'])->name('penggunaan-dana.delete');
             Route::put('/penggunaan-dana/approve/{id}', [\App\Http\Controllers\PenggunaanDanaController::class, 'approvePenggunaanDana'])->name('penggunaan-dana.approve');
             Route::put('/penggunaan-dana/reject/{id}', [\App\Http\Controllers\PenggunaanDanaController::class, 'rejectPenggunaanDana'])->name('penggunaan-dana.reject');
+
+            // Pendidikan
+            Route::prefix('pendidikan')->group(function () {
+                //kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran
+                Route::get('/kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran', [\App\Http\Controllers\PendidikanController::class, 'showKurikulumCapaianPembelajaranDanRencanaPembelajaran'])->name('kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran');
+                Route::post('/kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran/store', [\App\Http\Controllers\PendidikanController::class, 'storeKurikulumCapaianPembelajaranDanRencanaPembelajaran'])->name('kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran.store');
+                Route::get('/kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran/create', [\App\Http\Controllers\PendidikanController::class, 'createKurikulumCapaianPembelajaranDanRencanaPembelajaran'])->name('kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran.create');
+                Route::get('/kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran/edit/{id}', [\App\Http\Controllers\PendidikanController::class, 'editKurikulumCapaianPembelajaranDanRencanaPembelajaran'])->name('kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran.edit');
+                Route::put('/kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran/update/{id}', [\App\Http\Controllers\PendidikanController::class, 'updateKurikulumCapaianPembelajaranDanRencanaPembelajaran'])->name('kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran.update');
+                Route::delete('/kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran/delete/{id}', [\App\Http\Controllers\PendidikanController::class, 'deleteKurikulumCapaianPembelajaranDanRencanaPembelajaran'])->name('kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran.delete');
+                Route::put('/kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran/approve/{id}', [\App\Http\Controllers\PendidikanController::class, 'approveKurikulumCapaianPembelajaranDanRencanaPembelajaran'])->name('kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran.approve');
+                Route::put('/kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran/reject/{id}', [\App\Http\Controllers\PendidikanController::class, 'rejectKurikulumCapaianPembelajaranDanRencanaPembelajaran'])->name('kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran.reject');
+            });
         });
     });
 });

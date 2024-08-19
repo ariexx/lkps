@@ -459,6 +459,40 @@ return [
             ],
         ],
         [
+            'text' => 'Pendidikan',
+            'icon' => 'fas fa-fw fa-graduation-cap',
+            'role' => [\App\Models\User::prodi, \App\Models\User::adminprodi],
+            'submenu' => [
+                [
+                    'text' => 'Kurikulum, Capaian Pembelajaran, dan Rencana Pembelajaran',
+                    'url' => 'kepala-prodi/pendidikan/kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran',
+                ],
+                [
+                    "text" => "Integrasi Kegiatan Penelitian/PKM dalam Pembelajaran",
+                    "url" => "kepala-prodi/pendidikan/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran",
+                ],
+                [
+                    "text" => "Kepuasan Mahasiswa",
+                    "url" => "kepala-prodi/pendidikan/kepuasan-mahasiswa",
+                ]
+            ],
+        ],
+        [
+            'text' => 'Pengabdian Masayarakat',
+            'icon' => 'fas fa-fw fa-handshake',
+            'role' => [\App\Models\User::prodi, \App\Models\User::adminprodi],
+            'submenu' => [
+                [
+                    'text' => 'Penelitian DTPS Melibatkan Mahasiswa',
+                    'url' => 'kepala-prodi/pengabdian-masyarakat/penelitian-dtps-melibatkan-mahasiswa',
+                ],
+                [
+                    "text" => "PKM DTPS Yang Melibatkan Mahasiswa",
+                    "url" => "kepala-prodi/pengabdian-masyarakat/pkm-dtps-yang-melibatkan-mahasiswa",
+                ]
+            ],
+        ],
+        [
             'text' => 'Logout',
             'url' => 'logout',
             'icon' => 'fas fa-fw fa-sign-out-alt',
