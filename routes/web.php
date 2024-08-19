@@ -356,6 +356,16 @@ Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
                 Route::delete('/kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran/delete/{id}', [\App\Http\Controllers\PendidikanController::class, 'deleteKurikulumCapaianPembelajaranDanRencanaPembelajaran'])->name('kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran.delete');
                 Route::put('/kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran/approve/{id}', [\App\Http\Controllers\PendidikanController::class, 'approveKurikulumCapaianPembelajaranDanRencanaPembelajaran'])->name('kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran.approve');
                 Route::put('/kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran/reject/{id}', [\App\Http\Controllers\PendidikanController::class, 'rejectKurikulumCapaianPembelajaranDanRencanaPembelajaran'])->name('kurikulum-capaian-pembelajaran-dan-rencana-pembelajaran.reject');
+
+                //integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran
+                Route::get('/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran', [\App\Http\Controllers\PendidikanController::class, 'showIntegrasiKegiatanPenelitianPKMDalamPembelajaran'])->name('integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran');
+                Route::post('/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran/store', [\App\Http\Controllers\PendidikanController::class, 'storeIntegrasiKegiatanPenelitianPKMDalamPembelajaran'])->name('integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.store');
+                Route::get('/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran/create', [\App\Http\Controllers\PendidikanController::class, 'createIntegrasiKegiatanPenelitianPKMDalamPembelajaran'])->name('integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.create');
+                Route::get('/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran/edit/{id}', [\App\Http\Controllers\PendidikanController::class, 'editIntegrasiKegiatanPenelitianPKMDalamPembelajaran'])->name('integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.edit');
+                Route::put('/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran/update/{id}', [\App\Http\Controllers\PendidikanController::class, 'updateIntegrasiKegiatanPenelitianPKMDalamPembelajaran'])->name('integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.update');
+                Route::delete('/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran/delete/{id}', [\App\Http\Controllers\PendidikanController::class, 'deleteIntegrasiKegiatanPenelitianPKMDalamPembelajaran'])->name('integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.delete');
+                Route::put('/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran/approve/{id}', [\App\Http\Controllers\PendidikanController::class, 'approveIntegrasiKegiatanPenelitianPKMDalamPembelajaran'])->name('integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.approve');
+                Route::put('/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran/reject/{id}', [\App\Http\Controllers\PendidikanController::class, 'rejectIntegrasiKegiatanPenelitianPKMDalamPembelajaran'])->name('integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.reject');
             });
         });
     });

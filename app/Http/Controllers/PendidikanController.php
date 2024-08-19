@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\CapaianPembelajaranService;
+use App\Http\Services\IntegrasiKegiatanPenelitianService;
 use App\Models\CapaianPembelajaran;
 use Illuminate\Http\Request;
 
@@ -10,6 +11,7 @@ class PendidikanController extends Controller
 {
     public function __construct(
         public CapaianPembelajaranService $capaianPembelajaran,
+        public IntegrasiKegiatanPenelitianService $integrasiKegiatanPenelitian,
     )
     {
     }
@@ -53,4 +55,45 @@ class PendidikanController extends Controller
     {
         return $this->capaianPembelajaran->rejectKurikulumCapaianPembelajaranDanRencanaPembelajaran($id);
     }
+
+    public function showIntegrasiKegiatanPenelitianPKMDalamPembelajaran()
+    {
+        return $this->integrasiKegiatanPenelitian->showIntegrasiKegiatanPenelitianPKMDalamPembelajaran();
+    }
+
+    public function createIntegrasiKegiatanPenelitianPKMDalamPembelajaran()
+    {
+        return $this->integrasiKegiatanPenelitian->createIntegrasiKegiatanPenelitianPKMDalamPembelajaran();
+    }
+
+    public function storeIntegrasiKegiatanPenelitianPKMDalamPembelajaran(Request $request)
+    {
+        return $this->integrasiKegiatanPenelitian->storeIntegrasiKegiatanPenelitianPKMDalamPembelajaran($request);
+    }
+
+    public function editIntegrasiKegiatanPenelitianPKMDalamPembelajaran($id)
+    {
+        return $this->integrasiKegiatanPenelitian->editIntegrasiKegiatanPenelitianPKMDalamPembelajaran($id);
+    }
+
+    public function updateIntegrasiKegiatanPenelitianPKMDalamPembelajaran(Request $request, $id)
+    {
+        return $this->integrasiKegiatanPenelitian->updateIntegrasiKegiatanPenelitianPKMDalamPembelajaran($request, $id);
+    }
+
+    public function deleteIntegrasiKegiatanPenelitianPKMDalamPembelajaran($id)
+    {
+        return $this->integrasiKegiatanPenelitian->deleteIntegrasiKegiatanPenelitianPKMDalamPembelajaran($id);
+    }
+
+    public function approveIntegrasiKegiatanPenelitianPKMDalamPembelajaran($id)
+    {
+        return $this->integrasiKegiatanPenelitian->approveIntegrasiKegiatanPenelitianPKMDalamPembelajaran($id);
+    }
+
+    public function rejectIntegrasiKegiatanPenelitianPKMDalamPembelajaran($id)
+    {
+        return $this->integrasiKegiatanPenelitian->rejectIntegrasiKegiatanPenelitianPKMDalamPembelajaran($id);
+    }
+
 }
