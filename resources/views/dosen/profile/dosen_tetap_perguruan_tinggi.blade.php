@@ -67,12 +67,12 @@
                     <td>{{ $dosen->pendidikan_magister }}</td>
                     <td>{{ $dosen->pendidikan_doktor }}</td>
                     <td>{{ $dosen->bidang_keahlian }}</td>
-                    <td>{{ $dosen->kesesuaian }}</td>
+                    <td>{{ is_approved_bool($dosen->kesesuaian) }}</td>
                     <td>{{ $dosen->jabatan_akademik }}</td>
                     <td>{{ $dosen->sertifikat_pendidik }}</td>
                     <td>{{ $dosen->sertifikat_kompetensi }}</td>
                     <td>{{ $dosen->mata_kuliah_ps_diakreditasi }}</td>
-                    <td>{{ $dosen->kesesuaian_bidang_keahlian }}</td>
+                    <td>{{ is_approved_bool($dosen->kesesuaian_bidang_keahlian) }}</td>
                     <td>{{ $dosen->mata_kuliah_ps_lain }}</td>
                     <td>{!! is_approved($dosen->is_approve) !!}</td>
                     <td>
