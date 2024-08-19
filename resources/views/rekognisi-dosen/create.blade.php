@@ -27,7 +27,7 @@
             </div>
             <div class="form-group">
                 <label for="bukti">Bukti</label>
-                <input type="file" class="form-control" id="bukti" name="bukti" accept="image/*" required>
+                <input type="file" class="form-control" id="bukti" name="bukti" required>
             </div>
             <div class="form-group">
                 <label for="wilayah">Wilayah</label>
