@@ -7,7 +7,7 @@
 @stop
 
 @section("content")
-    <x-adminlte-card title="Dosen Industri Praktisi">
+    <x-adminlte-card title="Rekognisi Dosen">
         <x-create-button route="{{ route('kepala-prodi.sumber-daya-manusia.rekognisi-dosen.create') }}">
             Tambah
         </x-create-button>
