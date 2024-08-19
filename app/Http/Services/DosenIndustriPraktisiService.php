@@ -87,7 +87,7 @@ class DosenIndustriPraktisiService
     {
         try {
             $this->dosenIndustriPraktisi->find($id)->update($all);
-            $this->log->log(["edit", "Berhasil mengubah data dosen industri praktisi - nama : $all[nama]"]);
+            $this->log->log(["ubah", "Berhasil mengubah data dosen industri praktisi - nama : $all[nama]"]);
             return redirect()->route('kepala-prodi.sumber-daya-manusia.dosen-industri-praktisi')->with('success', 'Berhasil mengubah data dosen industri praktisi');
         }catch (\Exception $e) {
             return redirect()->back()->with('error', 'Gagal mengubah data dosen industri praktisi');

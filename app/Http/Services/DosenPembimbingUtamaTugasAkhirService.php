@@ -88,7 +88,7 @@ class DosenPembimbingUtamaTugasAkhirService
         \DB::beginTransaction();
         try {
             $this->dosenPembimbing->find($id)->update($all);
-            $this->logActivityService->log(["edit", "Mengedit data dosen pembimbing utama tugas akhir"]);
+            $this->logActivityService->log(["ubah", "Mengedit data dosen pembimbing utama tugas akhir"]);
             \DB::commit();
             return redirect()->route("kepala-prodi.sumber-daya-manusia.dosen-pembimbing-utama-tugas-akhir")->with("success", "Data berhasil diubah");
         } catch (\Exception $e) {

@@ -11,6 +11,7 @@ use App\Http\Services\HKIBukuService;
 use App\Http\Services\HKIHakCiptaService;
 use App\Http\Services\HKIPatenService;
 use App\Http\Services\HKITeknologiService;
+use App\Http\Services\KaryaIlmiahDTPSDisitasiService;
 use App\Http\Services\PagelaranIlmiahService;
 use App\Http\Services\PenelitianDTPSService;
 use App\Http\Services\PKMDTPSService;
@@ -38,7 +39,8 @@ class SumberDayaManusiaController extends Controller
         public HKIHakCiptaService $HKIHakCiptaService,
         public HKITeknologiService $HKITeknologiService,
         public HKIBukuService $HKIBukuService,
-        public PagelaranIlmiahService $pagelaranIlmiahService
+        public PagelaranIlmiahService $pagelaranIlmiahService,
+        public KaryaIlmiahDTPSDisitasiService $karyaIlmiahDTPSDisitasiService
     )
     {
     }
@@ -601,6 +603,46 @@ class SumberDayaManusiaController extends Controller
     public function rejectPagelaranIlmiahDTPS($id)
     {
         return $this->pagelaranIlmiahService->rejectPagelaranIlmiahDTPS($id);
+    }
+
+    public function showKaryaIlmiahDTPSDisitasi()
+    {
+        return $this->karyaIlmiahDTPSDisitasiService->showKaryaIlmiahDTPSDisitasi();
+    }
+
+    public function createKaryaIlmiahDTPSDisitasi()
+    {
+        return $this->karyaIlmiahDTPSDisitasiService->createKaryaIlmiahDTPSDisitasi();
+    }
+
+    public function storeKaryaIlmiahDTPSDisitasi(Request $request)
+    {
+        return $this->karyaIlmiahDTPSDisitasiService->storeKaryaIlmiahDTPSDisitasi($request);
+    }
+
+    public function editKaryaIlmiahDTPSDisitasi($id)
+    {
+        return $this->karyaIlmiahDTPSDisitasiService->editKaryaIlmiahDTPSDisitasi($id);
+    }
+
+    public function updateKaryaIlmiahDTPSDisitasi(Request $request, $id)
+    {
+        return $this->karyaIlmiahDTPSDisitasiService->updateKaryaIlmiahDTPSDisitasi($request, $id);
+    }
+
+    public function deleteKaryaIlmiahDTPSDisitasi($id)
+    {
+        return $this->karyaIlmiahDTPSDisitasiService->deleteKaryaIlmiahDTPSDisitasi($id);
+    }
+
+    public function approveKaryaIlmiahDTPSDisitasi($id)
+    {
+        return $this->karyaIlmiahDTPSDisitasiService->approveKaryaIlmiahDTPSDisitasi($id);
+    }
+
+    public function rejectKaryaIlmiahDTPSDisitasi($id)
+    {
+        return $this->karyaIlmiahDTPSDisitasiService->rejectKaryaIlmiahDTPSDisitasi($id);
     }
 
 }

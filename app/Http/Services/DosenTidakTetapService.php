@@ -93,7 +93,7 @@ class DosenTidakTetapService
         \DB::beginTransaction();
         try {
             $this->dosenTidakTetap->findOrFail($id)->update($all);
-            $this->logActivityService->log(["edit", "Mengedit data dosen tidak tetap : $all[nama]"]);
+            $this->logActivityService->log(["ubah", "Mengedit data dosen tidak tetap : $all[nama]"]);
             \DB::commit();
             return redirect()->route('kepala-prodi.sumber-daya-manusia.dosen-tidak-tetap')->with('success', 'Data berhasil diubah');
         }catch (\Exception $e) {

@@ -313,6 +313,26 @@ Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
                 Route::delete('/luaran-penelitian-pkm-buku/delete/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'deleteLuaranPenelitianDTPSBagian4'])->name('luaran-penelitian-pkm-buku.delete');
                 Route::put('/luaran-penelitian-pkm-buku/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approveLuaranPenelitianDTPSBagian4'])->name('luaran-penelitian-pkm-buku.approve');
                 Route::put('/luaran-penelitian-pkm-buku/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectLuaranPenelitianDTPSBagian4'])->name('luaran-penelitian-pkm-buku.reject');
+
+                // Karya Ilmiah DTPS Disitasi
+                Route::get('/karya-ilmiah-dtps-disitasi', [\App\Http\Controllers\SumberDayaManusiaController::class, 'showKaryaIlmiahDTPSDisitasi'])->name('karya-ilmiah-dtps-disitasi');
+                Route::post('/karya-ilmiah-dtps-disitasi/store', [\App\Http\Controllers\SumberDayaManusiaController::class, 'storeKaryaIlmiahDTPSDisitasi'])->name('karya-ilmiah-dtps-disitasi.store');
+                Route::get('/karya-ilmiah-dtps-disitasi/create', [\App\Http\Controllers\SumberDayaManusiaController::class, 'createKaryaIlmiahDTPSDisitasi'])->name('karya-ilmiah-dtps-disitasi.create');
+                Route::get('/karya-ilmiah-dtps-disitasi/edit/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'editKaryaIlmiahDTPSDisitasi'])->name('karya-ilmiah-dtps-disitasi.edit');
+                Route::put('/karya-ilmiah-dtps-disitasi/update/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'updateKaryaIlmiahDTPSDisitasi'])->name('karya-ilmiah-dtps-disitasi.update');
+                Route::delete('/karya-ilmiah-dtps-disitasi/delete/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'deleteKaryaIlmiahDTPSDisitasi'])->name('karya-ilmiah-dtps-disitasi.delete');
+                Route::put('/karya-ilmiah-dtps-disitasi/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approveKaryaIlmiahDTPSDisitasi'])->name('karya-ilmiah-dtps-disitasi.approve');
+                Route::put('/karya-ilmiah-dtps-disitasi/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectKaryaIlmiahDTPSDisitasi'])->name('karya-ilmiah-dtps-disitasi.reject');
+
+                // Produk Jasa Masyarakat
+                Route::get('/produk-jasa-masyarakat', [\App\Http\Controllers\SumberDayaManusiaController::class, 'showProdukJasaMasyarakat'])->name('produk-jasa-masyarakat');
+                Route::post('/produk-jasa-masyarakat/store', [\App\Http\Controllers\SumberDayaManusiaController::class, 'storeProdukJasaMasyarakat'])->name('produk-jasa-masyarakat.store');
+                Route::get('/produk-jasa-masyarakat/create', [\App\Http\Controllers\SumberDayaManusiaController::class, 'createProdukJasaMasyarakat'])->name('produk-jasa-masyarakat.create');
+                Route::get('/produk-jasa-masyarakat/edit/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'editProdukJasaMasyarakat'])->name('produk-jasa-masyarakat.edit');
+                Route::put('/produk-jasa-masyarakat/update/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'updateProdukJasaMasyarakat'])->name('produk-jasa-masyarakat.update');
+                Route::delete('/produk-jasa-masyarakat/delete/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'deleteProdukJasaMasyarakat'])->name('produk-jasa-masyarakat.delete');
+                Route::put('/produk-jasa-masyarakat/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approveProdukJasaMasyarakat'])->name('produk-jasa-masyarakat.approve');
+                Route::put('/produk-jasa-masyarakat/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectProdukJasaMasyarakat'])->name('produk-jasa-masyarakat.reject');
             });
         });
     });
