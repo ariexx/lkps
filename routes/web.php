@@ -366,6 +366,16 @@ Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
                 Route::delete('/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran/delete/{id}', [\App\Http\Controllers\PendidikanController::class, 'deleteIntegrasiKegiatanPenelitianPKMDalamPembelajaran'])->name('integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.delete');
                 Route::put('/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran/approve/{id}', [\App\Http\Controllers\PendidikanController::class, 'approveIntegrasiKegiatanPenelitianPKMDalamPembelajaran'])->name('integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.approve');
                 Route::put('/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran/reject/{id}', [\App\Http\Controllers\PendidikanController::class, 'rejectIntegrasiKegiatanPenelitianPKMDalamPembelajaran'])->name('integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.reject');
+
+                //kepuasan-mahasiswa
+                Route::get('/kepuasan-mahasiswa', [\App\Http\Controllers\PendidikanController::class, 'showKepuasanMahasiswa'])->name('kepuasan-mahasiswa');
+                Route::post('/kepuasan-mahasiswa/store', [\App\Http\Controllers\PendidikanController::class, 'storeKepuasanMahasiswa'])->name('kepuasan-mahasiswa.store');
+                Route::get('/kepuasan-mahasiswa/create', [\App\Http\Controllers\PendidikanController::class, 'createKepuasanMahasiswa'])->name('kepuasan-mahasiswa.create');
+                Route::get('/kepuasan-mahasiswa/edit/{id}', [\App\Http\Controllers\PendidikanController::class, 'editKepuasanMahasiswa'])->name('kepuasan-mahasiswa.edit');
+                Route::put('/kepuasan-mahasiswa/update/{id}', [\App\Http\Controllers\PendidikanController::class, 'updateKepuasanMahasiswa'])->name('kepuasan-mahasiswa.update');
+                Route::delete('/kepuasan-mahasiswa/delete/{id}', [\App\Http\Controllers\PendidikanController::class, 'deleteKepuasanMahasiswa'])->name('kepuasan-mahasiswa.delete');
+                Route::put('/kepuasan-mahasiswa/approve/{id}', [\App\Http\Controllers\PendidikanController::class, 'approveKepuasanMahasiswa'])->name('kepuasan-mahasiswa.approve');
+                Route::put('/kepuasan-mahasiswa/reject/{id}', [\App\Http\Controllers\PendidikanController::class, 'rejectKepuasanMahasiswa'])->name('kepuasan-mahasiswa.reject');
             });
         });
     });

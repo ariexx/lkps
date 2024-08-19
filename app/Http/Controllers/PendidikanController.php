@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Services\CapaianPembelajaranService;
 use App\Http\Services\IntegrasiKegiatanPenelitianService;
+use App\Http\Services\KepuasanMahasiswaService;
 use App\Models\CapaianPembelajaran;
+use App\Models\KepuasanMahasiswa;
 use Illuminate\Http\Request;
 
 class PendidikanController extends Controller
@@ -12,6 +14,7 @@ class PendidikanController extends Controller
     public function __construct(
         public CapaianPembelajaranService $capaianPembelajaran,
         public IntegrasiKegiatanPenelitianService $integrasiKegiatanPenelitian,
+        public KepuasanMahasiswaService $kepuasanMahasiswa
     )
     {
     }
@@ -94,6 +97,46 @@ class PendidikanController extends Controller
     public function rejectIntegrasiKegiatanPenelitianPKMDalamPembelajaran($id)
     {
         return $this->integrasiKegiatanPenelitian->rejectIntegrasiKegiatanPenelitianPKMDalamPembelajaran($id);
+    }
+
+    public function showKepuasanMahasiswa()
+    {
+        return $this->kepuasanMahasiswa->showKepuasanMahasiswa();
+    }
+
+    public function createKepuasanMahasiswa()
+    {
+        return $this->kepuasanMahasiswa->createKepuasanMahasiswa();
+    }
+
+    public function storeKepuasanMahasiswa(Request $request)
+    {
+        return $this->kepuasanMahasiswa->storeKepuasanMahasiswa($request);
+    }
+
+    public function editKepuasanMahasiswa($id)
+    {
+        return $this->kepuasanMahasiswa->editKepuasanMahasiswa($id);
+    }
+
+    public function updateKepuasanMahasiswa(Request $request, $id)
+    {
+        return $this->kepuasanMahasiswa->updateKepuasanMahasiswa($request, $id);
+    }
+
+    public function deleteKepuasanMahasiswa($id)
+    {
+        return $this->kepuasanMahasiswa->deleteKepuasanMahasiswa($id);
+    }
+
+    public function approveKepuasanMahasiswa($id)
+    {
+        return $this->kepuasanMahasiswa->approveKepuasanMahasiswa($id);
+    }
+
+    public function rejectKepuasanMahasiswa($id)
+    {
+        return $this->kepuasanMahasiswa->rejectKepuasanMahasiswa($id);
     }
 
 }
