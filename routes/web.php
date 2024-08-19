@@ -334,6 +334,16 @@ Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
                 Route::put('/produk-jasa-masyarakat/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approveProdukJasaMasyarakat'])->name('produk-jasa-masyarakat.approve');
                 Route::put('/produk-jasa-masyarakat/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectProdukJasaMasyarakat'])->name('produk-jasa-masyarakat.reject');
             });
+
+            // Penggunaan Dana
+            Route::get('/penggunaan-dana', [\App\Http\Controllers\PenggunaanDanaController::class, 'showPenggunaanDana'])->name('penggunaan-dana');
+            Route::post('/penggunaan-dana/store', [\App\Http\Controllers\PenggunaanDanaController::class, 'storePenggunaanDana'])->name('penggunaan-dana.store');
+            Route::get('/penggunaan-dana/create', [\App\Http\Controllers\PenggunaanDanaController::class, 'createPenggunaanDana'])->name('penggunaan-dana.create');
+            Route::get('/penggunaan-dana/edit/{id}', [\App\Http\Controllers\PenggunaanDanaController::class, 'editPenggunaanDana'])->name('penggunaan-dana.edit');
+            Route::put('/penggunaan-dana/update/{id}', [\App\Http\Controllers\PenggunaanDanaController::class, 'updatePenggunaanDana'])->name('penggunaan-dana.update');
+            Route::delete('/penggunaan-dana/delete/{id}', [\App\Http\Controllers\PenggunaanDanaController::class, 'deletePenggunaanDana'])->name('penggunaan-dana.delete');
+            Route::put('/penggunaan-dana/approve/{id}', [\App\Http\Controllers\PenggunaanDanaController::class, 'approvePenggunaanDana'])->name('penggunaan-dana.approve');
+            Route::put('/penggunaan-dana/reject/{id}', [\App\Http\Controllers\PenggunaanDanaController::class, 'rejectPenggunaanDana'])->name('penggunaan-dana.reject');
         });
     });
 });

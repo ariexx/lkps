@@ -448,6 +448,17 @@ return [
             ],
         ],
         [
+            'text' => 'Keuangan',
+            'icon' => 'fas fa-fw fa-money-bill-wave',
+            'role' => [\App\Models\User::prodi, \App\Models\User::adminprodi],
+            'submenu' => [
+                [
+                    'text' => 'Pengunaan Dana',
+                    'url' => 'kepala-prodi/penggunaan-dana',
+                ],
+            ],
+        ],
+        [
             'text' => 'Logout',
             'url' => 'logout',
             'icon' => 'fas fa-fw fa-sign-out-alt',
