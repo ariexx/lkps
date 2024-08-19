@@ -377,6 +377,20 @@ Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
                 Route::put('/kepuasan-mahasiswa/approve/{id}', [\App\Http\Controllers\PendidikanController::class, 'approveKepuasanMahasiswa'])->name('kepuasan-mahasiswa.approve');
                 Route::put('/kepuasan-mahasiswa/reject/{id}', [\App\Http\Controllers\PendidikanController::class, 'rejectKepuasanMahasiswa'])->name('kepuasan-mahasiswa.reject');
             });
+
+            //Pengabdian Masayarakat
+            Route::prefix('pengabdian-masyarakat')->group(function (){
+                //penelitian-dtps-melibatkan-mahasiswa
+                Route::get('/penelitian-dtps-melibatkan-mahasiswa', [\App\Http\Controllers\PengabdianMasyarakatController::class, 'showPenelitianDTPSMelibatkanMahasiswa'])->name('penelitian-dtps-melibatkan-mahasiswa');
+                Route::post('/penelitian-dtps-melibatkan-mahasiswa/store', [\App\Http\Controllers\PengabdianMasyarakatController::class, 'storePenelitianDTPSMelibatkanMahasiswa'])->name('penelitian-dtps-melibatkan-mahasiswa.store');
+                Route::get('/penelitian-dtps-melibatkan-mahasiswa/create', [\App\Http\Controllers\PengabdianMasyarakatController::class, 'createPenelitianDTPSMelibatkanMahasiswa'])->name('penelitian-dtps-melibatkan-mahasiswa.create');
+                Route::get('/penelitian-dtps-melibatkan-mahasiswa/edit/{id}', [\App\Http\Controllers\PengabdianMasyarakatController::class, 'editPenelitianDTPSMelibatkanMahasiswa'])->name('penelitian-dtps-melibatkan-mahasiswa.edit');
+                Route::put('/penelitian-dtps-melibatkan-mahasiswa/update/{id}', [\App\Http\Controllers\PengabdianMasyarakatController::class, 'updatePenelitianDTPSMelibatkanMahasiswa'])->name('penelitian-dtps-melibatkan-mahasiswa.update');
+                Route::delete('/penelitian-dtps-melibatkan-mahasiswa/delete/{id}', [\App\Http\Controllers\PengabdianMasyarakatController::class, 'deletePenelitianDTPSMelibatkanMahasiswa'])->name('penelitian-dtps-melibatkan-mahasiswa.delete');
+                Route::put('/penelitian-dtps-melibatkan-mahasiswa/approve/{id}', [\App\Http\Controllers\PengabdianMasyarakatController::class, 'approvePenelitianDTPSMelibatkanMahasiswa'])->name('penelitian-dtps-melibatkan-mahasiswa.approve');
+                Route::put('/penelitian-dtps-melibatkan-mahasiswa/reject/{id}', [\App\Http\Controllers\PengabdianMasyarakatController::class, 'rejectPenelitianDTPSMelibatkanMahasiswa'])->name('penelitian-dtps-melibatkan-mahasiswa.reject');
+
+            });
         });
     });
 });
