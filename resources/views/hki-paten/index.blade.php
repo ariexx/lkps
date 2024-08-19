@@ -11,6 +11,10 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
+    <x-adminlte-alert theme="info" title="Informasi">
+        <strong>HKI: a) Paten, b) Paten Sederhana</strong>
+    </x-adminlte-alert>
+
     <x-adminlte-card title="HKI Paten / Paten Sederhana">
         <x-create-button route="{{ route('kepala-prodi.sumber-daya-manusia.luaran-penelitian-pkm-hki-paten.create') }}">
             Tambah HKI Paten / Paten Sederhana
