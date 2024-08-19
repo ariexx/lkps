@@ -96,4 +96,11 @@ class PublikasiIlmiahDTPSService
         $this->logActivityService->log(["tolak", "Berhasil menolak data publikasi ilmiah dtps"]);
         return redirect()->route('kepala-prodi.sumber-daya-manusia.publikasi-ilmiah-dtps')->with('success', 'Data berhasil ditolak');
     }
+
+    public function deletePublikasiIlmiahDTPS($id)
+    {
+        $this->publikasiIlmiahDTPS->find($id)->delete();
+        $this->logActivityService->log(["hapus", "Berhasil menghapus data publikasi ilmiah dtps"]);
+        return redirect()->route('kepala-prodi.sumber-daya-manusia.publikasi-ilmiah-dtps')->with('success', 'Data berhasil dihapus');
+    }
 }

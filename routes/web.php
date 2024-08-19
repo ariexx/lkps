@@ -263,6 +263,27 @@ Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
                 Route::delete('/publikasi-ilmiah-dtps/delete/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'deletePublikasiIlmiahDTPS'])->name('publikasi-ilmiah-dtps.delete');
                 Route::put('/publikasi-ilmiah-dtps/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approvePublikasiIlmiahDTPS'])->name('publikasi-ilmiah-dtps.approve');
                 Route::put('/publikasi-ilmiah-dtps/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectPublikasiIlmiahDTPS'])->name('publikasi-ilmiah-dtps.reject');
+
+                // Pagelaran Ilmiah DTPS
+                Route::get('/pagelaran-ilmiah-dtps', [\App\Http\Controllers\SumberDayaManusiaController::class, 'showPagelaranIlmiahDTPS'])->name('pagelaran-ilmiah-dtps');
+                Route::post('/pagelaran-ilmiah-dtps/store', [\App\Http\Controllers\SumberDayaManusiaController::class, 'storePagelaranIlmiahDTPS'])->name('pagelaran-ilmiah-dtps.store');
+                Route::get('/pagelaran-ilmiah-dtps/create', [\App\Http\Controllers\SumberDayaManusiaController::class, 'createPagelaranIlmiahDTPS'])->name('pagelaran-ilmiah-dtps.create');
+                Route::get('/pagelaran-ilmiah-dtps/edit/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'editPagelaranIlmiahDTPS'])->name('pagelaran-ilmiah-dtps.edit');
+                Route::put('/pagelaran-ilmiah-dtps/update/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'updatePagelaranIlmiahDTPS'])->name('pagelaran-ilmiah-dtps.update');
+                Route::delete('/pagelaran-ilmiah-dtps/delete/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'deletePagelaranIlmiahDTPS'])->name('pagelaran-ilmiah-dtps.delete');
+                Route::put('/pagelaran-ilmiah-dtps/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approvePagelaranIlmiahDTPS'])->name('pagelaran-ilmiah-dtps.approve');
+                Route::put('/pagelaran-ilmiah-dtps/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectPagelaranIlmiahDTPS'])->name('pagelaran-ilmiah-dtps.reject');
+
+                // Luaran Penelitian DTPS Bagian 1 - HKI Paten
+                Route::get('/luaran-penelitian-pkm-hki-paten', [\App\Http\Controllers\SumberDayaManusiaController::class, 'showLuaranPenelitianDTPSBagian1'])->name('luaran-penelitian-pkm-hki-paten');
+                Route::post('/luaran-penelitian-pkm-hki-paten/store', [\App\Http\Controllers\SumberDayaManusiaController::class, 'storeLuaranPenelitianDTPSBagian1'])->name('luaran-penelitian-pkm-hki-paten.store');
+                Route::get('/luaran-penelitian-pkm-hki-paten/create', [\App\Http\Controllers\SumberDayaManusiaController::class, 'createLuaranPenelitianDTPSBagian1'])->name('luaran-penelitian-pkm-hki-paten.create');
+                Route::get('/luaran-penelitian-pkm-hki-paten/edit/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'editLuaranPenelitianDTPSBagian1'])->name('luaran-penelitian-pkm-hki-paten.edit');
+                Route::put('/luaran-penelitian-pkm-hki-paten/update/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'updateLuaranPenelitianDTPSBagian1'])->name('luaran-penelitian-pkm-hki-paten.update');
+                Route::delete('/luaran-penelitian-pkm-hki-paten/delete/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'deleteLuaranPenelitianDTPSBagian1'])->name('luaran-penelitian-pkm-hki-paten.delete');
+                Route::put('/luaran-penelitian-pkm-hki-paten/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approveLuaranPenelitianDTPSBagian1'])->name('luaran-penelitian-pkm-hki-paten.approve');
+                Route::put('/luaran-penelitian-pkm-hki-paten/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectLuaranPenelitianDTPSBagian1'])->name('luaran-penelitian-pkm-hki-paten.reject');
+
             });
         });
     });

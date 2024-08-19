@@ -7,11 +7,13 @@ use App\Http\Services\DosenPembimbingUtamaTugasAkhirService;
 use App\Http\Services\DosenTetapPerguruanTinggiService;
 use App\Http\Services\DosenTidakTetapService;
 use App\Http\Services\EWMPService;
+use App\Http\Services\HKIPatenService;
 use App\Http\Services\PenelitianDTPSService;
 use App\Http\Services\PKMDTPSService;
 use App\Http\Services\PublikasiIlmiahDTPSService;
 use App\Http\Services\RekognisiDosenService;
 use App\Models\DosenTetapPerguruanTinggi;
+use App\Models\HKIPaten;
 use App\Models\PublikasiIlmiahDTPS;
 use Illuminate\Http\Request;
 
@@ -27,7 +29,8 @@ class SumberDayaManusiaController extends Controller
         public RekognisiDosenService $rekognisiDosenService,
         public PenelitianDTPSService $penelitianDTPSService,
         public PKMDTPSService $pkmDtpsService,
-        public PublikasiIlmiahDTPSService $publikasiIlmiahDTPSService
+        public PublikasiIlmiahDTPSService $publikasiIlmiahDTPSService,
+        public HKIPatenService $HKIPaten
     )
     {
     }
@@ -390,5 +393,45 @@ class SumberDayaManusiaController extends Controller
     public function rejectPublikasiIlmiahDTPS($id)
     {
         return $this->publikasiIlmiahDTPSService->rejectPublikasiIlmiahDTPS($id);
+    }
+
+    public function showLuaranPenelitianDTPSBagian1()
+    {
+        return $this->HKIPaten->showLuaranPenelitianDTPSBagian1();
+    }
+
+    public function createLuaranPenelitianDTPSBagian1()
+    {
+        return $this->HKIPaten->createLuaranPenelitianDTPSBagian1();
+    }
+
+    public function storeLuaranPenelitianDTPSBagian1(Request $request)
+    {
+        return $this->HKIPaten->storeLuaranPenelitianDTPSBagian1($request);
+    }
+
+    public function editLuaranPenelitianDTPSBagian1($id)
+    {
+        return $this->HKIPaten->editLuaranPenelitianDTPSBagian1($id);
+    }
+
+    public function updateLuaranPenelitianDTPSBagian1(Request $request, $id)
+    {
+        return $this->HKIPaten->updateLuaranPenelitianDTPSBagian1($request, $id);
+    }
+
+    public function deleteLuaranPenelitianDTPSBagian1($id)
+    {
+        return $this->HKIPaten->deleteLuaranPenelitianDTPSBagian1($id);
+    }
+
+    public function approveLuaranPenelitianDTPSBagian1($id)
+    {
+        return $this->HKIPaten->approveLuaranPenelitianDTPSBagian1($id);
+    }
+
+    public function rejectLuaranPenelitianDTPSBagian1($id)
+    {
+        return $this->HKIPaten->rejectLuaranPenelitianDTPSBagian1($id);
     }
 }

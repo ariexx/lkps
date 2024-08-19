@@ -418,6 +418,10 @@ return [
                     "url" => "kepala-prodi/sumber-daya-manusia/publikasi-ilmiah-dtps",
                 ],
                 [
+                    "text" => "Pagelaran Ilmiah DTPS",
+                    "url" => "kepala-prodi/sumber-daya-manusia/pagelaran-ilmiah-dtps",
+                ],
+                [
                     "text" => "Luaran Penelitian PKM - HKI (Paten)",
                     "url" => "kepala-prodi/sumber-daya-manusia/luaran-penelitian-pkm-hki-paten",
                 ],
