@@ -427,7 +427,7 @@ return [
                 ],
                 [
                     "text" => "Luaran Penelitian PKM - HKI (Hak Cipta)",
-                    "url" => "kepala-prodi/sumber-daya-manusia/luaran-penelitian-pkm-hki",
+                    "url" => "kepala-prodi/sumber-daya-manusia/luaran-penelitian-pkm-hki-hak-cipta",
                 ],
                 [
                     "text" => "Luaran Penelitian PKM - HKI (Teknologi)",

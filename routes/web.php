@@ -284,6 +284,15 @@ Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
                 Route::put('/luaran-penelitian-pkm-hki-paten/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approveLuaranPenelitianDTPSBagian1'])->name('luaran-penelitian-pkm-hki-paten.approve');
                 Route::put('/luaran-penelitian-pkm-hki-paten/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectLuaranPenelitianDTPSBagian1'])->name('luaran-penelitian-pkm-hki-paten.reject');
 
+                // Luaran Penelitian DTPS Bagian 2 - HKI Hak Cipta
+                Route::get('/luaran-penelitian-pkm-hki-hak-cipta', [\App\Http\Controllers\SumberDayaManusiaController::class, 'showLuaranPenelitianDTPSBagian2'])->name('luaran-penelitian-pkm-hki-hak-cipta');
+                Route::post('/luaran-penelitian-pkm-hki-hak-cipta/store', [\App\Http\Controllers\SumberDayaManusiaController::class, 'storeLuaranPenelitianDTPSBagian2'])->name('luaran-penelitian-pkm-hki-hak-cipta.store');
+                Route::get('/luaran-penelitian-pkm-hki-hak-cipta/create', [\App\Http\Controllers\SumberDayaManusiaController::class, 'createLuaranPenelitianDTPSBagian2'])->name('luaran-penelitian-pkm-hki-hak-cipta.create');
+                Route::get('/luaran-penelitian-pkm-hki-hak-cipta/edit/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'editLuaranPenelitianDTPSBagian2'])->name('luaran-penelitian-pkm-hki-hak-cipta.edit');
+                Route::put('/luaran-penelitian-pkm-hki-hak-cipta/update/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'updateLuaranPenelitianDTPSBagian2'])->name('luaran-penelitian-pkm-hki-hak-cipta.update');
+                Route::delete('/luaran-penelitian-pkm-hki-hak-cipta/delete/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'deleteLuaranPenelitianDTPSBagian2'])->name('luaran-penelitian-pkm-hki-hak-cipta.delete');
+                Route::put('/luaran-penelitian-pkm-hki-hak-cipta/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approveLuaranPenelitianDTPSBagian2'])->name('luaran-penelitian-pkm-hki-hak-cipta.approve');
+                Route::put('/luaran-penelitian-pkm-hki-hak-cipta/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectLuaranPenelitianDTPSBagian2'])->name('luaran-penelitian-pkm-hki-hak-cipta.reject');
             });
         });
     });
