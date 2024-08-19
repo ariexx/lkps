@@ -431,7 +431,7 @@ return [
                 ],
                 [
                     "text" => "Luaran Penelitian PKM - HKI (Teknologi)",
-                    "url" => "kepala-prodi/sumber-daya-manusia/luaran-penelitian-pkm-hki-teknologi",
+                    "url" => "kepala-prodi/sumber-daya-manusia/luaran-penelitian-pkm-teknologi",
                 ],
                 [
                     "text" => "Luaran Penelitian PKM - HKI (Buku)",

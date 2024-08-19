@@ -9,6 +9,7 @@ use App\Http\Services\DosenTidakTetapService;
 use App\Http\Services\EWMPService;
 use App\Http\Services\HKIHakCiptaService;
 use App\Http\Services\HKIPatenService;
+use App\Http\Services\HKITeknologiService;
 use App\Http\Services\PenelitianDTPSService;
 use App\Http\Services\PKMDTPSService;
 use App\Http\Services\PublikasiIlmiahDTPSService;
@@ -32,7 +33,8 @@ class SumberDayaManusiaController extends Controller
         public PKMDTPSService $pkmDtpsService,
         public PublikasiIlmiahDTPSService $publikasiIlmiahDTPSService,
         public HKIPatenService $HKIPaten,
-        public HKIHakCiptaService $HKIHakCiptaService
+        public HKIHakCiptaService $HKIHakCiptaService,
+        public HKITeknologiService $HKITeknologiService
     )
     {
     }
@@ -476,4 +478,45 @@ class SumberDayaManusiaController extends Controller
     {
         return $this->HKIHakCiptaService->rejectLuaranPenelitianDTPSBagian2($id);
     }
+
+    public function showLuaranPenelitianDTPSBagian3()
+    {
+        return $this->HKITeknologiService->showLuaranPenelitianDTPSBagian3();
+    }
+
+    public function createLuaranPenelitianDTPSBagian3()
+    {
+        return $this->HKITeknologiService->createLuaranPenelitianDTPSBagian3();
+    }
+
+    public function storeLuaranPenelitianDTPSBagian3(Request $request)
+    {
+        return $this->HKITeknologiService->storeLuaranPenelitianDTPSBagian3($request);
+    }
+
+    public function editLuaranPenelitianDTPSBagian3($id)
+    {
+        return $this->HKITeknologiService->editLuaranPenelitianDTPSBagian3($id);
+    }
+
+    public function updateLuaranPenelitianDTPSBagian3(Request $request, $id)
+    {
+        return $this->HKITeknologiService->updateLuaranPenelitianDTPSBagian3($request, $id);
+    }
+
+    public function deleteLuaranPenelitianDTPSBagian3($id)
+    {
+        return $this->HKITeknologiService->deleteLuaranPenelitianDTPSBagian3($id);
+    }
+
+    public function approveLuaranPenelitianDTPSBagian3($id)
+    {
+        return $this->HKITeknologiService->approveLuaranPenelitianDTPSBagian3($id);
+    }
+
+    public function rejectLuaranPenelitianDTPSBagian3($id)
+    {
+        return $this->HKITeknologiService->rejectLuaranPenelitianDTPSBagian3($id);
+    }
+
 }
