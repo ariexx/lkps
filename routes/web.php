@@ -303,6 +303,16 @@ Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
                 Route::delete('/luaran-penelitian-pkm-teknologi/delete/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'deleteLuaranPenelitianDTPSBagian3'])->name('luaran-penelitian-pkm-teknologi.delete');
                 Route::put('/luaran-penelitian-pkm-teknologi/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approveLuaranPenelitianDTPSBagian3'])->name('luaran-penelitian-pkm-teknologi.approve');
                 Route::put('/luaran-penelitian-pkm-teknologi/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectLuaranPenelitianDTPSBagian3'])->name('luaran-penelitian-pkm-teknologi.reject');
+
+                // Luaran Penelitian DTPS Bagian 4 - Buku
+                Route::get('/luaran-penelitian-pkm-buku', [\App\Http\Controllers\SumberDayaManusiaController::class, 'showLuaranPenelitianDTPSBagian4'])->name('luaran-penelitian-pkm-buku');
+                Route::post('/luaran-penelitian-pkm-buku/store', [\App\Http\Controllers\SumberDayaManusiaController::class, 'storeLuaranPenelitianDTPSBagian4'])->name('luaran-penelitian-pkm-buku.store');
+                Route::get('/luaran-penelitian-pkm-buku/create', [\App\Http\Controllers\SumberDayaManusiaController::class, 'createLuaranPenelitianDTPSBagian4'])->name('luaran-penelitian-pkm-buku.create');
+                Route::get('/luaran-penelitian-pkm-buku/edit/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'editLuaranPenelitianDTPSBagian4'])->name('luaran-penelitian-pkm-buku.edit');
+                Route::put('/luaran-penelitian-pkm-buku/update/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'updateLuaranPenelitianDTPSBagian4'])->name('luaran-penelitian-pkm-buku.update');
+                Route::delete('/luaran-penelitian-pkm-buku/delete/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'deleteLuaranPenelitianDTPSBagian4'])->name('luaran-penelitian-pkm-buku.delete');
+                Route::put('/luaran-penelitian-pkm-buku/approve/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'approveLuaranPenelitianDTPSBagian4'])->name('luaran-penelitian-pkm-buku.approve');
+                Route::put('/luaran-penelitian-pkm-buku/reject/{id}', [\App\Http\Controllers\SumberDayaManusiaController::class, 'rejectLuaranPenelitianDTPSBagian4'])->name('luaran-penelitian-pkm-buku.reject');
             });
         });
     });

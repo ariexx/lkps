@@ -7,6 +7,7 @@ use App\Http\Services\DosenPembimbingUtamaTugasAkhirService;
 use App\Http\Services\DosenTetapPerguruanTinggiService;
 use App\Http\Services\DosenTidakTetapService;
 use App\Http\Services\EWMPService;
+use App\Http\Services\HKIBukuService;
 use App\Http\Services\HKIHakCiptaService;
 use App\Http\Services\HKIPatenService;
 use App\Http\Services\HKITeknologiService;
@@ -34,7 +35,8 @@ class SumberDayaManusiaController extends Controller
         public PublikasiIlmiahDTPSService $publikasiIlmiahDTPSService,
         public HKIPatenService $HKIPaten,
         public HKIHakCiptaService $HKIHakCiptaService,
-        public HKITeknologiService $HKITeknologiService
+        public HKITeknologiService $HKITeknologiService,
+        public HKIBukuService $HKIBukuService
     )
     {
     }
@@ -517,6 +519,46 @@ class SumberDayaManusiaController extends Controller
     public function rejectLuaranPenelitianDTPSBagian3($id)
     {
         return $this->HKITeknologiService->rejectLuaranPenelitianDTPSBagian3($id);
+    }
+
+    public function showLuaranPenelitianDTPSBagian4()
+    {
+        return $this->HKIBukuService->showLuaranPenelitianDTPSBagian4();
+    }
+
+    public function createLuaranPenelitianDTPSBagian4()
+    {
+        return $this->HKIBukuService->createLuaranPenelitianDTPSBagian4();
+    }
+
+    public function storeLuaranPenelitianDTPSBagian4(Request $request)
+    {
+        return $this->HKIBukuService->storeLuaranPenelitianDTPSBagian4($request);
+    }
+
+    public function editLuaranPenelitianDTPSBagian4($id)
+    {
+        return $this->HKIBukuService->editLuaranPenelitianDTPSBagian4($id);
+    }
+
+    public function updateLuaranPenelitianDTPSBagian4(Request $request, $id)
+    {
+        return $this->HKIBukuService->updateLuaranPenelitianDTPSBagian4($request, $id);
+    }
+
+    public function deleteLuaranPenelitianDTPSBagian4($id)
+    {
+        return $this->HKIBukuService->deleteLuaranPenelitianDTPSBagian4($id);
+    }
+
+    public function approveLuaranPenelitianDTPSBagian4($id)
+    {
+        return $this->HKIBukuService->approveLuaranPenelitianDTPSBagian4($id);
+    }
+
+    public function rejectLuaranPenelitianDTPSBagian4($id)
+    {
+        return $this->HKIBukuService->rejectLuaranPenelitianDTPSBagian4($id);
     }
 
 }

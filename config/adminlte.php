@@ -435,7 +435,7 @@ return [
                 ],
                 [
                     "text" => "Luaran Penelitian PKM - HKI (Buku)",
-                    "url" => "kepala-prodi/sumber-daya-manusia/luaran-penelitian-pkm-hki-buku",
+                    "url" => "kepala-prodi/sumber-daya-manusia/luaran-penelitian-pkm-buku",
                 ],
                 [
                     "text" => "Karya Ilmiah DTPS Disitasi",
