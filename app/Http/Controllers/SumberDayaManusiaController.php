@@ -11,6 +11,7 @@ use App\Http\Services\HKIBukuService;
 use App\Http\Services\HKIHakCiptaService;
 use App\Http\Services\HKIPatenService;
 use App\Http\Services\HKITeknologiService;
+use App\Http\Services\PagelaranIlmiahService;
 use App\Http\Services\PenelitianDTPSService;
 use App\Http\Services\PKMDTPSService;
 use App\Http\Services\PublikasiIlmiahDTPSService;
@@ -36,7 +37,8 @@ class SumberDayaManusiaController extends Controller
         public HKIPatenService $HKIPaten,
         public HKIHakCiptaService $HKIHakCiptaService,
         public HKITeknologiService $HKITeknologiService,
-        public HKIBukuService $HKIBukuService
+        public HKIBukuService $HKIBukuService,
+        public PagelaranIlmiahService $pagelaranIlmiahService
     )
     {
     }
@@ -559,6 +561,46 @@ class SumberDayaManusiaController extends Controller
     public function rejectLuaranPenelitianDTPSBagian4($id)
     {
         return $this->HKIBukuService->rejectLuaranPenelitianDTPSBagian4($id);
+    }
+
+    public function showPagelaranIlmiahDTPS()
+    {
+        return $this->pagelaranIlmiahService->showPagelaranIlmiahDTPS();
+    }
+
+    public function createPagelaranIlmiahDTPS()
+    {
+        return $this->pagelaranIlmiahService->createPagelaranIlmiahDTPS();
+    }
+
+    public function storePagelaranIlmiahDTPS(Request $request)
+    {
+        return $this->pagelaranIlmiahService->storePagelaranIlmiahDTPS($request);
+    }
+
+    public function editPagelaranIlmiahDTPS($id)
+    {
+        return $this->pagelaranIlmiahService->editPagelaranIlmiahDTPS($id);
+    }
+
+    public function updatePagelaranIlmiahDTPS(Request $request, $id)
+    {
+        return $this->pagelaranIlmiahService->updatePagelaranIlmiahDTPS($request, $id);
+    }
+
+    public function deletePagelaranIlmiahDTPS($id)
+    {
+        return $this->pagelaranIlmiahService->deletePagelaranIlmiahDTPS($id);
+    }
+
+    public function approvePagelaranIlmiahDTPS($id)
+    {
+        return $this->pagelaranIlmiahService->approvePagelaranIlmiahDTPS($id);
+    }
+
+    public function rejectPagelaranIlmiahDTPS($id)
+    {
+        return $this->pagelaranIlmiahService->rejectPagelaranIlmiahDTPS($id);
     }
 
 }
