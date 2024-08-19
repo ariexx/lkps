@@ -390,6 +390,15 @@ Route::prefix('kepala-prodi')->as('kepala-prodi.')->group(function () {
                 Route::put('/penelitian-dtps-melibatkan-mahasiswa/approve/{id}', [\App\Http\Controllers\PengabdianMasyarakatController::class, 'approvePenelitianDTPSMelibatkanMahasiswa'])->name('penelitian-dtps-melibatkan-mahasiswa.approve');
                 Route::put('/penelitian-dtps-melibatkan-mahasiswa/reject/{id}', [\App\Http\Controllers\PengabdianMasyarakatController::class, 'rejectPenelitianDTPSMelibatkanMahasiswa'])->name('penelitian-dtps-melibatkan-mahasiswa.reject');
 
+                //pkm-dtps-yang-melibatkan-mahasiswa
+                Route::get('/pkm-dtps-yang-melibatkan-mahasiswa', [\App\Http\Controllers\PengabdianMasyarakatController::class, 'showPKMDTPSYangMelibatkanMahasiswa'])->name('pkm-dtps-yang-melibatkan-mahasiswa');
+                Route::post('/pkm-dtps-yang-melibatkan-mahasiswa/store', [\App\Http\Controllers\PengabdianMasyarakatController::class, 'storePKMDTPSYangMelibatkanMahasiswa'])->name('pkm-dtps-yang-melibatkan-mahasiswa.store');
+                Route::get('/pkm-dtps-yang-melibatkan-mahasiswa/create', [\App\Http\Controllers\PengabdianMasyarakatController::class, 'createPKMDTPSYangMelibatkanMahasiswa'])->name('pkm-dtps-yang-melibatkan-mahasiswa.create');
+                Route::get('/pkm-dtps-yang-melibatkan-mahasiswa/edit/{id}', [\App\Http\Controllers\PengabdianMasyarakatController::class, 'editPKMDTPSYangMelibatkanMahasiswa'])->name('pkm-dtps-yang-melibatkan-mahasiswa.edit');
+                Route::put('/pkm-dtps-yang-melibatkan-mahasiswa/update/{id}', [\App\Http\Controllers\PengabdianMasyarakatController::class, 'updatePKMDTPSYangMelibatkanMahasiswa'])->name('pkm-dtps-yang-melibatkan-mahasiswa.update');
+                Route::delete('/pkm-dtps-yang-melibatkan-mahasiswa/delete/{id}', [\App\Http\Controllers\PengabdianMasyarakatController::class, 'deletePKMDTPSYangMelibatkanMahasiswa'])->name('pkm-dtps-yang-melibatkan-mahasiswa.delete');
+                Route::put('/pkm-dtps-yang-melibatkan-mahasiswa/approve/{id}', [\App\Http\Controllers\PengabdianMasyarakatController::class, 'approvePKMDTPSYangMelibatkanMahasiswa'])->name('pkm-dtps-yang-melibatkan-mahasiswa.approve');
+                Route::put('/pkm-dtps-yang-melibatkan-mahasiswa/reject/{id}', [\App\Http\Controllers\PengabdianMasyarakatController::class, 'rejectPKMDTPSYangMelibatkanMahasiswa'])->name('pkm-dtps-yang-melibatkan-mahasiswa.reject');
             });
         });
     });
