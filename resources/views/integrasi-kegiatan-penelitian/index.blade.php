@@ -13,7 +13,7 @@
         </x-adminlte-alert>
     @endif
     <x-adminlte-card title="Integrasi Kegiatan Penelitian">
-        <x-create-button route="{{ route('kepala-prodi.integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.create') }}">
+        <x-create-button route="{{ auth()->user()->role == 'dosen' ? route('dosen.kinerja-dosen.integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.create') : route('kepala-prodi.integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.create') }}">
             Tambah
         </x-create-button>
         <x-adminlte-datatable id="table1" :config="$config" striped hoverable with-buttons :heads="$config['heads']"/>

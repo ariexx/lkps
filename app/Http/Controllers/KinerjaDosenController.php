@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\IntegrasiKegiatanPenelitianService;
 use App\Http\Services\KaryaIlmiahDTPSDisitasiService;
 use App\Http\Services\PenelitianDTPSMelibatkanMahasiswaService;
 use App\Http\Services\PenelitianDTPSService;
@@ -17,7 +18,8 @@ class KinerjaDosenController extends Controller
         public PKMDTPSMelibatkanMahasiswaService $pkmDTPSMelibatkanMahasiswaService,
         public RekognisiDosenService $rekognisiDosenService,
         public KaryaIlmiahDTPSDisitasiService $karyaIlmiahDTPSDisitasiService,
-        public ProdukJasaMasyarakatService $produkJasaMasyarakatService
+        public ProdukJasaMasyarakatService $produkJasaMasyarakatService,
+        public IntegrasiKegiatanPenelitianService $integrasiKegiatanPenelitianService
     )
     {
     }
@@ -170,5 +172,35 @@ class KinerjaDosenController extends Controller
     public function deleteProdukJasaDTPSDiadopsi($id)
     {
         return $this->produkJasaMasyarakatService->deleteProdukJasaMasyarakat($id);
+    }
+
+    public function showIntegrasiKegiatanPenelitianPKMDalamPembelajaran()
+    {
+        return $this->integrasiKegiatanPenelitianService->showIntegrasiKegiatanPenelitianPKMDalamPembelajaran();
+    }
+
+    public function createIntegrasiKegiatanPenelitianPKMDalamPembelajaran()
+    {
+        return $this->integrasiKegiatanPenelitianService->createIntegrasiKegiatanPenelitianPKMDalamPembelajaran();
+    }
+
+    public function storeIntegrasiKegiatanPenelitianPKMDalamPembelajaran(Request $request)
+    {
+        return $this->integrasiKegiatanPenelitianService->storeIntegrasiKegiatanPenelitianPKMDalamPembelajaran($request);
+    }
+
+    public function editIntegrasiKegiatanPenelitianPKMDalamPembelajaran($id)
+    {
+        return $this->integrasiKegiatanPenelitianService->editIntegrasiKegiatanPenelitianPKMDalamPembelajaran($id);
+    }
+
+    public function updateIntegrasiKegiatanPenelitianPKMDalamPembelajaran(Request $request, $id)
+    {
+        return $this->integrasiKegiatanPenelitianService->updateIntegrasiKegiatanPenelitianPKMDalamPembelajaran($request, $id);
+    }
+
+    public function deleteIntegrasiKegiatanPenelitianPKMDalamPembelajaran($id)
+    {
+        return $this->integrasiKegiatanPenelitianService->deleteIntegrasiKegiatanPenelitianPKMDalamPembelajaran($id);
     }
 }

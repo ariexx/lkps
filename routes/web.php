@@ -145,6 +145,15 @@ Route::prefix('dosen')->as('dosen.')->group(function () {
             Route::get('/produk-jasa-dtps-yang-diadopsi-masyarakat/edit/{id}', [KinerjaDosenController::class, 'editProdukJasaDTPSDiadopsi'])->name('produk-jasa-dtps-diadopsi.edit');
             Route::put('/produk-jasa-dtps-yang-diadopsi-masyarakat/update/{id}', [KinerjaDosenController::class, 'updateProdukJasaDTPSDiadopsi'])->name('produk-jasa-dtps-diadopsi.update');
             Route::delete('/produk-jasa-dtps-yang-diadopsi-masyarakat/delete/{id}', [KinerjaDosenController::class, 'deleteProdukJasaDTPSDiadopsi'])->name('produk-jasa-dtps-diadopsi.delete');
+
+            // Integrasi Penelitian/PkM/Publikasi (integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran)
+            Route::get('/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran', [KinerjaDosenController::class, 'showIntegrasiKegiatanPenelitianPKMDalamPembelajaran'])->name('integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran');
+            Route::post('/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran/store', [KinerjaDosenController::class, 'storeIntegrasiKegiatanPenelitianPKMDalamPembelajaran'])->name('integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.store');
+            Route::get('/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran/create', [KinerjaDosenController::class, 'createIntegrasiKegiatanPenelitianPKMDalamPembelajaran'])->name('integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.create');
+            Route::get('/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran/edit/{id}', [KinerjaDosenController::class, 'editIntegrasiKegiatanPenelitianPKMDalamPembelajaran'])->name('integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.edit');
+            Route::put('/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran/update/{id}', [KinerjaDosenController::class, 'updateIntegrasiKegiatanPenelitianPKMDalamPembelajaran'])->name('integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.update');
+            Route::delete('/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran/delete/{id}', [KinerjaDosenController::class, 'deleteIntegrasiKegiatanPenelitianPKMDalamPembelajaran'])->name('integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.delete');
+
         });
     });
 });

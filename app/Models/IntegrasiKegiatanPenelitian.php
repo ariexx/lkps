@@ -14,5 +14,14 @@ class IntegrasiKegiatanPenelitian extends Model
         'tahun',
         'bukti',
         'is_approve',
+        'user_id'
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model) {
+            $model->user_id = auth()->id();
+        });
+    }
 }

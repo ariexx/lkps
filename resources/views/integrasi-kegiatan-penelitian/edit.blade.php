@@ -8,7 +8,7 @@
 
 @section("content")
     <x-adminlte-card>
-        <form action="{{ route('integrasi-kegiatan-penelitian.update', $data->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ auth()->user()->role == 'dosen' ? route('dosen.kinerja-dosen.integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.update', $data->id) : route('kepala-prodi.integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.update', $data->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-group">

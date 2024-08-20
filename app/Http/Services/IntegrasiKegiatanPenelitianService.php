@@ -16,7 +16,9 @@ class IntegrasiKegiatanPenelitianService
 
     public function showIntegrasiKegiatanPenelitianPKMDalamPembelajaran()
     {
-        $data = $this->integrasiKegiatanPenelitian->get()->map(function ($item, $key) {
+        $data = $this->integrasiKegiatanPenelitian->when(auth()->user()->role == 'dosen', function ($query) {
+            $query->where('user_id', auth()->id());
+        })->get()->map(function ($item, $key) {
             return [
                 $key + 1,
                 $item->judul,
@@ -27,8 +29,8 @@ class IntegrasiKegiatanPenelitianService
                 "<a href='" . asset('storage/' . $item->bukti) . "' target='_blank'>Lihat Bukti</a>",
                 is_approved($item->is_approve),
                 view('components.buttons', [
-                    'routeEdit' => route('kepala-prodi.integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.edit', $item->id),
-                    'routeDelete' => route('kepala-prodi.integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.delete', $item->id),
+                    'routeEdit' => auth()->user()->role == 'dosen' ? route('dosen.kinerja-dosen.integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.edit', $item->id) : route('kepala-prodi.integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.edit', $item->id),
+                    'routeDelete' => auth()->user()->role == 'dosen' ? route('dosen.kinerja-dosen.integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.delete', $item->id) : route('kepala-prodi.integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.delete', $item->id),
                     'isApproved' => $item->is_approve,
                     "routeApprove" => route('kepala-prodi.integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.approve', $item->id),
                     "routeReject" => route('kepala-prodi.integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran.reject', $item->id),
@@ -70,6 +72,9 @@ class IntegrasiKegiatanPenelitianService
 
         $this->integrasiKegiatanPenelitian->create($all);
         $this->logActivityService->log(["tambah", "Berhasil menambahkan data integrasi kegiatan penelitian $request[judul]"]);
+        if (auth()->user()->role == 'dosen') {
+            return redirect()->route('dosen.kinerja-dosen.integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran')->with('success', 'Berhasil menambahkan data integrasi kegiatan penelitian');
+        }
         return redirect()->route('kepala-prodi.integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran')->with('success', 'Berhasil menambahkan data integrasi kegiatan penelitian');
     }
 
@@ -88,6 +93,9 @@ class IntegrasiKegiatanPenelitianService
 
         $this->integrasiKegiatanPenelitian->find($id)->update($all);
         $this->logActivityService->log(["edit", "Berhasil mengubah data integrasi kegiatan penelitian $request[judul]"]);
+        if (auth()->user()->role == 'dosen') {
+            return redirect()->route('dosen.kinerja-dosen.integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran')->with('success', 'Berhasil mengubah data integrasi kegiatan penelitian');
+        }
         return redirect()->route('kepala-prodi.integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran')->with('success', 'Berhasil mengubah data integrasi kegiatan penelitian');
     }
 
@@ -95,6 +103,10 @@ class IntegrasiKegiatanPenelitianService
     {
         $this->integrasiKegiatanPenelitian->find($id)->delete();
         $this->logActivityService->log(["hapus", "Berhasil menghapus data integrasi kegiatan penelitian"]);
+        if (auth()->user()->role == 'dosen') {
+            return redirect()->route('dosen.kinerja-dosen.integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran')->with('success', 'Berhasil menghapus data integrasi kegiatan penelitian');
+        }
+
         return redirect()->route('kepala-prodi.integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran')->with('success', 'Berhasil menghapus data integrasi kegiatan penelitian');
     }
 
