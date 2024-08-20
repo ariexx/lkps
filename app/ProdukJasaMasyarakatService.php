@@ -5,6 +5,7 @@ namespace App;
 use App\Http\Services\FileUploadService;
 use App\Http\Services\LogActivityService;
 use App\Models\ProdukJasaMasyarakat;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProdukJasaMasyarakatService
@@ -19,7 +20,10 @@ class ProdukJasaMasyarakatService
 
     public function showProdukJasaMasyarakat()
     {
-        $data = $this->produkJasaMasyarakat->get()->map(function ($item, $key) {
+        $data = $this->produkJasaMasyarakat->get()->when(auth()->user()->role == 'dosen', function ($query) {
+            $query->where('user_id', auth()->id());
+        })->
+        map(function ($item, $key) {
            return [
                $key + 1,
                 $item->nama,
@@ -28,12 +32,11 @@ class ProdukJasaMasyarakatService
                 "<a href='".asset('storage/'.$item->bukti)."'>Download</a>",
                 is_approved($item->is_approve),
                view('components.buttons', [
-                   'routeEdit' => route('kepala-prodi.sumber-daya-manusia.produk-jasa-masyarakat.edit', $item->id),
+                   'routeEdit' => auth()->user()->role == 'dosen' ? route('dosen.kinerja-dosen.produk-jasa-dtps-diadopsi.edit', $item->id) : route('kepala-prodi.sumber-daya-manusia.produk-jasa-masyarakat.edit', $item->id),
                    'routeReject' => route('kepala-prodi.sumber-daya-manusia.produk-jasa-masyarakat.reject', $item->id),
                    'isApproved' => $item->is_approve,
                    'routeApprove' => route('kepala-prodi.sumber-daya-manusia.produk-jasa-masyarakat.approve', $item->id),
-                   'routeDelete' => route('kepala-prodi.sumber-daya-manusia.produk-jasa-masyarakat.delete', $item->id),
-               ])->render()
+                   'routeDelete' => auth()->user()->role == 'dosen' ? route('dosen.kinerja-dosen.produk-jasa-dtps-diadopsi.delete', $item->id) : route('kepala-prodi.sumber-daya-manusia.produk-jasa-masyarakat.delete', $item->id),               ])->render()
            ] ;
         })->toArray();
 
@@ -68,6 +71,9 @@ class ProdukJasaMasyarakatService
             $file = $this->fileUpload->uploadFile($request, 'bukti', 'produk-jasa-masyarakat');
             $this->produkJasaMasyarakat->create(array_merge($request->all(), ['bukti' => $file]));
             $this->logActivityService->log(["tambah", "Berhasil menambah produk jasa masyarakat : $request->nama_produk"]);
+            if (auth()->user()->role == User::dosen) {
+                return redirect()->route('dosen.kinerja-dosen.produk-jasa-dtps-diadopsi')->with('success', 'Produk Jasa Masyarakat berhasil ditambahkan');
+            }
             return redirect()->route('kepala-prodi.sumber-daya-manusia.produk-jasa-masyarakat')->with('success', 'Produk Jasa Masyarakat berhasil ditambahkan');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
@@ -87,6 +93,9 @@ class ProdukJasaMasyarakatService
             $file = $this->fileUpload->uploadFile($request, 'bukti', 'produk-jasa-masyarakat');
             $produk->update(array_merge($request->all(), ['bukti' => $file]));
             $this->logActivityService->log(["edit", "Berhasil mengubah produk jasa masyarakat : $request->nama_produk"]);
+            if (auth()->user()->role == User::dosen) {
+                return redirect()->route('dosen.kinerja-dosen.produk-jasa-dtps-diadopsi')->with('success', 'Produk Jasa Masyarakat berhasil diubah');
+            }
             return redirect()->route('kepala-prodi.sumber-daya-manusia.produk-jasa-masyarakat')->with('success', 'Produk Jasa Masyarakat berhasil diubah');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
@@ -99,6 +108,9 @@ class ProdukJasaMasyarakatService
             $produk = $this->produkJasaMasyarakat->findOrFail($id);
             $produk->delete();
             $this->logActivityService->log(["hapus", "Berhasil menghapus produk jasa masyarakat : $produk->nama_produk"]);
+            if (auth()->user()->role == User::dosen) {
+                return redirect()->route('dosen.kinerja-dosen.produk-jasa-dtps-diadopsi')->with('success', 'Produk Jasa Masyarakat berhasil dihapus');
+            }
             return redirect()->route('kepala-prodi.sumber-daya-manusia.produk-jasa-masyarakat')->with('success', 'Produk Jasa Masyarakat berhasil dihapus');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());

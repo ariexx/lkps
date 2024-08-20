@@ -1,4 +1,3 @@
-<!-- resources/views/produk-jasa-masyarakat/form.blade.php -->
 @extends("adminlte::page")
 
 @section("title", isset($produk) ? "Edit Produk Jasa Masyarakat" : "Create Produk Jasa Masyarakat")
@@ -12,7 +11,7 @@
         <div class="alert alert-danger">{{session('error')}}</div>
     @endif
     <x-adminlte-card>
-        <form action="{{ isset($produk) ? route('kepala-prodi.sumber-daya-manusia.produk-jasa-masyarakat.update', $produk->id) : route('kepala-prodi.sumber-daya-manusia.produk-jasa-masyarakat.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ isset($produk) ? (auth()->user()->role == 'dosen' ? route('dosen.kinerja-dosen.produk-jasa-dtps-diadopsi.update', $produk->id) : route('kepala-prodi.sumber-daya-manusia.produk-jasa-masyarakat.update', $produk->id)) : (auth()->user()->role == 'dosen' ? route('dosen.kinerja-dosen.produk-jasa-dtps-diadopsi.store') : route('kepala-prodi.sumber-daya-manusia.produk-jasa-masyarakat.store')) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @if(isset($produk))
                 @method('PUT')

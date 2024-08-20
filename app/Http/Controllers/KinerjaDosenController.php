@@ -7,6 +7,7 @@ use App\Http\Services\PenelitianDTPSMelibatkanMahasiswaService;
 use App\Http\Services\PenelitianDTPSService;
 use App\Http\Services\PKMDTPSMelibatkanMahasiswaService;
 use App\Http\Services\RekognisiDosenService;
+use App\ProdukJasaMasyarakatService;
 use Illuminate\Http\Request;
 
 class KinerjaDosenController extends Controller
@@ -15,7 +16,8 @@ class KinerjaDosenController extends Controller
         public PenelitianDTPSMelibatkanMahasiswaService $penelitianDTPSMelibatkanMahasiswaService,
         public PKMDTPSMelibatkanMahasiswaService $pkmDTPSMelibatkanMahasiswaService,
         public RekognisiDosenService $rekognisiDosenService,
-        public KaryaIlmiahDTPSDisitasiService $karyaIlmiahDTPSDisitasiService
+        public KaryaIlmiahDTPSDisitasiService $karyaIlmiahDTPSDisitasiService,
+        public ProdukJasaMasyarakatService $produkJasaMasyarakatService
     )
     {
     }
@@ -140,4 +142,33 @@ class KinerjaDosenController extends Controller
         return $this->karyaIlmiahDTPSDisitasiService->deleteKaryaIlmiahDTPSDisitasi($id);
     }
 
+    public function showProdukJasaDTPSDiadopsi()
+    {
+        return $this->produkJasaMasyarakatService->showProdukJasaMasyarakat();
+    }
+
+    public function createProdukJasaDTPSDiadopsi()
+    {
+        return $this->produkJasaMasyarakatService->createProdukJasaMasyarakat();
+    }
+
+    public function storeProdukJasaDTPSDiadopsi(Request $request)
+    {
+        return $this->produkJasaMasyarakatService->storeProdukJasaMasyarakat($request);
+    }
+
+    public function editProdukJasaDTPSDiadopsi($id)
+    {
+        return $this->produkJasaMasyarakatService->editProdukJasaMasyarakat($id);
+    }
+
+    public function updateProdukJasaDTPSDiadopsi(Request $request, $id)
+    {
+        return $this->produkJasaMasyarakatService->updateProdukJasaMasyarakat($request, $id);
+    }
+
+    public function deleteProdukJasaDTPSDiadopsi($id)
+    {
+        return $this->produkJasaMasyarakatService->deleteProdukJasaMasyarakat($id);
+    }
 }

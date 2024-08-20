@@ -139,11 +139,12 @@ Route::prefix('dosen')->as('dosen.')->group(function () {
             Route::delete('/karya-ilmiah-dtps-disitasi/delete/{id}', [KinerjaDosenController::class, 'deleteKaryaIlmiahDTPSDisitasi'])->name('karya-ilmiah-dtps-disitasi.delete');
 
             // Produk / Jasa DTPS Yang Diadopsi oleh Industri/Masyarakat
-            Route::get('/produk-jasa-dtps-diadopsi', [KinerjaDosenController::class, 'showProdukJasaDTPSDiadopsi'])->name('produk-jasa-dtps-diadopsi');
-            Route::post('/produk-jasa-dtps-diadopsi/store', [KinerjaDosenController::class, 'storeProdukJasaDTPSDiadopsi'])->name('produk-jasa-dtps-diadopsi.store');
-            Route::get('/produk-jasa-dtps-diadopsi/create', [KinerjaDosenController::class, 'createProdukJasaDTPSDiadopsi'])->name('produk-jasa-dtps-diadopsi.create');
-            Route::get('/produk-jasa-dtps-diadopsi/edit/{id}', [KinerjaDosenController::class, 'editProdukJasaDTPSDiadopsi'])->name('produk-jasa-dtps-diadopsi.edit');
-            Route::put('/produk-jasa-dtps-diadopsi/update/{id}', [KinerjaDosenController::class, 'updateProdukJasaDTPSDiadopsi'])->name('produk-jasa-dtps-diadopsi.update');
+            Route::get('/produk-jasa-dtps-yang-diadopsi-masyarakat', [KinerjaDosenController::class, 'showProdukJasaDTPSDiadopsi'])->name('produk-jasa-dtps-diadopsi');
+            Route::post('/produk-jasa-dtps-yang-diadopsi-masyarakat/store', [KinerjaDosenController::class, 'storeProdukJasaDTPSDiadopsi'])->name('produk-jasa-dtps-diadopsi.store');
+            Route::get('/produk-jasa-dtps-yang-diadopsi-masyarakat/create', [KinerjaDosenController::class, 'createProdukJasaDTPSDiadopsi'])->name('produk-jasa-dtps-diadopsi.create');
+            Route::get('/produk-jasa-dtps-yang-diadopsi-masyarakat/edit/{id}', [KinerjaDosenController::class, 'editProdukJasaDTPSDiadopsi'])->name('produk-jasa-dtps-diadopsi.edit');
+            Route::put('/produk-jasa-dtps-yang-diadopsi-masyarakat/update/{id}', [KinerjaDosenController::class, 'updateProdukJasaDTPSDiadopsi'])->name('produk-jasa-dtps-diadopsi.update');
+            Route::delete('/produk-jasa-dtps-yang-diadopsi-masyarakat/delete/{id}', [KinerjaDosenController::class, 'deleteProdukJasaDTPSDiadopsi'])->name('produk-jasa-dtps-diadopsi.delete');
         });
     });
 });
