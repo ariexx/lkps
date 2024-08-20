@@ -342,7 +342,7 @@ return [
         [
             'text' => 'Kerjasama',
             'icon' => 'fas fa-fw fa-database',
-            'role' => \App\Models\User::prodi,
+            'role' => [\App\Models\User::prodi, \App\Models\User::adminprodi],
             'submenu' => [
                 [
                     'text' => 'Pendidikan',
