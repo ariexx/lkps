@@ -495,14 +495,21 @@ return [
             ],
         ],
         [
-            'text' => 'Pengabdian Masayarakat',
-            'icon' => 'fas fa-fw fa-handshake',
-            'role' => [\App\Models\User::prodi, \App\Models\User::adminprodi],
-            'submenu' => [
+            "text" => "Penelitian",
+            "icon" => "fas fa-fw fa-handshake",
+            "role" => [\App\Models\User::prodi, \App\Models\User::adminprodi],
+            "submenu" => [
                 [
                     'text' => 'Penelitian DTPS Melibatkan Mahasiswa',
                     'url' => 'kepala-prodi/pengabdian-masyarakat/penelitian-dtps-melibatkan-mahasiswa',
                 ],
+            ]
+        ],
+        [
+            'text' => 'Pengabdian Masayarakat',
+            'icon' => 'fas fa-fw fa-handshake',
+            'role' => [\App\Models\User::prodi, \App\Models\User::adminprodi],
+            'submenu' => [
                 [
                     "text" => "PKM DTPS Yang Melibatkan Mahasiswa",
                     "url" => "kepala-prodi/pengabdian-masyarakat/pkm-dtps-yang-melibatkan-mahasiswa",
