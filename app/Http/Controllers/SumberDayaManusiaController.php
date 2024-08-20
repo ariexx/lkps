@@ -20,6 +20,7 @@ use App\Http\Services\RekognisiDosenService;
 use App\Models\DosenTetapPerguruanTinggi;
 use App\Models\HKIPaten;
 use App\Models\PublikasiIlmiahDTPS;
+use App\ProdukJasaMasyarakatService;
 use Illuminate\Http\Request;
 
 class SumberDayaManusiaController extends Controller
@@ -40,7 +41,8 @@ class SumberDayaManusiaController extends Controller
         public HKITeknologiService $HKITeknologiService,
         public HKIBukuService $HKIBukuService,
         public PagelaranIlmiahService $pagelaranIlmiahService,
-        public KaryaIlmiahDTPSDisitasiService $karyaIlmiahDTPSDisitasiService
+        public KaryaIlmiahDTPSDisitasiService $karyaIlmiahDTPSDisitasiService,
+        public ProdukJasaMasyarakatService $produkJasaMasyarakatService
     )
     {
     }
@@ -644,5 +646,46 @@ class SumberDayaManusiaController extends Controller
     {
         return $this->karyaIlmiahDTPSDisitasiService->rejectKaryaIlmiahDTPSDisitasi($id);
     }
+
+    public function showProdukJasaMasyarakat()
+    {
+        return $this->produkJasaMasyarakatService->showProdukJasaMasyarakat();
+    }
+
+    public function createProdukJasaMasyarakat()
+    {
+        return $this->produkJasaMasyarakatService->createProdukJasaMasyarakat();
+    }
+
+    public function storeProdukJasaMasyarakat(Request $request)
+    {
+        return $this->produkJasaMasyarakatService->storeProdukJasaMasyarakat($request);
+    }
+
+    public function editProdukJasaMasyarakat($id)
+    {
+        return $this->produkJasaMasyarakatService->editProdukJasaMasyarakat($id);
+    }
+
+    public function updateProdukJasaMasyarakat(Request $request, $id)
+    {
+        return $this->produkJasaMasyarakatService->updateProdukJasaMasyarakat($request, $id);
+    }
+
+    public function deleteProdukJasaMasyarakat($id)
+    {
+        return $this->produkJasaMasyarakatService->deleteProdukJasaMasyarakat($id);
+    }
+
+    public function approveProdukJasaMasyarakat($id)
+    {
+        return $this->produkJasaMasyarakatService->approveProdukJasaMasyarakat($id);
+    }
+
+    public function rejectProdukJasaMasyarakat($id)
+    {
+        return $this->produkJasaMasyarakatService->rejectProdukJasaMasyarakat($id);
+    }
+
 
 }

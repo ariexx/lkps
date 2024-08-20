@@ -334,11 +334,6 @@ return [
                     'url' => 'dosen/profile/dosen-tetap-perguruan-tinggi',
                     'icon' => 'fas fa-fw fa-university',
                 ],
-//                [
-//                    'text' => 'EWMP Dosen',
-//                    'url' => 'dosen/profile/ewmp-dosen-tetap-perguruan-tinggi',
-//                    'icon' => 'fas fa-fw fa-chalkboard-teacher',
-//                ],
                 [
                     'text' => 'Dosen Industri/Praktisi',
                     'url' => 'dosen/profile/dosen-industri-praktisi',
