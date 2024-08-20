@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use App\Models\RekognisiDosen;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RekognisiDosenService
@@ -18,7 +19,10 @@ class RekognisiDosenService
 
     public function showRekognisiDosen()
     {
-        $data = $this->rekognisiDosen->get()->map(function ($item, $key) {
+        $data = $this->rekognisiDosen->when(auth()->user()->role == User::dosen, function ($query) {
+            $query->where('user_id', auth()->id());
+        })->
+        get()->map(function ($item, $key) {
             return [
                 $key + 1,
                 $item->nama,
@@ -31,8 +35,8 @@ class RekognisiDosenService
                 $item->tahun,
                 is_approved($item->is_approve),
                 view('components.buttons', [
-                    'routeEdit' => route('kepala-prodi.sumber-daya-manusia.rekognisi-dosen.edit', $item->id),
-                    'routeDelete' => route('kepala-prodi.sumber-daya-manusia.rekognisi-dosen.delete', $item->id),
+                    'routeEdit' => auth()->user()->role == 'dosen' ? route('dosen.kinerja-dosen.rekognisi-dosen.edit', $item->id) : route('kepala-prodi.sumber-daya-manusia.rekognisi-dosen.edit', $item->id),
+                    'routeDelete' => auth()->user()->role == 'dosen' ? route('dosen.kinerja-dosen.rekognisi-dosen.delete', $item->id) : route('kepala-prodi.sumber-daya-manusia.rekognisi-dosen.delete', $item->id),
                     'isApproved' => $item->is_approve,
                     "routeApprove" => route('kepala-prodi.sumber-daya-manusia.rekognisi-dosen.approve', $item->id),
                     "routeReject" => route('kepala-prodi.sumber-daya-manusia.rekognisi-dosen.reject', $item->id),
@@ -76,7 +80,11 @@ class RekognisiDosenService
 
         $this->rekognisiDosen->create($all);
         $this->logActivityService->log(["tambah", "Berhasil menambahkan data rekognisi dosen $request[nama]"]);
-        return redirect()->route('kepala-prodi.sumber-daya-manusia.rekognisi-dosen')->with('success', 'Berhasil menambahkan data rekognisi dosen');
+        if (auth()->user()->role == User::dosen) {
+            return redirect()->route('dosen.kinerja-dosen.rekognisi-dosen')->with('success', 'Berhasil menambahkan data rekognisi dosen');
+        }else{
+            return redirect()->route('kepala-prodi.sumber-daya-manusia.rekognisi-dosen')->with('success', 'Berhasil menambahkan data rekognisi dosen');
+        }
     }
 
     public function editRekognisiDosen($id)
@@ -104,7 +112,11 @@ class RekognisiDosenService
 
         $data->update($validated);
         $this->logActivityService->log(["ubah", "Berhasil mengubah data rekognisi dosen $data->nama"]);
-        return redirect()->route('kepala-prodi.sumber-daya-manusia.rekognisi-dosen')->with('success', 'Berhasil mengubah data rekognisi dosen');
+        if (auth()->user()->role == User::dosen) {
+            return redirect()->route('dosen.kinerja-dosen.rekognisi-dosen')->with('success', 'Berhasil mengubah data rekognisi dosen');
+        }else{
+            return redirect()->route('kepala-prodi.sumber-daya-manusia.rekognisi-dosen')->with('success', 'Berhasil mengubah data rekognisi dosen');
+        }
     }
 
     public function deleteRekognisiDosen($id)
@@ -114,7 +126,11 @@ class RekognisiDosenService
             $this->fileUploadService->deleteFile($data->bukti);
             $data->delete();
             $this->logActivityService->log(["hapus", "Berhasil menghapus data rekognisi dosen"]);
-            return redirect()->route('kepala-prodi.sumber-daya-manusia.rekognisi-dosen')->with('success', 'Berhasil menghapus data rekognisi dosen');
+            if (auth()->user()->role == User::dosen) {
+                return redirect()->route('dosen.kinerja-dosen.rekognisi-dosen')->with('success', 'Berhasil menghapus data rekognisi dosen');
+            }else{
+                return redirect()->route('kepala-prodi.sumber-daya-manusia.rekognisi-dosen')->with('success', 'Berhasil menghapus data rekognisi dosen');
+            }
         }catch (\Exception $e) {
             return redirect()->back()->with('error', 'Gagal menghapus data rekognisi dosen');
         }

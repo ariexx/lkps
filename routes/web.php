@@ -128,6 +128,7 @@ Route::prefix('dosen')->as('dosen.')->group(function () {
             Route::get('/rekognisi-dosen/create', [KinerjaDosenController::class, 'createRekognisiDosen'])->name('rekognisi-dosen.create');
             Route::get('/rekognisi-dosen/edit/{id}', [KinerjaDosenController::class, 'editRekognisiDosen'])->name('rekognisi-dosen.edit');
             Route::put('/rekognisi-dosen/update/{id}', [KinerjaDosenController::class, 'updateRekognisiDosen'])->name('rekognisi-dosen.update');
+            Route::delete('/rekognisi-dosen/delete/{id}', [KinerjaDosenController::class, 'deleteRekognisiDosen'])->name('rekognisi-dosen.delete');
 
             //Karya Ilmiah DTPS Disitasi
             Route::get('/karya-ilmiah-dtps-disitasi', [KinerjaDosenController::class, 'showKaryaIlmiahDTPSDisitasi'])->name('karya-ilmiah-dtps-disitasi');

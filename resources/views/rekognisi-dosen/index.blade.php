@@ -8,7 +8,7 @@
 
 @section("content")
     <x-adminlte-card title="Rekognisi Dosen">
-        <x-create-button route="{{ route('kepala-prodi.sumber-daya-manusia.rekognisi-dosen.create') }}">
+        <x-create-button route="{{ auth()->user()->role == 'dosen' ? route('dosen.kinerja-dosen.rekognisi-dosen.create') : route('kepala-prodi.sumber-daya-manusia.rekognisi-dosen.create') }}">
             Tambah
         </x-create-button>
         <x-adminlte-datatable id="table1" :config="$config" striped hoverable with-buttons :heads="$config['heads']">

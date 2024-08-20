@@ -15,7 +15,8 @@ class RekognisiDosen extends Model
         'nasional',
         'internasional',
         'tahun',
-        'is_approve'
+        'is_approve',
+        'user_id'
     ];
 
     protected function casts(): array
@@ -29,9 +30,8 @@ class RekognisiDosen extends Model
     public static function boot()
     {
         parent::boot();
-//        static::creating(function ($model) {
-//            $model->wilayah = 0;
-//            $model->nasional = 0;
-//        });
+        static::creating(function ($model) {
+            $model->user_id = auth()->id();
+        });
     }
 }

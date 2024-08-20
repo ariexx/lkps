@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Services\PenelitianDTPSMelibatkanMahasiswaService;
 use App\Http\Services\PenelitianDTPSService;
 use App\Http\Services\PKMDTPSMelibatkanMahasiswaService;
+use App\Http\Services\RekognisiDosenService;
 use Illuminate\Http\Request;
 
 class KinerjaDosenController extends Controller
@@ -12,6 +13,7 @@ class KinerjaDosenController extends Controller
     public function __construct(
         public PenelitianDTPSMelibatkanMahasiswaService $penelitianDTPSMelibatkanMahasiswaService,
         public PKMDTPSMelibatkanMahasiswaService $pkmDTPSMelibatkanMahasiswaService,
+        public RekognisiDosenService $rekognisiDosenService,
     )
     {
     }
@@ -75,4 +77,35 @@ class KinerjaDosenController extends Controller
     {
         return $this->pkmDTPSMelibatkanMahasiswaService->deletePKMDTPSYangMelibatkanMahasiswa($id);
     }
+
+    public function showRekognisiDosen()
+    {
+        return $this->rekognisiDosenService->showRekognisiDosen();
+    }
+
+    public function createRekognisiDosen()
+    {
+        return $this->rekognisiDosenService->createRekognisiDosen();
+    }
+
+    public function storeRekognisiDosen(Request $request)
+    {
+        return $this->rekognisiDosenService->storeRekognisiDosen($request);
+    }
+
+    public function editRekognisiDosen($id)
+    {
+        return $this->rekognisiDosenService->editRekognisiDosen($id);
+    }
+
+    public function updateRekognisiDosen(Request $request, $id)
+    {
+        return $this->rekognisiDosenService->updateRekognisiDosen($request, $id);
+    }
+
+    public function deleteRekognisiDosen($id)
+    {
+        return $this->rekognisiDosenService->deleteRekognisiDosen($id);
+    }
+
 }
