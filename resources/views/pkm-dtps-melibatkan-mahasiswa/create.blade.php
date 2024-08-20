@@ -11,7 +11,7 @@
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
     <x-adminlte-card>
-        <form action="{{ route('kepala-prodi.pkm-dtps-yang-melibatkan-mahasiswa.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ auth()->user()->role == 'dosen' ? route('dosen.kinerja-dosen.pkm-dtps.store') : route('kepala-prodi.pkm-dtps-yang-melibatkan-mahasiswa.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="nama_dosen">Nama Dosen</label>

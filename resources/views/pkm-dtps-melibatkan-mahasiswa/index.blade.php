@@ -13,7 +13,7 @@
         </x-adminlte-alert>
     @endif
     <x-adminlte-card title="PKM DTPS Melibatkan Mahasiswa">
-        <x-create-button route="{{ route('kepala-prodi.pkm-dtps-yang-melibatkan-mahasiswa.create') }}">
+        <x-create-button route="{{ auth()->user()->role == 'dosen' ? route('dosen.kinerja-dosen.pkm-dtps.create') : route('kepala-prodi.pkm-dtps-yang-melibatkan-mahasiswa.create') }}">
             Tambah
         </x-create-button>
         <x-adminlte-datatable id="table1" :config="$config" striped hoverable with-buttons :heads="$config['heads']">

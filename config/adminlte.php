@@ -378,7 +378,7 @@ return [
                 ],
                 [
                     'text' => 'PKM DTPS Yang Melibatkan Mahasiswa',
-                    'url' => 'dosen/kinerja-dosen/pkm-dtps-yang-melibatkan-mahasiswa',
+                    'url' => 'dosen/kinerja-dosen/pkm-dtps',
                 ]
             ],
         ],

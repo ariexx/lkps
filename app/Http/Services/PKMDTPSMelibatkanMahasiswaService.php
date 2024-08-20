@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use App\Models\PKMDTPSMelibatkanMahasiswa;
+use App\Models\User;
 
 class PKMDTPSMelibatkanMahasiswaService
 {
@@ -16,7 +17,10 @@ class PKMDTPSMelibatkanMahasiswaService
 
     public function showPKMDTPSYangMelibatkanMahasiswa()
     {
-        $data = $this->pkmDTPSMelibatkanMahasiswa->get()->map(function ($item, $key) {
+        $data = $this->pkmDTPSMelibatkanMahasiswa->when(auth()->user()->role == User::dosen, function ($query) {
+            $query->where('user_id', auth()->id());
+        })->
+        get()->map(function ($item, $key) {
             return [
                 $key + 1,
                 $item->nama_dosen,
@@ -27,8 +31,8 @@ class PKMDTPSMelibatkanMahasiswaService
                 "<a href='" . asset('storage/' . $item->bukti) . "' target='_blank'>Lihat Bukti</a>",
                 is_approved($item->is_approve),
                 view('components.buttons', [
-                    'routeEdit' => route('kepala-prodi.pkm-dtps-yang-melibatkan-mahasiswa.edit', $item->id),
-                    'routeDelete' => route('kepala-prodi.pkm-dtps-yang-melibatkan-mahasiswa.delete', $item->id),
+                    'routeEdit' => auth()->user()->role == User::dosen ? route('dosen.kinerja-dosen.pkm-dtps.edit', $item->id) : route('kepala-prodi.pkm-dtps-yang-melibatkan-mahasiswa.edit', $item->id),
+                    'routeDelete' => auth()->user()->role == User::dosen ? route('dosen.kinerja-dosen.pkm-dtps.delete', $item->id) : route('kepala-prodi.pkm-dtps-yang-melibatkan-mahasiswa.delete', $item->id),
                     'isApproved' => $item->is_approve,
                     "routeApprove" => route('kepala-prodi.pkm-dtps-yang-melibatkan-mahasiswa.approve', $item->id),
                     "routeReject" => route('kepala-prodi.pkm-dtps-yang-melibatkan-mahasiswa.reject', $item->id),
@@ -70,7 +74,11 @@ class PKMDTPSMelibatkanMahasiswaService
             }
             $this->pkmDTPSMelibatkanMahasiswa->create($all);
             $this->logActivityService->log(["tambah", "PKM DTPS Melibatkan Mahasiswa $all[nama_dosen]"]);
-            return redirect()->route('kepala-prodi.pkm-dtps-yang-melibatkan-mahasiswa')->with('success', 'Berhasil menambahkan data PKM DTPS Melibatkan Mahasiswa');
+            if (auth()->user()->role == User::dosen) {
+                return redirect()->route('dosen.kinerja-dosen.pkm-dtps')->with('success', 'Berhasil menambahkan data PKM DTPS Melibatkan Mahasiswa');
+            }else{
+                return redirect()->route('kepala-prodi.pkm-dtps-yang-melibatkan-mahasiswa')->with('success', 'Berhasil menambahkan data PKM DTPS Melibatkan Mahasiswa');
+            }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Gagal menambahkan data PKM DTPS Melibatkan Mahasiswa ' . $e->getMessage());
         }
@@ -92,7 +100,11 @@ class PKMDTPSMelibatkanMahasiswaService
             }
             $data->update($all);
             $this->logActivityService->log(["ubah", "PKM DTPS Melibatkan Mahasiswa $all[nama_dosen]"]);
-            return redirect()->route('kepala-prodi.pkm-dtps-yang-melibatkan-mahasiswa')->with('success', 'Berhasil mengubah data PKM DTPS Melibatkan Mahasiswa');
+            if (auth()->user()->role == User::dosen) {
+                return redirect()->route('dosen.kinerja-dosen.pkm-dtps')->with('success', 'Berhasil mengubah data PKM DTPS Melibatkan Mahasiswa');
+            }else{
+                return redirect()->route('kepala-prodi.pkm-dtps-yang-melibatkan-mahasiswa')->with('success', 'Berhasil mengubah data PKM DTPS Melibatkan Mahasiswa');
+            }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Gagal mengubah data PKM DTPS Melibatkan Mahasiswa ' . $e->getMessage());
         }
@@ -105,7 +117,11 @@ class PKMDTPSMelibatkanMahasiswaService
             $this->fileUploadService->deleteFile($data->bukti);
             $data->delete();
             $this->logActivityService->log(["hapus", "PKM DTPS Melibatkan Mahasiswa $data[nama_dosen]"]);
-            return redirect()->route('kepala-prodi.pkm-dtps-yang-melibatkan-mahasiswa')->with('success', 'Berhasil menghapus data PKM DTPS Melibatkan Mahasiswa');
+            if (auth()->user()->role == User::dosen) {
+                return redirect()->route('dosen.kinerja-dosen.pkm-dtps')->with('success', 'Berhasil menghapus data PKM DTPS Melibatkan Mahasiswa');
+            }else{
+                return redirect()->route('kepala-prodi.pkm-dtps-yang-melibatkan-mahasiswa')->with('success', 'Berhasil menghapus data PKM DTPS Melibatkan Mahasiswa');
+            }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Gagal menghapus data PKM DTPS Melibatkan Mahasiswa ' . $e->getMessage());
         }

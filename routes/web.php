@@ -120,6 +120,7 @@ Route::prefix('dosen')->as('dosen.')->group(function () {
             Route::get('/pkm-dtps/create', [KinerjaDosenController::class, 'createPKMDTPS'])->name('pkm-dtps.create');
             Route::get('/pkm-dtps/edit/{id}', [KinerjaDosenController::class, 'editPKMDTPS'])->name('pkm-dtps.edit');
             Route::put('/pkm-dtps/update/{id}', [KinerjaDosenController::class, 'updatePKMDTPS'])->name('pkm-dtps.update');
+            Route::delete('/pkm-dtps/delete/{id}', [KinerjaDosenController::class, 'deletePKMDTPS'])->name('pkm-dtps.delete');
 
             //Rekognisi Dosen
             Route::get('/rekognisi-dosen', [KinerjaDosenController::class, 'showRekognisiDosen'])->name('rekognisi-dosen');
