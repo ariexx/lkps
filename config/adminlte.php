@@ -358,27 +358,27 @@ return [
             'submenu' => [
                 [
                     'text' => 'Rekognisi Dosen',
-                    'url' =>  'dosen/kinerja/rekognisi-dosen',
+                    'url' =>  'dosen/kinerja-dosen/rekognisi-dosen',
                 ],
                 [
                     'text' => 'Karya Ilmiah DTPS Disitasi',
-                    'url' => 'dosen/kinerja/karya-ilmiah-dtps-disitasi',
+                    'url' => 'dosen/kinerja-dosen/karya-ilmiah-dtps-disitasi',
                 ],
                 [
                     'text' => 'Produk / Jasa DTPS Yang Diadopsi Masyarakat',
-                    'url' => 'dosen/kinerja/produk-jasa-dtps-yang-diadopsi-masyarakat',
+                    'url' => 'dosen/kinerja-dosen/produk-jasa-dtps-yang-diadopsi-masyarakat',
                 ],
                 [
                     'text' => 'Integrasi Kegiatan Penelitian/PKM dalam Pembelajaran',
-                    'url' => 'dosen/kinerja/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran',
+                    'url' => 'dosen/kinerja-dosen/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran',
                 ],
                 [
                     'text' => 'Penelitian DTPS Yang Melibatkan Mahasiswa',
-                    'url' => 'dosen/kinerja/penelitian-dtps-yang-melibatkan-mahasiswa',
+                    'url' => 'dosen/kinerja-dosen/penelitian-dtps',
                 ],
                 [
                     'text' => 'PKM DTPS Yang Melibatkan Mahasiswa',
-                    'url' => 'dosen/kinerja/pkm-dtps-yang-melibatkan-mahasiswa',
+                    'url' => 'dosen/kinerja-dosen/pkm-dtps-yang-melibatkan-mahasiswa',
                 ]
             ],
         ],

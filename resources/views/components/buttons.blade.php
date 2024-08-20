@@ -1,6 +1,6 @@
 @php
     $role = Auth::user()->role ?? user()->role;
-    $canEdit = ["prodi", "admin_prodi"];
+    $canEdit = ["prodi", "admin_prodi", "dosen"];
     $canDelete = ["prodi"];
     $canApprove = ["prodi"];
 @endphp

@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use App\Models\PenelitianDTPSMelibatkanMahasiswa;
+use App\Models\User;
 
 class PenelitianDTPSMelibatkanMahasiswaService
 {
@@ -16,7 +17,9 @@ class PenelitianDTPSMelibatkanMahasiswaService
 
     public function showPenelitianDTPSMelibatkanMahasiswa()
     {
-        $data = $this->penelitianDTPSMelibatkanMahasiswa->get()->map(function ($item, $key) {
+        $data = $this->penelitianDTPSMelibatkanMahasiswa->when(auth()->user()->role == User::dosen, function ($query) {
+            $query->where('user_id', auth()->id());
+        })->get()->map(function ($item, $key) {
             return [
                 $key + 1,
                 $item->nama_dosen,
@@ -27,8 +30,8 @@ class PenelitianDTPSMelibatkanMahasiswaService
                 "<a href='" . asset('storage/' . $item->bukti) . "' target='_blank'>Lihat Bukti</a>",
                 is_approved($item->is_approve),
                 view('components.buttons', [
-                    'routeEdit' => route('kepala-prodi.penelitian-dtps-melibatkan-mahasiswa.edit', $item->id),
-                    'routeDelete' => route('kepala-prodi.penelitian-dtps-melibatkan-mahasiswa.delete', $item->id),
+                    'routeEdit' => (auth()->user()->role == User::dosen) ? route('dosen.kinerja-dosen.penelitian-dtps.edit', $item->id) : route('kepala-prodi.penelitian-dtps-melibatkan-mahasiswa.edit', $item->id),
+                    'routeDelete' => (auth()->user()->role == User::dosen) ? route('dosen.kinerja-dosen.penelitian-dtps.delete', $item->id) : route('kepala-prodi.penelitian-dtps-melibatkan-mahasiswa.delete', $item->id),
                     'isApproved' => $item->is_approve,
                     "routeApprove" => route('kepala-prodi.penelitian-dtps-melibatkan-mahasiswa.approve', $item->id),
                     "routeReject" => route('kepala-prodi.penelitian-dtps-melibatkan-mahasiswa.reject', $item->id),
@@ -76,11 +79,20 @@ class PenelitianDTPSMelibatkanMahasiswaService
         if ($request->hasFile('bukti')) {
             $validated['bukti'] = $this->fileUploadService->uploadFile($request, 'bukti', 'penelitian-dtps-melibatkan-mahasiswa');
         }
+//
+//        //if role dosen then get name from user
+//        if (auth()->user()->role == User::dosen) {
+//            $validated['nama_dosen'] = auth()->user()->name;
+//        }
 
         $validated['is_approve'] = STATUS_PENDING;
         $this->penelitianDTPSMelibatkanMahasiswa->create($validated);
         $this->logActivityService->log(["tambah", "Berhasil menambahkan data penelitian DTPS melibatkan mahasiswa $request->nama_dosen"]);
-        return redirect()->route('kepala-prodi.penelitian-dtps-melibatkan-mahasiswa')->with('success', 'Data penelitian DTPS melibatkan mahasiswa berhasil ditambahkan');
+        if (auth()->user()->role == User::dosen) {
+            return redirect()->route('dosen.kinerja-dosen.penelitian-dtps')->with('success', 'Data penelitian DTPS melibatkan mahasiswa berhasil ditambahkan');
+        } else {
+            return redirect()->route('kepala-prodi.penelitian-dtps-melibatkan-mahasiswa')->with('success', 'Data penelitian DTPS melibatkan mahasiswa berhasil ditambahkan');
+        }
     }
 
     public function editPenelitianDTPSMelibatkanMahasiswa($id)
@@ -107,7 +119,11 @@ class PenelitianDTPSMelibatkanMahasiswaService
 
         $data->update($validated);
         $this->logActivityService->log(["ubah", "Berhasil mengubah data penelitian DTPS melibatkan mahasiswa $data->nama_dosen"]);
-        return redirect()->route('kepala-prodi.penelitian-dtps-melibatkan-mahasiswa')->with('success', 'Data penelitian DTPS melibatkan mahasiswa berhasil diubah');
+        if(auth()->user()->role == User::dosen) {
+            return redirect()->route('dosen.kinerja-dosen.penelitian-dtps')->with('success', 'Data penelitian DTPS melibatkan mahasiswa berhasil diubah');
+        } else {
+            return redirect()->route('kepala-prodi.penelitian-dtps-melibatkan-mahasiswa')->with('success', 'Data penelitian DTPS melibatkan mahasiswa berhasil diubah');
+        }
     }
 
     public function deletePenelitianDTPSMelibatkanMahasiswa($id)
@@ -116,7 +132,11 @@ class PenelitianDTPSMelibatkanMahasiswaService
         $this->logActivityService->log(["hapus", "Berhasil menghapus data penelitian DTPS melibatkan mahasiswa $data->nama_dosen"]);
         $this->fileUploadService->deleteFile($data->bukti);
         $data->delete();
-        return redirect()->route('kepala-prodi.penelitian-dtps-melibatkan-mahasiswa')->with('success', 'Data penelitian DTPS melibatkan mahasiswa berhasil dihapus');
+        if(auth()->user()->role == User::dosen) {
+            return redirect()->route('dosen.kinerja-dosen.penelitian-dtps')->with('success', 'Data penelitian DTPS melibatkan mahasiswa berhasil dihapus');
+        } else {
+            return redirect()->route('kepala-prodi.penelitian-dtps-melibatkan-mahasiswa')->with('success', 'Data penelitian DTPS melibatkan mahasiswa berhasil dihapus');
+        }
     }
 
     public function approvePenelitianDTPSMelibatkanMahasiswa($id)

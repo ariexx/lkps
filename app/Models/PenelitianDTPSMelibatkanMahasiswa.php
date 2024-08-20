@@ -14,5 +14,15 @@ class PenelitianDTPSMelibatkanMahasiswa extends Model
         'tahun',
         'bukti',
         'is_approve',
+        'user_id'
     ];
+
+    //before create append user_id to auth()->id()
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model) {
+            $model->user_id = auth()->id();
+        });
+    }
 }

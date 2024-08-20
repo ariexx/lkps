@@ -16,7 +16,10 @@ class PenelitianDTPSService
 
     public function showPenelitianDTPS()
     {
-        $data = $this->penelitianDtps->get()->map(function ($item, $key) {
+        $data = $this->penelitianDtps->when(auth()->user()->role == 'dosen', function ($query) {
+            $query->where('user_id', auth()->id());
+        })
+            ->get()->map(function ($item, $key) {
             return [
                 $key + 1,
                 $item->sumber_pembiayaan,
@@ -46,13 +49,27 @@ class PenelitianDTPSService
             'Aksi'
         ];
 
+        $ts = $this->penelitianDtps->when(auth()->user()->role == 'dosen', function ($query) {
+            $query->where('user_id', auth()->id());
+        })->sum('ts');
+
+        $ts1 = $this->penelitianDtps->when(auth()->user()->role == 'dosen', function ($query) {
+            $query->where('user_id', auth()->id());
+        })->sum('ts1');
+
+        $ts2 = $this->penelitianDtps->when(auth()->user()->role == 'dosen', function ($query) {
+            $query->where('user_id', auth()->id());
+        })->sum('ts2');
+
+        $total = $ts + $ts1 + $ts2;
+
         $config = [
             "heads" => $heads,
             "data" => $data,
-            "ts" => $this->penelitianDtps->sum('ts'),
-            "ts1" => $this->penelitianDtps->sum('ts1'),
-            "ts2" => $this->penelitianDtps->sum('ts2'),
-            "total" => $this->penelitianDtps->sum('ts') + $this->penelitianDtps->sum('ts1') + $this->penelitianDtps->sum('ts2')
+            "ts" => $ts,
+            "ts1" => $ts1,
+            "ts2" => $ts2,
+            "total" => $total
         ];
 
         return view("penelitian-dtps.index", compact('config'));
