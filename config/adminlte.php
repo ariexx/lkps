@@ -308,6 +308,24 @@ return [
             'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
         [
+            'text' => "Log Aktivitas",
+            "icon" => "fas fa-fw fa-history",
+            "role" => \App\Models\User::superadmin,
+            "url" => "log-aktivitas",
+        ],
+        [
+          'text' => "Management User",
+            "icon" => "fas fa-fw fa-users",
+            "role" => \App\Models\User::superadmin,
+            "submenu" => [
+                [
+                    "text" => "User",
+                    "url" => "management-user/user",
+                    "icon" => "fas fa-fw fa-user",
+                ],
+            ],
+        ],
+        [
             'text' => 'Profile Dosen',
             'icon' => 'fas fa-fw fa-database',
             'role' => \App\Models\User::dosen,
