@@ -308,27 +308,26 @@ return [
             'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
         [
-            'text' => "Log Aktivitas",
-            "icon" => "fas fa-fw fa-history",
-            "role" => \App\Models\User::superadmin,
-            "url" => "superadmin/log-aktivitas",
-        ],
-        [
-          'text' => "Management User",
+            'text' => "Management",
             "icon" => "fas fa-fw fa-users",
-            "role" => \App\Models\User::superadmin,
+            "role" => [\App\Models\User::superadmin],
             "submenu" => [
                 [
                     "text" => "User",
                     "url" => "superadmin/user-management",
                     "icon" => "fas fa-fw fa-user",
                 ],
+                [
+                    'text' => "Log Aktivitas",
+                    "icon" => "fas fa-fw fa-history",
+                    "url" => "superadmin/log-aktivitas",
+                ],
             ],
         ],
         [
             'text' => 'Profile Dosen',
             'icon' => 'fas fa-fw fa-database',
-            'role' => \App\Models\User::dosen,
+            'role' => [\App\Models\User::dosen],
             'submenu' => [
                 [
                     'text' => 'Dosen Tetap Perguruan Tinggi',
