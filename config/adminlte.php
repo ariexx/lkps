@@ -352,6 +352,37 @@ return [
             ],
         ],
         [
+            'text' => 'Kinerja Dosen',
+            'icon' => 'fas fa-fw fa-database',
+            'role' => [\App\Models\User::dosen],
+            'submenu' => [
+                [
+                    'text' => 'Rekognisi Dosen',
+                    'url' =>  'dosen/kinerja/rekognisi-dosen',
+                ],
+                [
+                    'text' => 'Karya Ilmiah DTPS Disitasi',
+                    'url' => 'dosen/kinerja/karya-ilmiah-dtps-disitasi',
+                ],
+                [
+                    'text' => 'Produk / Jasa DTPS Yang Diadopsi Masyarakat',
+                    'url' => 'dosen/kinerja/produk-jasa-dtps-yang-diadopsi-masyarakat',
+                ],
+                [
+                    'text' => 'Integrasi Kegiatan Penelitian/PKM dalam Pembelajaran',
+                    'url' => 'dosen/kinerja/integrasi-kegiatan-penelitian-pkm-dalam-pembelajaran',
+                ],
+                [
+                    'text' => 'Penelitian DTPS Yang Melibatkan Mahasiswa',
+                    'url' => 'dosen/kinerja/penelitian-dtps-yang-melibatkan-mahasiswa',
+                ],
+                [
+                    'text' => 'PKM DTPS Yang Melibatkan Mahasiswa',
+                    'url' => 'dosen/kinerja/pkm-dtps-yang-melibatkan-mahasiswa',
+                ]
+            ],
+        ],
+        [
             'text' => 'Kerjasama',
             'icon' => 'fas fa-fw fa-database',
             'role' => [\App\Models\User::prodi, \App\Models\User::adminprodi],
