@@ -8,7 +8,7 @@
 
 @section("content")
     <x-adminlte-card>
-        <form action="{{ route('kepala-prodi.sumber-daya-manusia.karya-ilmiah-dtps-disitasi.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ auth()->user()->role == 'dosen' ? route('dosen.kinerja-dosen.karya-ilmiah-dtps-disitasi.store') : route('kepala-prodi.sumber-daya-manusia.karya-ilmiah-dtps-disitasi.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="nama">Nama</label>

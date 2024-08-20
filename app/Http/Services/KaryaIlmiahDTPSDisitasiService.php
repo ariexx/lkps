@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use App\Models\KaryaIlmiahDTPSDisitasi;
+use App\Models\User;
 
 class KaryaIlmiahDTPSDisitasiService
 {
@@ -16,7 +17,10 @@ class KaryaIlmiahDTPSDisitasiService
 
     public function showKaryaIlmiahDTPSDisitasi()
     {
-        $data = $this->karyaIlmiahDTPSDisitasi->get()->map(function ($item, $key) {
+        $data = $this->karyaIlmiahDTPSDisitasi->when(auth()->user()->role == User::dosen, function ($query) {
+            $query->where('user_id', auth()->id());
+        })->
+        get()->map(function ($item, $key) {
             return [
                 $key + 1,
                 $item->nama,
@@ -25,8 +29,8 @@ class KaryaIlmiahDTPSDisitasiService
                 "<a href='" . asset('storage/' . $item->bukti) . "' target='_blank'>Lihat Bukti</a>",
                 is_approved($item->is_approve),
                 view('components.buttons', [
-                    'routeEdit' => route('kepala-prodi.sumber-daya-manusia.karya-ilmiah-dtps-disitasi.edit', $item->id),
-                    'routeDelete' => route('kepala-prodi.sumber-daya-manusia.karya-ilmiah-dtps-disitasi.delete', $item->id),
+                    'routeEdit' => auth()->user()->role == 'dosen' ? route('dosen.kinerja-dosen.karya-ilmiah-dtps-disitasi.edit', $item->id) : route('kepala-prodi.sumber-daya-manusia.karya-ilmiah-dtps-disitasi.edit', $item->id),
+                    'routeDelete' => auth()->user()->role == 'dosen' ? route('dosen.kinerja-dosen.karya-ilmiah-dtps-disitasi.delete', $item->id) : route('kepala-prodi.sumber-daya-manusia.karya-ilmiah-dtps-disitasi.delete', $item->id),
                     'isApproved' => $item->is_approve,
                     "routeApprove" => route('kepala-prodi.sumber-daya-manusia.karya-ilmiah-dtps-disitasi.approve', $item->id),
                     "routeReject" => route('kepala-prodi.sumber-daya-manusia.karya-ilmiah-dtps-disitasi.reject', $item->id),
@@ -64,7 +68,11 @@ class KaryaIlmiahDTPSDisitasiService
         $data['bukti'] = $this->fileUploadService->uploadFile($request, 'bukti', 'karya-ilmiah-dtps-disitasi');
         $this->karyaIlmiahDTPSDisitasi->create($data);
         $this->logActivityService->log(["tambah", "Karya Ilmiah DTPS Disitasi $request->nama"]);
-        return redirect()->route('kepala-prodi.sumber-daya-manusia.karya-ilmiah-dtps-disitasi')->with('success', 'Berhasil menambahkan data karya ilmiah DTPS disitasi');
+        if (auth()->user()->role == User::dosen) {
+            return redirect()->route('dosen.kinerja-dosen.karya-ilmiah-dtps-disitasi')->with('success', 'Berhasil menambahkan data karya ilmiah DTPS disitasi');
+        }else{
+            return redirect()->route('kepala-prodi.sumber-daya-manusia.karya-ilmiah-dtps-disitasi')->with('success', 'Berhasil menambahkan data karya ilmiah DTPS disitasi');
+        }
     }
 
     public function editKaryaIlmiahDTPSDisitasi($id)
@@ -81,7 +89,11 @@ class KaryaIlmiahDTPSDisitasiService
         }
         $this->karyaIlmiahDTPSDisitasi->find($id)->update($data);
         $this->logActivityService->log(["ubah", "Karya Ilmiah DTPS Disitasi $request->nama"]);
-        return redirect()->route('kepala-prodi.sumber-daya-manusia.karya-ilmiah-dtps-disitasi')->with('success', 'Berhasil mengubah data karya ilmiah DTPS disitasi');
+        if (auth()->user()->role == User::dosen) {
+            return redirect()->route('dosen.kinerja-dosen.karya-ilmiah-dtps-disitasi')->with('success', 'Berhasil mengubah data karya ilmiah DTPS disitasi');
+        }else{
+            return redirect()->route('kepala-prodi.sumber-daya-manusia.karya-ilmiah-dtps-disitasi')->with('success', 'Berhasil mengubah data karya ilmiah DTPS disitasi');
+        }
     }
 
     public function deleteKaryaIlmiahDTPSDisitasi($id)
@@ -89,7 +101,11 @@ class KaryaIlmiahDTPSDisitasiService
         $data = $this->karyaIlmiahDTPSDisitasi->find($id);
         $this->karyaIlmiahDTPSDisitasi->find($id)->delete();
         $this->logActivityService->log(["hapus", "Karya Ilmiah DTPS Disitasi $data->nama"]);
-        return redirect()->route('kepala-prodi.sumber-daya-manusia.karya-ilmiah-dtps-disitasi')->with('success', 'Berhasil menghapus data karya ilmiah DTPS disitasi');
+        if (auth()->user()->role == User::dosen) {
+            return redirect()->route('dosen.kinerja-dosen.karya-ilmiah-dtps-disitasi')->with('success', 'Berhasil menghapus data karya ilmiah DTPS disitasi');
+        }else{
+            return redirect()->route('kepala-prodi.sumber-daya-manusia.karya-ilmiah-dtps-disitasi')->with('success', 'Berhasil menghapus data karya ilmiah DTPS disitasi');
+        }
     }
 
     public function approveKaryaIlmiahDTPSDisitasi($id)

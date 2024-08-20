@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\KaryaIlmiahDTPSDisitasiService;
 use App\Http\Services\PenelitianDTPSMelibatkanMahasiswaService;
 use App\Http\Services\PenelitianDTPSService;
 use App\Http\Services\PKMDTPSMelibatkanMahasiswaService;
@@ -14,6 +15,7 @@ class KinerjaDosenController extends Controller
         public PenelitianDTPSMelibatkanMahasiswaService $penelitianDTPSMelibatkanMahasiswaService,
         public PKMDTPSMelibatkanMahasiswaService $pkmDTPSMelibatkanMahasiswaService,
         public RekognisiDosenService $rekognisiDosenService,
+        public KaryaIlmiahDTPSDisitasiService $karyaIlmiahDTPSDisitasiService
     )
     {
     }
@@ -106,6 +108,36 @@ class KinerjaDosenController extends Controller
     public function deleteRekognisiDosen($id)
     {
         return $this->rekognisiDosenService->deleteRekognisiDosen($id);
+    }
+
+    public function showKaryaIlmiahDTPSDisitasi()
+    {
+        return $this->karyaIlmiahDTPSDisitasiService->showKaryaIlmiahDTPSDisitasi();
+    }
+
+    public function createKaryaIlmiahDTPSDisitasi()
+    {
+        return $this->karyaIlmiahDTPSDisitasiService->createKaryaIlmiahDTPSDisitasi();
+    }
+
+    public function storeKaryaIlmiahDTPSDisitasi(Request $request)
+    {
+        return $this->karyaIlmiahDTPSDisitasiService->storeKaryaIlmiahDTPSDisitasi($request);
+    }
+
+    public function editKaryaIlmiahDTPSDisitasi($id)
+    {
+        return $this->karyaIlmiahDTPSDisitasiService->editKaryaIlmiahDTPSDisitasi($id);
+    }
+
+    public function updateKaryaIlmiahDTPSDisitasi(Request $request, $id)
+    {
+        return $this->karyaIlmiahDTPSDisitasiService->updateKaryaIlmiahDTPSDisitasi($request, $id);
+    }
+
+    public function deleteKaryaIlmiahDTPSDisitasi($id)
+    {
+        return $this->karyaIlmiahDTPSDisitasiService->deleteKaryaIlmiahDTPSDisitasi($id);
     }
 
 }

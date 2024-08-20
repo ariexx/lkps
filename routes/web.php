@@ -136,6 +136,7 @@ Route::prefix('dosen')->as('dosen.')->group(function () {
             Route::get('/karya-ilmiah-dtps-disitasi/create', [KinerjaDosenController::class, 'createKaryaIlmiahDTPSDisitasi'])->name('karya-ilmiah-dtps-disitasi.create');
             Route::get('/karya-ilmiah-dtps-disitasi/edit/{id}', [KinerjaDosenController::class, 'editKaryaIlmiahDTPSDisitasi'])->name('karya-ilmiah-dtps-disitasi.edit');
             Route::put('/karya-ilmiah-dtps-disitasi/update/{id}', [KinerjaDosenController::class, 'updateKaryaIlmiahDTPSDisitasi'])->name('karya-ilmiah-dtps-disitasi.update');
+            Route::delete('/karya-ilmiah-dtps-disitasi/delete/{id}', [KinerjaDosenController::class, 'deleteKaryaIlmiahDTPSDisitasi'])->name('karya-ilmiah-dtps-disitasi.delete');
 
             // Produk / Jasa DTPS Yang Diadopsi oleh Industri/Masyarakat
             Route::get('/produk-jasa-dtps-diadopsi', [KinerjaDosenController::class, 'showProdukJasaDTPSDiadopsi'])->name('produk-jasa-dtps-diadopsi');
