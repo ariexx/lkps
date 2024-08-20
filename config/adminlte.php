@@ -311,7 +311,7 @@ return [
             'text' => "Log Aktivitas",
             "icon" => "fas fa-fw fa-history",
             "role" => \App\Models\User::superadmin,
-            "url" => "log-aktivitas",
+            "url" => "superadmin/log-aktivitas",
         ],
         [
           'text' => "Management User",
@@ -320,7 +320,7 @@ return [
             "submenu" => [
                 [
                     "text" => "User",
-                    "url" => "management-user/user",
+                    "url" => "superadmin/user-management",
                     "icon" => "fas fa-fw fa-user",
                 ],
             ],

@@ -105,6 +105,17 @@ Route::prefix('superadmin')->as('superadmin.')->group(function () {
             Route::get('/dashboard', function () {
                 return view('superadmin.dashboard');
             })->name('dashboard');
+
+            //Fitur: Log Aktivitas
+            Route::get('/log-aktivitas', [\App\Http\Controllers\LogAktivitasController::class, 'showLogAktivitas'])->name('log-aktivitas');
+
+            //Fitur: User Management
+            Route::get('/user-management', [\App\Http\Controllers\UserManagementController::class, 'showUserManagement'])->name('user-management');
+            Route::get('/user-management/create', [\App\Http\Controllers\UserManagementController::class, 'createUserManagement'])->name('user-management.create');
+            Route::post('/user-management/store', [\App\Http\Controllers\UserManagementController::class, 'storeUserManagement'])->name('user-management.store');
+            Route::get('/user-management/edit/{id}', [\App\Http\Controllers\UserManagementController::class, 'editUserManagement'])->name('user-management.edit');
+            Route::put('/user-management/update/{id}', [\App\Http\Controllers\UserManagementController::class, 'updateUserManagement'])->name('user-management.update');
+            Route::delete('/user-management/delete/{id}', [\App\Http\Controllers\UserManagementController::class, 'deleteUserManagement'])->name('user-management.delete');
         });
     });
 });

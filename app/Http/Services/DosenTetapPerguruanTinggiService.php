@@ -100,7 +100,7 @@ class DosenTetapPerguruanTinggiService
         try {
             $dosenTetapPerguruanTinggi = $this->model->find($id);
             $dosenTetapPerguruanTinggi->update($all);
-            $this->logActivityService->log(["ubah", "Mengedit data dosen tetap perguruan tinggi"]);
+            $this->logActivityService->log(["ubah", "Mengedit data dosen tetap perguruan tinggi $dosenTetapPerguruanTinggi->nama"]);
             \DB::commit();
             return redirect()->route('kepala-prodi.sumber-daya-manusia.dosen-tetap-perguruan-tinggi')->with('success', 'Dosen Tetap Perguruan Tinggi berhasil diubah');
         } catch (\Exception $e) {

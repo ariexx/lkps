@@ -30,4 +30,13 @@
             <button type="submit" class="btn btn-danger">Tolak</button>
         </form>
     @endif
+
+    @if($role === "superadmin")
+            <a href="{{ $routeEdit }}" class="btn btn-primary mr-2">Edit</a>
+            <form action="{{ $routeDelete }}" method="post" class="d-inline mr-2">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Hapus</button>
+            </form>
+    @endif
 </div>
