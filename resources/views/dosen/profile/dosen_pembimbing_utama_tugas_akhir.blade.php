@@ -29,6 +29,7 @@
                     <th colspan="4">Jumlah Mahasiswa yang Dibimbing pada PS yang Diakreditasi</th>
                     <th colspan="4">Jumlah Mahasiswa yang Dibimbing pada PS Lain pada Program yang sama di PT</th>
                     <th rowspan="2">Rata-rata Jumlah Bimbingan di semua Program/Semester</th>
+                    <th rowspan="2">Status</th>
                     <th>Aksi</th>
                 </tr>
                 <tr>
@@ -56,6 +57,9 @@
                         <td>
                             {{ $dosen->rataRataPS($dosen->id)}}
 
+                        </td>
+                        <td>
+                            {!! is_approved($dosen->is_approve) !!}
                         </td>
                         <td>
                             <a href="{{route('dosen.dosen-pembimbing-utama-tugas-akhir.edit', $dosen->id)}}" class="btn btn-warning">Edit</a>

@@ -34,7 +34,11 @@ class DosenPembimbing extends Model
 
     public function rataRataTS(): array
     {
-        $data = $this->where('user_id', user()->id)->get();
+        if (in_array(user()->role, [User::prodi, User::adminprodi])) {
+            $data = $this->get();
+        } else {
+            $data = $this->where('user_id', user()->id)->get();
+        }
 
         $rataRataTS = 0;
         $rataRataTS1 = 0;
@@ -54,7 +58,11 @@ class DosenPembimbing extends Model
 
     public function rataRataTSLain(): array
     {
-        $data = $this->where('user_id', user()->id)->get();
+        if (in_array(user()->role, [User::prodi, User::adminprodi])) {
+            $data = $this->get();
+        } else {
+            $data = $this->where('user_id', user()->id)->get();
+        }
 
         $rataRataTS = 0;
         $rataRataTS1 = 0;
@@ -73,7 +81,11 @@ class DosenPembimbing extends Model
 
     public function rataRataSemua(): array
     {
-        $data = $this->where('user_id', user()->id)->get();
+        if (in_array(user()->role, [User::prodi, User::adminprodi])) {
+            $data = $this->get();
+        } else {
+            $data = $this->where('user_id', user()->id)->get();
+        }
 
         $rata = 0;
         $totalData = count($data);
@@ -91,7 +103,17 @@ class DosenPembimbing extends Model
 
     public function rataRataPS($id): float
     {
-        $data = $this->where('user_id', user()->id)->whereId($id)->first();
+        //if user is admin, then get all data
+        if (in_array(user()->role, [User::prodi, User::adminprodi])) {
+            $data = $this->find($id);
+        } else {
+            $data = $this->where('user_id', user()->id)->find($id);
+        }
+
+        if ($data === null) {
+            return 0.0; // or handle the null case appropriately
+        }
+
         $jumlahTS = (float) $data->jumlah_mahasiswa_dibimbing_ts;
         $jumlahTS1 = (float) $data->jumlah_mahasiswa_dibimbing_ts1;
         $jumlahTS2 = (float) $data->jumlah_mahasiswa_dibimbing_ts2;
