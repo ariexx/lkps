@@ -11,8 +11,13 @@ class KerjasamaPenelitianObserver
 
     public function updating($model): void
     {
-        //if is_approve is STATUS_REJECTED, and the user being updated is not the same as the user who rejected it, then set is_approve to STATUS_PENDING
-        if ($model->is_approved == STATUS_REJECTED) {
+        $originalIsApprove = $model->getOriginal('is_approved');
+
+        if ($originalIsApprove == STATUS_PENDING && $model->is_approved == STATUS_REJECTED) {
+            return;
+        }
+
+        if ($originalIsApprove == STATUS_REJECTED && $model->isDirty()) {
             $model->is_approved = STATUS_PENDING;
         }
     }
