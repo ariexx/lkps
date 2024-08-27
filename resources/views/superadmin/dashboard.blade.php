@@ -7,5 +7,5 @@
 @stop
 
 @section('content')
-    <x-adminlte-info-box title="Hai {{user()->name}}!" text="Selamat datang di halaman dashboard superadmin" theme="info" icon="fas fa-user-tie" />
+    <x-adminlte-info-box title="Hai {{user()->name}}!" text="Selamat datang di halaman dashboard" theme="info" icon="fas fa-user-tie" />
 @stop
