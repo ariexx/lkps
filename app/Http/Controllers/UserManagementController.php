@@ -83,8 +83,13 @@ class UserManagementController extends Controller
         $data = request()->validate([
             'name' => 'required',
             'username' => 'required',
+            'password' => 'sometimes',
             'role' => 'required'
         ]);
+
+        if(isset($data['password'])) {
+            $data['password'] = bcrypt($data['password']);
+        }
 
         User::find($id)->update($data);
 
