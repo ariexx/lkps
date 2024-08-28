@@ -340,11 +340,6 @@ return [
                     'icon' => 'fas fa-fw fa-user-graduate',
                 ],
                 [
-                    'text' => 'Dosen Pembimbing Utama Tugas Akhir',
-                    'url' => 'dosen/profile/dosen-pembimbing-utama-tugas-akhir',
-                    'icon' => 'fas fa-fw fa-user-graduate',
-                ],
-                [
                     'text' => 'Dosen Tidak Tetap',
                     'url' => 'dosen/profile/dosen-tidak-tetap',
                     'icon' => 'fas fa-fw fa-user-graduate',
