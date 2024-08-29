@@ -41,7 +41,7 @@ class ProdukJasaMasyarakatService
         })->toArray();
 
         $heads = [
-            '#',
+            'No',
             'Nama',
             'Nama Produk',
             'Deskripsi',

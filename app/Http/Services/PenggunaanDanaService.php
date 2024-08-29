@@ -41,9 +41,9 @@ class PenggunaanDanaService
         $heads = [
             'No',
             'Jenis Penggunaan',
+            'Unit Pengelola TS',
             'Unit Pengelola TS-1',
             'Unit Pengelola TS-2',
-            'Unit Pengelola TS-3',
             'Rata Rata',
             'Program Studi TS',
             'Program Studi TS-1',
@@ -56,13 +56,14 @@ class PenggunaanDanaService
         $config = [
             "heads" => $heads,
             "data" => $data,
-            "jumlah_unit_ts" => $this->penggunaanDana->sum('unit_ts'),
-            "jumlah_unit_ts1" => $this->penggunaanDana->sum('unit_ts1'),
-            "jumlah_unit_ts2" => $this->penggunaanDana->sum('unit_ts2'),
-            "rata_rata_unit" => (float) (($this->penggunaanDana->sum('unit_ts') + $this->penggunaanDana->sum('unit_ts1') + $this->penggunaanDana->sum('unit_ts2')) / 3) ?? 0,            "jumlah_program_ts" => $this->penggunaanDana->sum('program_ts'),
-            "jumlah_program_ts1" => $this->penggunaanDana->sum('program_ts1'),
-            "jumlah_program_ts2" => $this->penggunaanDana->sum('program_ts2'),
-            "rata_rata_program" => (float) (($this->penggunaanDana->sum('program_ts') + $this->penggunaanDana->sum('program_ts1') + $this->penggunaanDana->sum('program_ts2')) / 3) ?? 0,        ];
+            "jumlah_unit_ts" => "Rp." . number_format($this->penggunaanDana->sum('unit_ts'), 0) ?? 0,
+            "jumlah_unit_ts1" => "Rp." . number_format($this->penggunaanDana->sum('unit_ts1'), 0) ?? 0,
+            "jumlah_unit_ts2" => "Rp." . number_format($this->penggunaanDana->sum('unit_ts2'), 0) ?? 0,
+            "rata_rata_unit" => "Rp." . number_format((($this->penggunaanDana->sum('unit_ts') + $this->penggunaanDana->sum('unit_ts1') + $this->penggunaanDana->sum('unit_ts2')) / 3), 0) ?? 0,
+            "jumlah_program_ts" => "Rp." . number_format($this->penggunaanDana->sum('program_ts'), 0) ?? 0,
+            "jumlah_program_ts1" => "Rp." . number_format($this->penggunaanDana->sum('program_ts1'), 0) ?? 0,
+            "jumlah_program_ts2" => "Rp." . number_format($this->penggunaanDana->sum('program_ts2'), 0) ?? 0,
+            "rata_rata_program" => "Rp." . number_format((($this->penggunaanDana->sum('program_ts') + $this->penggunaanDana->sum('program_ts1') + $this->penggunaanDana->sum('program_ts2')) / 3), 0) ?? 0,            ];
 
         return view("penggunaan-dana.index", compact('config'));
     }
